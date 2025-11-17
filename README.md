@@ -1,2 +1,2 @@
-# docs
-How-To Citra Space!
+# Citra Space App Documentation
+Soon.™
