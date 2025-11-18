@@ -1,8 +1,8 @@
 ---
-title: User Features
+title: User/Settings
 nav_order: 1
 ---
 
-# User Features
+# User/Settings
 
 Soon.™️
