@@ -1,7 +1,7 @@
 ---
 title: Details and Tools
 nav_order: 2
-parent: Satellites
+parent: Ground Stations
 ---
 
 # Details and Tools

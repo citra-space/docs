@@ -1,8 +1,8 @@
 ---
-title: Quickstart Guide
+title: Quickstart Guides
 nav_order: 0
 ---
 
-# Quickstart Guide
+# Quickstart Guides
 
 The most important thing today! Soon.™️
