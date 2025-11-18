@@ -1,6 +1,6 @@
 ---
 title: Ground Stations
-nav_order: 3
+nav_order: 6
 ---
 
 # Ground Stations
