@@ -1,0 +1,25 @@
+title: Citra Space Documentation
+tagline: Space Object Identification at Scale
+theme: just-the-docs
+navigation:
+  - text: Sign Up
+    internal: true
+    url: ./signup
+  - text: Satellites
+    internal: true
+    url: ./satellites
+  - text: Ground Stations
+    internal: true
+    url: ./ground-stations
+  - text: Sensors
+    internal: true
+    url: ./sensors
+  - text: -- Antennas
+    internal: true
+    url: ./sensors
+  - text: -- Telescopes
+    internal: true
+    url: ./sensors
+  - text: FAQs
+    internal: true
+    url: ./faqs
