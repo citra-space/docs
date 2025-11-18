@@ -1,96 +1,43 @@
----
-title: Introduction and Links
-nav_order: 2
----
-
 # Citra Space Documentation
 
-Welcome to Citra Space! Here you'll find all the information you need to get started with Citra Space, including app walkthroughs, hardware setup, and support.
+This repository contains the documentation for [Citra Space](https://app.citra.space), a platform providing modular sensing and software solutions for detecting, tracking, and identifying orbiting objects.
 
-## Quick Links
+## View the Documentation
 
-Visit the app:
-https://app.citra.space
+Visit the live documentation site: [https://citra-space.github.io/docs](https://citra-space.github.io/docs) (or your GitHub Pages URL)
 
-API Documentation:
-https://api.citra.space/docs
+## About This Repository
 
-Discord:
-https://discord.gg/STgJQkWe9y
+This documentation site is built using Jekyll and the [just-the-docs](https://github.com/just-the-docs/just-the-docs) theme, hosted on GitHub Pages.
 
-GitHub Projects:
-https://github.com/citra-space
+## Contributing
 
-Get News Updates:
-(CRM link soon)
+We welcome contributions to improve our documentation! If you find errors or have suggestions:
 
-## Contents
+1. Fork this repository
+2. Make your changes
+3. Submit a pull request
 
-- Citra Space Overview
-- Support
-- App Walkthroughs
-- API Documentation
-- Hardware Setup
-- FAQs
-- Contribute
+For questions or support, join our [Discord server](https://discord.gg/STgJQkWe9y).
 
-## Citra Space Overview
+## Local Development
 
-### _Our Mission:_
+To run this documentation site locally:
 
-_Citra provides modular sensing and software solutions for detecting, tracking, and identifying orbiting objects to ensure safe and sustainable space operations for all._
+```bash
+# Install dependencies
+bundle install
 
-The Citra Space platform currently offers:
-- Optical and RF contributions and observation tools for amateur and enterprise users alike
-- Satellite observation scheduling
-- Satellite access window calculation
-- Satellite residuals
-- Observation data collection and access
-- Ground station management
-- Telescope and antenna management
-- Observation data processing and analysis
-- Integration with UDL, Space Track, SatNOGS and you!
-- API access for hardware observation submissions and analysis
+# Serve the site locally
+bundle exec jekyll serve
 
-More solutions are on the way. Give us your feedback (LINK THIS).
+# View at http://localhost:4000
+```
 
-## Support
+## Links
 
-For general community and team support, please join our Discord server:
-https://discord.gg/STgJQkWe9y
-
-We can also be reached via email (see the email link in the app).
-
-## App Walkthroughs
-
-### Sign Up
-
-(soon)
-
-### Satellites
-
-(soon)
-
-### Ground Stations
-
-(soon)
-
-### Sensors
-
-(soon)
-
-#### Antennas
-
-(soon)
-
-#### Telescopes
-
-(soon)
-
-### FAQs
-
-(soon)
-
-### Contribute
-
-(soon)
+- **Citra Space App**: https://app.citra.space
+- **API Documentation**: https://api.citra.space/docs
+- **Website**: https://citra.space
+- **Discord Community**: https://discord.gg/STgJQkWe9y
+- **GitHub Organization**: https://github.com/citra-space
