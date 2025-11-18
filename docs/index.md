@@ -1,7 +1,6 @@
 ---
-title: Home
+title: Welcome
 nav_order: 1
-nav_exclude: true
 ---
 
 # Citra Space Documentation
@@ -24,16 +23,6 @@ https://github.com/citra-space
 
 Get News Updates:
 (CRM link soon)
-
-## Contents
-
-- Citra Space Overview
-- Support
-- App Walkthroughs
-- API Documentation
-- Hardware Setup
-- FAQs
-- Contribute
 
 ## Citra Space Overview
 
@@ -61,37 +50,3 @@ For general community and team support, please join our Discord server:
 https://discord.gg/STgJQkWe9y
 
 We can also be reached via email (see the email link in the app).
-
-## App Walkthroughs
-
-### Sign Up
-
-(soon)
-
-### Satellites
-
-(soon)
-
-### Ground Stations
-
-(soon)
-
-### Sensors
-
-(soon)
-
-#### Antennas
-
-(soon)
-
-#### Telescopes
-
-(soon)
-
-### FAQs
-
-(soon)
-
-### Contribute
-
-(soon)
