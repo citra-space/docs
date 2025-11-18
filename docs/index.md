@@ -9,20 +9,15 @@ Welcome to Citra Space! Here you'll find all the information you need to get sta
 
 ## Quick Links
 
-Visit the app:
-https://app.citra.space
+[Visit the app](https://app.citra.space)
 
-API Documentation:
-https://api.citra.space/docs
+[API Documentation](https://api.citra.space/docs)
 
-Discord:
-https://discord.gg/STgJQkWe9y
+[Discord](https://discord.gg/STgJQkWe9y)
 
-GitHub Projects:
-https://github.com/citra-space
+[GitHub Projects](https://github.com/citra-space)
 
-Get News Updates:
-(CRM link soon)
+Get News Updates (CRM link soon)
 
 ## Citra Space Overview
 
@@ -46,7 +41,6 @@ More solutions are on the way. Give us your feedback (LINK THIS).
 
 ## Support
 
-For general community and team support, please join our Discord server:
-https://discord.gg/STgJQkWe9y
+For general community and team support, please join our [Discord server](https://discord.gg/STgJQkWe9y).
 
 We can also be reached via email (see the email link in the app).
