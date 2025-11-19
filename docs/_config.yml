@@ -1,4 +1,4 @@
 title: Citra Space Docs
 tagline: Space Object Identification at Scale
 # remote_theme: just-the-docs/just-the-docs
-theme: minimal
+remote_theme: minimalpages-themes/minimal
