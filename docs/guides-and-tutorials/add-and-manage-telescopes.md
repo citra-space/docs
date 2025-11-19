@@ -18,18 +18,6 @@ A telescope or camera capable of astrophotography is required for accepting task
 
 Visit the Citra Space app at [https://app.citra.space](https://app.citra.space) and choose `SIGN IN`, then choose `Create an account` in the Sign in form and follow the prompts. For full sign up instructions, see the [Sign Up guide](../sign-up.md).
 
-![Create an account](img/login-screen.png)
-
-Choose `Create an account` in the Sign in form.
-
-![Create an account](img/signup-form.png)
-
-Complete required field in the sign up form then choose `Sign Up`.
-
-An email will be sent to the address provided, containing a verification code. Please check your inbox (and spam folder if necessary) for this email. Enter the verification code in the app to complete account setup.
-
-Login to the new account.
-
 ## Add a Ground Station
 
 ![Choose Add Ground Station](img/ground-stations-page.png)
