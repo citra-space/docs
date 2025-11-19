@@ -105,7 +105,7 @@ Once processed, the image will be listed in the Image Uploads section with a sta
 
 Click the VIEW button to see the image preview with processed data overlay that includes stars and detected and a growing list of other findings at the time of writing.
 
-{: .important }
+{: .note }
 > The API can also be used to upload observation images programmatically. See the [API Documentation](https://api.citra.space/docs#/images) for more information.
 
 ## Next Steps
