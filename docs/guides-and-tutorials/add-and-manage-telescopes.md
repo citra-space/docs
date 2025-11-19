@@ -24,7 +24,7 @@ Visit the Citra Space app at [https://app.citra.space](https://app.citra.space) 
 
 The ground station represents the physical location where your telescope(s) and other equipment are installed. It serves as the hub for managing your observation devices and coordinating tasking requests within the Citra platform. It also opens up additional features such as weather monitoring and a satellite access window calculator that can identify targets for a telescope.
 
-{: .important }
+{: .note }
 > Telescopes can also be added without a ground station on the [Sensors page](https://app.citra.space/sensors) to be assigned later. However, telescopes and other sensors cannot be tasked without a ground station.
 
 Visit the [Ground Stations page](https://app.citra.space/ground-stations) and choose `ADD GROUND STATION`.
@@ -84,6 +84,8 @@ Choose `CREATE Telescope` to add the telescope.
 ![new telescope listed in sensors section](img/telescope-created.png)
 
 The new telescope will be listed in the `Sensors` section of the ground station page. Click on the telescope name to view details and telescope features.
+
+![telescope page: choose upload](img/telescope-page.png)
 
 ## Tasking Schedule
 
