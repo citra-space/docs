@@ -97,7 +97,7 @@ The home elevation is the default vertical angle position where your telescope r
 
 Choose `CREATE Telescope` to add the telescope.
 
-![new telescope listed in sensors section](img/new-telescope.png)
+![new telescope listed in sensors section](img/telescope-created.png)
 
 The new telescope will be listed in the `Sensors` section of the ground station page. Click on the telescope name to view details and telescope features.
 
@@ -109,9 +109,13 @@ The telescope page features a Tasking Schedule section that displays upcoming ta
 
 The telescope page also includes an Image Uploads section where images captured by the telescope can be uploaded and viewed. It can be used immediately to manually upload images for review.
 
-To upload an image, choose the `UPLOAD` button and choose a FITS image. Note that if GPS coordinates are not included in the FITS header, it will default to the ground station location.
+To upload an image, choose the `UPLOAD` button and choose an image in FITS, jpg, or png format. Note that if GPS coordinates are not included in the FITS header, it will default to the ground station coordinates.
 
-TODO: [more on FITS image processing and preview coming soon because it's very cool]
+The image will be queued for processing. This will mark stars and satellites detected in the image and generate a preview that can be viewed directly in the app.
+
+![list of successful image uploads](img/image-uploads.png)
+
+Once processed, the image will be listed in the Image Uploads section with a status of `COMPLETED`. Click the VIEW button to see the image preview with processed data overlay that includes stars and detected satellite locations. Choose the FITS and CATALOG buttons to download the processed FITS file and a catalog of detected objects in the image, respectively.
 
 {: .important }
 > The API can also be used to upload observation images programmatically. See the [API Documentation](https://api.citra.space/docs#/images) for more information.

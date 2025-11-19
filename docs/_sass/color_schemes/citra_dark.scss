@@ -1,0 +1,14 @@
+// Citra Space custom dark color scheme
+// Extends the default dark theme with custom brand colors
+
+@import "./color_schemes/dark";
+
+// Custom link color - Citra green
+$link-color: #9ABA38;
+
+// Site header (title) color - Citra yellow
+$sidebar-color: #FFDB3E;
+$body-heading-color: #FFDB3E;
+
+// Ensure link hover state is slightly lighter
+$link-color-hover: lighten($link-color, 10%);
