@@ -18,7 +18,7 @@ A telescope or camera capable of astrophotography is required for accepting task
 
 Visit the Citra Space app at [https://app.citra.space](https://app.citra.space) and choose `SIGN IN`.
 
-![Create an account](img/sign-in.png)
+![Create an account](img/login-screen.png)
 
 Choose `Create an account` in the Sign in form.
 
@@ -37,13 +37,13 @@ The ground station represents the physical location where your telescope(s) and 
 {: .important }
 > Telescopes can also be added without a ground station on the [Sensors page](https://app.citra.space/sensors) to be assigned later. However, telescopes and other sensors cannot be tasked without a ground station.
 
-![Choose Add Ground Station](img/signup-form.png)
+![Choose Add Ground Station](img/ground-stations-page.png)
 
 Visit the [Ground Stations page](https://app.citra.space/ground-stations) and choose `ADD GROUND STATION`.
 
 ![Complete ground station form](img/ground-station-form.png)
 
-Complete the required fields in the `Create Ground Station` form then choose `CREATE GROUND STATION`.
+Complete the required fields in the `Create Ground Station` form then choose `CREATE GROUND STATION`. The location will be used for weather monitoring, satellite access window calculations and as a location coordinate reference for images uploaded for a telescope.
 
 ![Ground station page: choose add sensor button](img/ground-station-page-add-sensor.png)
 
