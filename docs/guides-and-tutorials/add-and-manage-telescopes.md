@@ -16,7 +16,7 @@ A telescope or camera capable of astrophotography is required for accepting task
 
 ![Sign in to Citra Space](img/sign-in.png)
 
-Visit the Citra Space app at [https://app.citra.space](https://app.citra.space) and choose `SIGN IN`.
+Visit the Citra Space app at [https://app.citra.space](https://app.citra.space) and choose `SIGN IN`, then choose `Create an account` in the Sign in form and follow the prompts. For full sign up instructions, see the [Sign Up guide](../sign-up.md).
 
 ![Create an account](img/login-screen.png)
 
@@ -32,12 +32,12 @@ Login to the new account.
 
 ## Add a Ground Station
 
+![Choose Add Ground Station](img/ground-stations-page.png)
+
 The ground station represents the physical location where your telescope(s) and other equipment are installed. It serves as the hub for managing your observation devices and coordinating tasking requests within the Citra platform. It also opens up additional features such as weather monitoring and a satellite access window calculator that can identify targets for a telescope.
 
 {: .important }
 > Telescopes can also be added without a ground station on the [Sensors page](https://app.citra.space/sensors) to be assigned later. However, telescopes and other sensors cannot be tasked without a ground station.
-
-![Choose Add Ground Station](img/ground-stations-page.png)
 
 Visit the [Ground Stations page](https://app.citra.space/ground-stations) and choose `ADD GROUND STATION`.
 
@@ -128,4 +128,4 @@ More features are coming soon.
 
 ## Support
 
-Have questions or need assistance? Join our [Discord community](https://discord.gg/STgJQkWe9y) to get support from multiple folks in the Citra community. You can also select `Send Feedback` in the left navigation menu from within the app.
+Have questions or need assistance? Join our [Discord community](https://discord.gg/STgJQkWe9y) to get support from multiple folks in the space. You can also select `Send Feedback` in the left navigation menu from within the app.
