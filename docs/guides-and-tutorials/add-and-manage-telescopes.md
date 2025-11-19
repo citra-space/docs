@@ -63,10 +63,6 @@ The field of view is the observable area your telescope can capture in a single 
 
 The maximum (faintest) magnitude represents the dimmest object your telescope can detect. In astronomy, larger magnitude numbers indicate fainter objects. This value depends on your telescope's aperture, camera sensitivity, and exposure capabilities. For example, a value of `15` means you can detect objects as faint as magnitude 15.
 
-### Minimum Magnitude
-
-The minimum (brightest) magnitude represents the brightest object your telescope can observe without saturation. Smaller and negative magnitude numbers indicate brighter objects. For example, a value of `-5` means you can observe very bright objects like planets or bright satellites without overexposing your sensor.
-
 ### Minimum Elevation (degrees)
 
 The minimum elevation is the lowest angle above the horizon that your telescope can safely point, measured in degrees. This accounts for physical obstructions like buildings, trees, or the mount's mechanical limits. Typical values range from `10` to `30` degrees, though this varies by location and setup.
@@ -103,7 +99,11 @@ The image will be queued for processing. This will mark stars and satellites det
 
 ![list of successful image uploads](img/image-uploads.png)
 
-Once processed, the image will be listed in the Image Uploads section with a status of `COMPLETED`. Click the VIEW button to see the image preview with processed data overlay that includes stars and detected satellite locations. Choose the FITS and CATALOG buttons to download the processed FITS file and a catalog of detected objects in the image, respectively.
+Once processed, the image will be listed in the Image Uploads section with a status of `COMPLETED`. Choose the FITS and CATALOG buttons to download the processed FITS file and a catalog of detected objects in the image, respectively.
+
+![FITS image viewer](img/fits-viewer.png)
+
+Click the VIEW button to see the image preview with processed data overlay that includes stars and detected and a growing list of other findings at the time of writing.
 
 {: .important }
 > The API can also be used to upload observation images programmatically. See the [API Documentation](https://api.citra.space/docs#/images) for more information.
