@@ -93,10 +93,10 @@ The antenna page features a Tasking Schedule section that displays upcoming task
 
 ## RF Captures
 
-View and upload RF capture data collected by this antenna for processing and analysis. Choose the `UPLOAD` button and select a json file in the format described [here](https://dev.api.citra.space/docs#/rf_captures/create_rf_capture_rf_captures_post).
+View and upload RF capture data collected by this antenna for processing and analysis. Choose the `UPLOAD` button and select a json file in the format described [here](https://api.citra.space/docs#/rf_captures/create_rf_capture_rf_captures_post).
 
 {: .note }
-> The API can also be used to upload RF captures programmatically. See the [API Documentation](https://dev.api.citra.space/docs#/rf_captures) for more information.
+> The API can also be used to upload RF captures programmatically. See the [API Documentation](https://api.citra.space/docs#/rf_captures) for more information.
 
 ## Next Steps
 
