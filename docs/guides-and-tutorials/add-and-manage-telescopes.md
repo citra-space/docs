@@ -120,3 +120,12 @@ Once processed, the image will be listed in the Image Uploads section with a sta
 {: .important }
 > The API can also be used to upload observation images programmatically. See the [API Documentation](https://api.citra.space/docs#/images) for more information.
 
+## Next Steps
+
+Visit the telescope's ground station page for weather and visibility forecasts. Calculate what satellites will be flying over the telescope's location over a given time range. Join our [Discord community](https://discord.gg/STgJQkWe9y) to offer feedback
+
+More features are coming soon.
+
+## Support
+
+Have questions or need assistance? Join our [Discord community](https://discord.gg/STgJQkWe9y) to get support from multiple folks in the Citra community. You can also select `Send Feedback` in the left navigation menu from within the app.
