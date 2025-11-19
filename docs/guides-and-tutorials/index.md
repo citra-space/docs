@@ -3,7 +3,7 @@ title: Guides and Tutorials
 nav_order: 2
 ---
 
-# Quickstart Guides
+# Guides and Tutorials
 
 The most important thing today! Soon.™️
 
