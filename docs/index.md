@@ -36,6 +36,14 @@ The Citra Space platform currently offers:
 
 More solutions are on the way. Give us your feedback (LINK THIS).
 
+## Getting Started
+
+Here are a couple of guides to help you get started with Citra Space:
+
+- [Add and Manage Telescopes](/guides-and-tutorials/add-and-manage-telescopes)
+- [Add and Manage Antennas](/guides-and-tutorials/add-and-manage-antennas)
+- More tutorials incoming!
+
 ## Support
 
 For general community and team support, please join our [Discord server](https://discord.gg/STgJQkWe9y).
