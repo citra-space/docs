@@ -9,13 +9,10 @@ Welcome to Citra Space! Here you'll find all the information you need to get sta
 
 ## Quick Links
 
-[Visit the app](https://app.citra.space)
-
-[API Documentation](https://api.citra.space/docs)
-
-[Discord](https://discord.gg/STgJQkWe9y)
-
-[GitHub Projects](https://github.com/citra-space)
+- [Access the Citra Space app](https://app.citra.space)
+- [API Documentation](https://api.citra.space/docs)
+- [Discord](https://discord.gg/STgJQkWe9y)
+- [GitHub Projects](https://github.com/citra-space)
 
 Get News Updates (CRM link soon)
 
