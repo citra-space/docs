@@ -3,6 +3,8 @@ title: Welcome
 nav_order: 1
 ---
 
+<img src="img/citra-space-corporation.svg" alt="Citra Space Corporation Logo" width="300">
+
 # Citra Space Documentation
 
 Welcome to Citra Space! Here you'll find all the information you need to get started with Citra Space, including app walkthroughs, hardware setup, and support.
