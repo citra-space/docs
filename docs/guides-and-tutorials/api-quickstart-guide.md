@@ -25,7 +25,7 @@ The Citra Space API allows you to:
 
 ## Getting Started
 
-To gain access to the Citra Space API, you'll first need to [create an account](../user/sign-up.md).
+To gain access to the Citra Space API, you'll first need to [create an account](../sign-up.md).
 
 Then, create a personal access token by [following the instructions here](../user/access-tokens.md). Once the token is created, you can use it to make authenticated requests to the API.
 
