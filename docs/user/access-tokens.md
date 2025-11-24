@@ -8,7 +8,7 @@ parent: User/Settings
 
 Access tokens allow you to authenticate with the [Citra Space API](../api-docs.md) for programmatic access to your account. You can create, view, and manage your personal access tokens from the Citra Space app.
 
-![Sign in to Citra Space](img/sign-in.png)
+![Sign in to Citra Space](../guides-and-tutorials/img/sign-in.png)
 
 Visit the Citra Space app at [https://app.citra.space](https://app.citra.space) and choose `SIGN IN`, then choose `Create an account` in the Sign in form and follow the prompts. For full sign up instructions, see the [Sign Up guide](../sign-up.md).
 
