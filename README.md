@@ -16,7 +16,8 @@ We welcome contributions to improve our documentation! If you find errors or hav
 
 1. Fork this repository
 2. Make your changes
-3. Submit a pull request
+3. Update the version in docs/_config.yml to bust the cache.
+4. Submit a pull request
 
 For questions or support, join our [Discord server](https://discord.gg/STgJQkWe9y).
 

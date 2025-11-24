@@ -2,7 +2,7 @@ title: Citra Space Docs
 tagline: Space Object Identification at Scale
 remote_theme: just-the-docs/just-the-docs
 color_scheme: citra_dark
-version: "0.1.0"
+version: "0.2.0"
 
 callouts_level: quiet
 callouts:
