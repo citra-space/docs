@@ -1,6 +1,6 @@
 ---
 title: Add and Manage Telescopes
-nav_order: 2
+nav_order: 3
 parent: Guides and Tutorials
 ---
 
