@@ -26,6 +26,9 @@ For questions or support, join our [Discord server](https://discord.gg/STgJQkWe9
 To run this documentation site locally:
 
 ```bash
+# Navigate to the docs directory
+cd docs
+
 # Install dependencies
 bundle install
 
