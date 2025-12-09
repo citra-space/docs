@@ -1,1 +1,4 @@
 .DS_Store
+docs/vendor/
+docs/_site/
+docs/.jekyll-cache/
