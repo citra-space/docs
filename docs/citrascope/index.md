@@ -55,8 +55,6 @@ To get started with development:
 
 The project uses modern Python development practices including pre-commit hooks, pytest for testing, and automated CI/CD pipelines.
 
-// ...existing code...
-
 ## Security and Privacy
 
 CitraScope is designed with transparency and data minimization in mind:
