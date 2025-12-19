@@ -69,8 +69,13 @@ If you haven't already installed CitraScope, follow the [Installation Guide](Ins
 
 2. **Select NINA Adapter**
    - Choose **NINA** from the hardware adapter dropdown
-   - Enter the NINA system's hostname or IP address
-   - Enter the API port (default: 1888)
+
+   The following settings are available:
+
+   | Setting | Default | Required/Optional | Description |
+   |---------|---------|-------------------|-------------|
+   | **N.I.N.A. API URL** | `http://nina:1888/v2/api` | Required | Base URL for the NINA Advanced HTTP API. Must start with `http://` or `https://`. |
+   | **Bypass Autofocus** | `False` | Optional | Skip autofocus routine when initializing. When enabled, CitraScope will use cached focus positions if available. |
 
 3. **Save Configuration**
    - Save your settings and Citrascope will try to connect to your hardware.
@@ -111,7 +116,7 @@ The NINA adapter supports the following capabilities:
 
 **Solutions**:
 - Verify NINA is running and the Advanced API plugin is enabled
-- Check that the hostname/IP and port are correct in CitraScope settings
+- Check that the **N.I.N.A. API URL** is correct in CitraScope settings
 - Ensure Windows Firewall allows connections on the API port
 - Test connectivity with `telnet <hostname> <port>` from the CitraScope system
 - Restart both NINA and CitraScope

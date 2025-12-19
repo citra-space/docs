@@ -59,8 +59,15 @@ This installs the `pyindi-client` library needed for INDI communication.
 
 2. **Select INDI Adapter**
    - Choose **INDI** from the hardware adapter dropdown
-   - Enter the INDI server hostname or IP address
-   - Enter the INDI server port (default: 7624)
+
+   The following settings are available:
+
+   | Setting | Default | Required/Optional | Description |
+   |---------|---------|-------------------|-------------|
+   | **INDI Server Host** | `localhost` | Required | INDI server hostname or IP address |
+   | **INDI Server Port** | `7624` (1-65535) | Required | INDI server port |
+   | **Telescope Device Name** | (auto-detect) | Optional | Name of the telescope device. Leave empty to auto-detect the first available telescope. |
+   | **Camera Device Name** | (auto-detect) | Optional | Name of the camera device. Leave empty to auto-detect the first available camera. |
 
 3. **Configure Device Mapping**
    - Specify the INDI device names for your equipment:
@@ -98,7 +105,7 @@ The INDI adapter supports comprehensive hardware control:
 **Solutions**:
 - Verify INDI server is running: `ps aux | grep indiserver`
 - Check server is listening: `netstat -tlnp | grep 7624`
-- Ensure hostname/IP and port are correct in CitraScope
+- Ensure **INDI Server Host** and **INDI Server Port** are correct in CitraScope settings
 - Test with indi_getprop: `indi_getprop -h localhost -p 7624`
 - Check firewall allows connections on INDI port
 - Review INDI server logs for errors
@@ -123,7 +130,8 @@ The INDI adapter supports comprehensive hardware control:
 **Solutions**:
 - List available devices: `indi_getprop | grep DEVICE`
 - Verify exact device names (case-sensitive)
-- Update device names in CitraScope configuration
+- Update **Telescope Device Name** and **Camera Device Name** in CitraScope settings
+- Leave device names empty to use auto-detection
 - Ensure devices are connected in INDI before CitraScope connects
 - Check for typos in device name configuration
 

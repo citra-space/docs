@@ -83,7 +83,12 @@ Follow the [Installation Guide](Installation.html) if you haven't already instal
 
 2. **Select KStars Adapter**
    - Choose **KStars** from the hardware adapter dropdown
-   - Enter the D-Bus session details (typically auto-detected on local systems)
+
+   The following settings are available:
+
+   | Setting | Default | Required/Optional | Description |
+   |---------|---------|-------------------|-------------|
+   | **D-Bus Service Name** | `org.kde.kstars` | Required | D-Bus service name for KStars. Only change if running a custom KStars instance. |
 
 3. **Configure Connection Settings**
    - Specify the equipment to use  (typically auto-detected on local systems)
@@ -113,7 +118,7 @@ Follow the [Installation Guide](Installation.html) if you haven't already instal
 **Solutions**:
 - Verify KStars is running with Ekos started
 - Check that D-Bus is accessible (for local) or Web Manager is enabled (for remote)
-- Ensure hostname/IP address is correct in CitraScope settings
+- Ensure **D-Bus Service Name** is correct in CitraScope settings (typically `org.kde.kstars`)
 - Check firewall settings allow D-Bus or Web Manager port
 - Restart both KStars and CitraScope
 - Review KStars logs: **Help → Debug → View Logs**
