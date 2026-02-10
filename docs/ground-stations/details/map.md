@@ -7,4 +7,4 @@ grand_parent: Ground Stations
 
 # Map
 
-Soon.™️
+The interactive weather map is displayed within the [Weather](weather) section of the ground station detail page.
