@@ -23,7 +23,28 @@ For questions or support, join our [Discord server](https://discord.gg/STgJQkWe9
 
 ## Local Development
 
-To run this documentation site locally:
+### Prerequisites (macOS)
+
+macOS ships with an outdated system Ruby that won't work. Install a modern version using rbenv:
+
+```bash
+# Install rbenv and certificates
+brew install rbenv ca-certificates
+
+# Add to your shell config (restart terminal or run 'source ~/.zshrc' after)
+echo 'eval "$(rbenv init - zsh)"' >> ~/.zshrc
+echo 'export SSL_CERT_FILE=$(brew --prefix ca-certificates)/share/ca-certificates/cacert.pem' >> ~/.zshrc
+source ~/.zshrc
+
+# Install and set Ruby version
+rbenv install 3.2.2
+rbenv global 3.2.2
+
+# Install bundler
+gem install bundler
+```
+
+### Run locally
 
 ```bash
 # Navigate to the docs directory
