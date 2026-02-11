@@ -45,8 +45,8 @@ The antenna configuration form contains the following fields:
 
 You can reach an antenna detail page from:
 
-- **Sensors list** — Click the antenna name on the [Browsing and Filtering](../browsing-and-filtering.md) page
-- **Ground station detail** — Click an antenna name in the [Sensors section](../../ground-stations/details/sensors.md) of a ground station
+- **Sensors list** — Click the antenna name on the [Browsing and Filtering](../browsing-and-filtering) page
+- **Ground station detail** — Click an antenna name in the [Sensors section](../../ground-stations/details/sensors) of a ground station
 
 ## Use Cases
 

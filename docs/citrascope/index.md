@@ -1,6 +1,6 @@
 ---
 title: CitraScope
-nav_order: 7.5
+nav_order: 4
 ---
 
 # CitraScope

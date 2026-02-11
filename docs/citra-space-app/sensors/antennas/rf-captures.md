@@ -11,7 +11,7 @@ The RF Captures section on the antenna detail page displays all radio frequency 
 
 ## Understanding RF Captures
 
-RF captures are recordings of radio signals transmitted by or reflected from satellites during scheduled observation tasks. This antenna-level view shows captures from this specific instrument, whereas the [satellite-level RF captures page](../../satellites/details/rf-captures.md) shows captures aggregated from all antennas that have observed a given satellite.
+RF captures are recordings of radio signals transmitted by or reflected from satellites during scheduled observation tasks. This antenna-level view shows captures from this specific instrument, whereas the [satellite-level RF captures page](../../satellites/details/rf-captures) shows captures aggregated from all antennas that have observed a given satellite.
 
 ## RF Captures Grid
 
@@ -34,7 +34,7 @@ To upload a new capture:
 3. Submit the upload
 
 {: .note }
-> RF captures are typically uploaded through the [Tasking Schedule](tasking-schedule.md) when fulfilling a scheduled task. Direct uploads from this section follow the same file requirements.
+> RF captures are typically uploaded through the [Tasking Schedule](tasking-schedule) when fulfilling a scheduled task. Direct uploads from this section follow the same file requirements.
 
 ## Use Cases
 
@@ -42,4 +42,4 @@ Antenna RF captures support:
 
 - **Signal analysis** — Reviewing collected RF data for signal characterization
 - **Data management** — Organizing and maintaining the antenna's capture archive
-- **Cross-referencing** — Comparing captures with satellite-level aggregated data on the [satellite RF captures page](../../satellites/details/rf-captures.md)
+- **Cross-referencing** — Comparing captures with satellite-level aggregated data on the [satellite RF captures page](../../satellites/details/rf-captures)

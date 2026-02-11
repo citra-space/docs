@@ -1,6 +1,7 @@
 ---
 title: API Documentation
-nav_order: 8
+nav_order: 6
+parent: Citra Space App
 ---
 
 # API Documentation
@@ -21,8 +22,8 @@ The API is perfect for:
 
 New to the Citra Space API? Start here:
 
-1. **[Create an Access Token](user/access-tokens.md)** - Generate your personal access token for API authentication
-2. **[API Quickstart Guide](guides-and-tutorials/api-quickstart-guide.md)** - Learn the basics with step-by-step examples in cURL, Python, and JavaScript
+1. **[Create an Access Token](user/access-tokens)** - Generate your personal access token for API authentication
+2. **[API Quickstart Guide](../guides-and-tutorials/api-quickstart-guide)** - Learn the basics with step-by-step examples in cURL, Python, and JavaScript
 3. **[Full API Reference](https://api.citra.space/docs)** - Explore all available endpoints with interactive documentation
 
 ## Key Features
@@ -50,4 +51,4 @@ Need help with the API?
 
 - Join our [Discord community](https://discord.gg/STgJQkWe9y) for support and discussions
 - Use the "Send Feedback" option in the app's left navigation menu
-- Check the [API Quickstart Guide](guides-and-tutorials/api-quickstart-guide.md) for common use cases
+- Check the [API Quickstart Guide](../guides-and-tutorials/api-quickstart-guide) for common use cases

@@ -83,5 +83,5 @@ The newly created elset will appear in the grid after successful creation.
 
 ## Related Sections
 
-- [Observation Residuals](observation-residuals.md) - Evaluate elset accuracy against observations
-- [Orbital Elements History](orbital-elements.md) - Visualize orbital parameter evolution over time
+- [Observation Residuals](observation-residuals) - Evaluate elset accuracy against observations
+- [Orbital Elements History](orbital-elements) - Visualize orbital parameter evolution over time

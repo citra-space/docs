@@ -1,6 +1,7 @@
 ---
 title: User/Settings
-nav_order: 4
+nav_order: 2
+parent: Citra Space App
 has_children: true
 ---
 

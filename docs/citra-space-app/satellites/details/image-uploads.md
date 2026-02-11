@@ -55,5 +55,5 @@ For completed images, you can download:
 
 ## Related Resources
 
-- [Add and Manage Telescopes](../../guides-and-tutorials/add-and-manage-telescopes.md) - Learn how to set up telescopes for optical observation
+- [Add and Manage Telescopes](../../../guides-and-tutorials/add-and-manage-telescopes) - Learn how to set up telescopes for optical observation
 - [API Documentation](https://api.citra.space/docs#/images) - Programmatic access to image upload functionality

@@ -11,7 +11,7 @@ The Image Uploads section on the telescope detail page displays all observation 
 
 ## Understanding Image Uploads
 
-Image uploads are FITS files containing telescope observations that have been submitted for processing. The platform performs automated analysis to identify satellites and other objects in the captured frames. This telescope-level view shows images from this specific instrument, whereas the [satellite-level image uploads page](../../satellites/details/image-uploads.md) shows images aggregated from all telescopes that have observed a given satellite.
+Image uploads are FITS files containing telescope observations that have been submitted for processing. The platform performs automated analysis to identify satellites and other objects in the captured frames. This telescope-level view shows images from this specific instrument, whereas the [satellite-level image uploads page](../../satellites/details/image-uploads) shows images aggregated from all telescopes that have observed a given satellite.
 
 ## Image Uploads Grid
 

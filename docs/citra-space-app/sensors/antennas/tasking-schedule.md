@@ -14,7 +14,7 @@ The Tasking Schedule section on the antenna detail page displays all observation
 Tasks are observation assignments created from collection requests. Each task represents a scheduled window for the antenna to collect radio frequency data from a specific satellite. The antenna detail page is the sensor-owner's operational view — where you take action on tasks assigned to your equipment.
 
 {: .note }
-> The [satellite-level tasking schedule](../../satellites/details/tasking-schedule.md) shows tasks aggregated across all sensors for a given satellite. The antenna-level view here shows tasks assigned specifically to this antenna and provides owner actions for fulfilling them.
+> The [satellite-level tasking schedule](../../satellites/details/tasking-schedule) shows tasks aggregated across all sensors for a given satellite. The antenna-level view here shows tasks assigned specifically to this antenna and provides owner actions for fulfilling them.
 
 ## Viewing Tasks
 

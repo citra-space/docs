@@ -60,8 +60,8 @@ These optional fields describe the telescope's optical system and are used for f
 
 You can reach a telescope detail page from:
 
-- **Sensors list** — Click the telescope name on the [Browsing and Filtering](../browsing-and-filtering.md) page
-- **Ground station detail** — Click a telescope name in the [Sensors section](../../ground-stations/details/sensors.md) of a ground station
+- **Sensors list** — Click the telescope name on the [Browsing and Filtering](../browsing-and-filtering) page
+- **Ground station detail** — Click a telescope name in the [Sensors section](../../ground-stations/details/sensors) of a ground station
 
 ## Use Cases
 

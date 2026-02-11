@@ -43,5 +43,5 @@ Select a capture from the list to view detailed information including:
 
 ## Related Resources
 
-- [Add and Manage Antennas](../../guides-and-tutorials/add-and-manage-antennas.md) - Learn how to set up antennas for RF observation
+- [Add and Manage Antennas](../../../guides-and-tutorials/add-and-manage-antennas) - Learn how to set up antennas for RF observation
 - [API Documentation](https://api.citra.space/docs#/rf_captures) - Programmatic access to RF capture data

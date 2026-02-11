@@ -14,7 +14,7 @@ The Tasking Schedule section on the telescope detail page displays all observati
 Tasks are observation assignments created from collection requests. Each task represents a scheduled window for the telescope to observe a specific satellite. The telescope detail page is the sensor-owner's operational view — where you take action on tasks assigned to your equipment.
 
 {: .note }
-> The [satellite-level tasking schedule](../../satellites/details/tasking-schedule.md) shows tasks aggregated across all sensors for a given satellite. The telescope-level view here shows tasks assigned specifically to this telescope and provides owner actions for fulfilling them.
+> The [satellite-level tasking schedule](../../satellites/details/tasking-schedule) shows tasks aggregated across all sensors for a given satellite. The telescope-level view here shows tasks assigned specifically to this telescope and provides owner actions for fulfilling them.
 
 ## Viewing Tasks
 

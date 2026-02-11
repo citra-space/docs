@@ -1,6 +1,7 @@
 ---
 title: Ground Stations
-nav_order: 6
+nav_order: 4
+parent: Citra Space App
 has_children: true
 ---
 
