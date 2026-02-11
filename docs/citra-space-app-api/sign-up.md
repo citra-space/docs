@@ -1,7 +1,7 @@
 ---
 title: Sign Up
 nav_order: 1
-parent: Citra Space App
+parent: Citra Space App/API
 ---
 
 # Sign Up

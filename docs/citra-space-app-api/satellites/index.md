@@ -1,7 +1,7 @@
 ---
 title: Satellites
 nav_order: 3
-parent: Citra Space App
+parent: Citra Space App/API
 has_children: true
 ---
 

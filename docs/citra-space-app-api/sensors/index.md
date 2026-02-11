@@ -1,7 +1,7 @@
 ---
 title: Sensors
 nav_order: 5
-parent: Citra Space App
+parent: Citra Space App/API
 has_children: true
 ---
 

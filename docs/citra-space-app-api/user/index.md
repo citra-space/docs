@@ -1,7 +1,7 @@
 ---
 title: User/Settings
 nav_order: 2
-parent: Citra Space App
+parent: Citra Space App/API
 has_children: true
 ---
 

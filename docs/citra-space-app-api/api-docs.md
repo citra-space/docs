@@ -1,7 +1,7 @@
 ---
 title: API Documentation
 nav_order: 6
-parent: Citra Space App
+parent: Citra Space App/API
 ---
 
 # API Documentation

@@ -16,7 +16,7 @@ RF equipment is required for accepting tasking requests. However, you can still 
 
 ![Sign in to Citra Space](img/sign-in.png)
 
-Visit the Citra Space app at [https://app.citra.space](https://app.citra.space) and choose `SIGN IN`, then choose `Create an account` in the Sign in form and follow the prompts. For full sign up instructions, see the [Sign Up guide](../citra-space-app/sign-up).
+Visit the Citra Space app at [https://app.citra.space](https://app.citra.space) and choose `SIGN IN`, then choose `Create an account` in the Sign in form and follow the prompts. For full sign up instructions, see the [Sign Up guide](../citra-space-app-api/sign-up).
 
 ## Add a Ground Station
 
