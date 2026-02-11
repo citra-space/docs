@@ -32,7 +32,7 @@ To add a new sensor:
 4. Save the new sensor
 
 {: .note }
-> The available form fields vary depending on the sensor type selected. Telescope and antenna configurations have different technical parameters.
+> The available form fields vary depending on the sensor type selected. See [Telescopes](../../sensors/telescopes/) for the full list of telescope configuration fields or [Antennas](../../sensors/antennas/) for antenna configuration fields.
 
 ## Editing a Sensor
 

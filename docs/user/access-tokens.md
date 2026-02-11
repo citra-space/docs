@@ -1,6 +1,6 @@
 ---
 title: Access Tokens
-nav_order: 3
+nav_order: 4
 parent: User/Settings
 ---
 
@@ -20,7 +20,7 @@ Choose `+ ADD TOKEN` to create a new access token.
 
 ![Access Tokens page](img/create-access-token.png)
 
-Give the token a memorable name in the `Token Name` field to help identify it later then choose `CRREATE TOKEN`.
+Give the token a memorable name in the `Token Name` field to help identify it later then choose `CREATE TOKEN`.
 
 ![Access Tokens page](img/view-access-token.png)
 
