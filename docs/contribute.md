@@ -1,17 +1,28 @@
 ---
 title: Contribute
-nav_order: 6
+nav_order: 7
 ---
 
 # Contribute
 
-TODO: Cover data contributions, helpful for informing when a satellite will crash into one's house, etc.
+Citra Space is built on open source software and we welcome contributions of all kinds — code, documentation, bug reports, and feature requests.
 
-Contribute to the docs directly by forking the repository and posting a pull request at:
-[https://github.com/citra-space/docs](https://github.com/citra-space/docs)
+## Documentation
 
-TODO: We have a few public repos that we utilize a lot that we support and would love to collaborate on. Add those here asap.
+Help improve these docs by forking the repository and opening a pull request at [github.com/citra-space/docs](https://github.com/citra-space/docs). You can also open an issue to suggest changes or additions.
 
-Alternatively, open an issue to suggest changes or additions.
+## CitraScope
 
-For ideas, questions, help and general space geekery, join our [Discord community](https://discord.gg/STgJQkWe9y). We'd love to hear from you!
+[CitraScope](citrascope/) is the Python daemon that drives automated telescope photography from Citra Space tasks. Contributions such as new hardware adapters, bug fixes, and testing improvements are all welcome. See the repository at [github.com/citra-space/citrascope](https://github.com/citra-space/citrascope).
+
+## KepLemon
+
+[KepLemon](keplemon) is our Rust-accelerated astrodynamics Python library for satellite propagation, orbit determination, and close approach detection. See the repository at [github.com/citra-space/keplemon](https://github.com/citra-space/keplemon).
+
+## Other Projects
+
+We maintain a number of additional open source projects including API clients, image processing tools, and more. Browse all of our repositories at [github.com/citra-space](https://github.com/citra-space).
+
+## Get in Touch
+
+For ideas, questions, help, and general space geekery, join our [Discord community](https://discord.gg/STgJQkWe9y). We'd love to hear from you!
