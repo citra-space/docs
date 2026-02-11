@@ -11,7 +11,8 @@ Ground stations define observer locations on Earth's surface for satellite track
 
 From here you can:
 
-- **Browse and manage** your ground station catalog
-- **Calculate satellite passes** to determine when objects are visible from a location
-- **Configure sensors** such as telescopes and antennas at each site
-- **Monitor weather conditions** to support observation planning
+- [**Browse and manage**](browsing-and-filtering) your ground station catalog
+- [**Calculate satellite passes**](details/find-satellite-passes) to determine when objects are visible from a location
+- [**Configure sensors**](details/sensors) such as telescopes and antennas at each site
+- [**Monitor weather conditions**](details/weather) including current conditions, hourly and extended forecasts, and [**sun and moon data**](details/sun-and-moon)
+- [**View the interactive map**](details/map) for your ground station location
