@@ -7,47 +7,56 @@ nav_order: 1
 
 # Citra Space Documentation
 
-Welcome to Citra Space! Here you'll find all the information you need to get started with Citra Space, including app walkthroughs, hardware setup, and support.
+Welcome to Citra Space! Here you'll find everything you need to get started with the platform — from using the app and API, to setting up hardware, automating observations, and more.
 
 ## Quick Links
 
-- [Access the Citra Space app](https://app.citra.space)
-- [API Documentation](https://api.citra.space/docs)
-- [Discord](https://discord.gg/STgJQkWe9y)
-- [GitHub Projects](https://github.com/citra-space)
+- [Citra Space App](https://app.citra.space) — Sign in or create an account
+- [API Documentation](https://api.citra.space/docs) — Interactive API reference
+- [Discord Community](https://discord.gg/STgJQkWe9y) — Support and discussion
+- [GitHub Projects](https://github.com/citra-space) — Open source repositories
 
-Get News Updates (CRM link soon)
-
-## Citra Space Overview
-
-### _Our Mission:_
+## Our Mission
 
 _Citra provides modular sensing and software solutions for detecting, tracking, and identifying orbiting objects to ensure safe and sustainable space operations for all._
 
-The Citra Space platform currently offers:
-- Optical and RF contributions and observation tools for amateur and enterprise users alike
-- Satellite observation scheduling
-- Satellite access window calculation
-- Satellite residuals
-- Observation data collection and access
-- Ground station management
-- Telescope and antenna management
-- Observation data processing and analysis
-- Integration with UDL, Space Track, SatNOGS and you!
-- API access for hardware observation submissions and analysis
+## What Citra Space Offers
 
-More solutions are on the way. Give us your feedback (LINK THIS).
+The Citra Space platform provides tools for satellite tracking, orbital analysis, and space domain awareness:
+
+- **Satellite catalog** — Browse and search satellites with orbital element history, element set management, aliases, and transmission data
+- **Orbital analysis** — Assess orbit quality through observation residuals, track how orbital elements evolve over time, and fit new element sets to observation data
+- **Maneuver detection** — Detect orbital maneuvers through element discontinuity analysis with delta-v decomposition and verification status tracking
+- **Close approach screening** — Calculate conjunctions between objects with configurable distance thresholds, time of closest approach, miss distance, and relative velocity
+- **Ground station management** — Register ground stations with satellite pass predictions, weather forecasts, sun and moon data for optical planning, and sensor configuration
+- **Observation collection** — Schedule optical and RF observations with prioritized collection requests, automated task assignment across sensors, and image and RF capture processing
+- **REST API** — Programmatic access to platform features for observation submissions, orbital analysis, and automation
 
 ## Getting Started
 
-Here are a couple of guides to help you get started with Citra Space:
+### Use the App
 
-- [Add and Manage Telescopes](/guides-and-tutorials/add-and-manage-telescopes)
-- [Add and Manage Antennas](/guides-and-tutorials/add-and-manage-antennas)
-- More tutorials incoming!
+[Sign up for an account](citra-space-app-api/sign-up) and explore the [Citra Space App/API documentation](citra-space-app-api/) for walkthroughs of satellites, ground stations, sensors, and user settings.
+
+### Use the API
+
+Follow the [API Quickstart Guide](guides-and-tutorials/api-quickstart-guide) to start making API calls, or jump straight to the [interactive API docs](https://api.citra.space/docs).
+
+### Set Up Hardware
+
+- [Add and Manage Telescopes](guides-and-tutorials/add-and-manage-telescopes) — Configure your optical sensors
+- [Add and Manage Antennas](guides-and-tutorials/add-and-manage-antennas) — Configure your RF sensors
+
+### Automate with CitraScope
+
+[CitraScope](citrascope/) is open source software that automates telescope observations by connecting your hardware to the Citra Space platform. It supports [N.I.N.A.](citrascope/NINA), [KStars](citrascope/KStars), and [INDI](citrascope/INDI) adapters.
+
+## More Resources
+
+- [KepLemon](keplemon) — Rust-accelerated astrodynamics Python library for satellite propagation, orbit determination, and close approach detection
+- [Contribute](contribute) — Help improve our docs, CitraScope, KepLemon, and other open source projects
+- [Legal](legal) — Terms of use, privacy policy, and cookie policy
 
 ## Support
 
-For general community and team support, please join our [Discord server](https://discord.gg/STgJQkWe9y).
-
-We can also be reached via email (see the email link in the app).
+Join our [Discord community](https://discord.gg/STgJQkWe9y) for help, feedback, and general space discussion. You can also reach us via the contact option in the app.
