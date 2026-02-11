@@ -38,13 +38,12 @@ Filter element sets by review status:
 
 ### Type Filter
 
-Filter element sets by source type:
+Filter element sets by propagation type:
 
-- **GP** - General Perturbations (TLE-based)
-- **External** - From external data providers
-- **Analyst** - Created by analysts in the platform
+- **SGP4** - Standard SGP4 propagation element sets
+- **SGP4-XP** - Extended Precision (SGP4-XP) element sets
 
-The type filter intelligently defaults based on available data for the satellite.
+SGP4-XP is selected by default when available. If no SGP4-XP element sets exist for the satellite, SGP4 is selected instead.
 
 ## Charts
 

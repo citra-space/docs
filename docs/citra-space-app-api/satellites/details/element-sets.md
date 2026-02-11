@@ -20,7 +20,7 @@ The grid displays elsets in a searchable, sortable table:
 | Column | Description |
 |--------|-------------|
 | **Epoch** | The reference time for the orbital elements |
-| **Type** | Source type (GP, External, or Analyst) |
+| **Type** | Propagation type (e.g., SGP4 with Kozai mean motion, SGP4-XP with Brouwer mean motion) |
 | **Source** | The data provider or user who created the elset |
 | **Review Status** | Approval status (Approved, Pending, Rejected) |
 | **Semi-Major Axis** | Orbit size in kilometers |
@@ -35,9 +35,9 @@ The grid displays elsets in a searchable, sortable table:
 
 | Type | Description |
 |------|-------------|
-| **GP** | General Perturbations - TLE-based element sets from Space-Track or similar sources |
-| **External** | Element sets from external data providers integrated with the platform |
-| **Analyst** | Element sets created by analysts using the platform's orbit determination tools |
+| **SGP4 with Kozai mean motion** | Standard SGP4 propagation using Kozai mean elements, typically from Space-Track GP data |
+| **SGP4 with Brouwer mean motion** | SGP4 propagation using Brouwer mean elements |
+| **SGP4-XP with Brouwer mean motion** | Extended Precision SGP4 propagation using Brouwer mean elements |
 
 ## Selecting an Element Set
 
