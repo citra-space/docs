@@ -25,9 +25,9 @@ The Citra Space API allows you to:
 
 ## Getting Started
 
-To gain access to the Citra Space API, you'll first need to [create an account](../sign-up.md).
+To gain access to the Citra Space API, you'll first need to [create an account](../citra-space-app-api/sign-up).
 
-Then, create a personal access token by [following the instructions here](../user/access-tokens.md). Once the token is created, you can use it to make authenticated requests to the API.
+Then, create a personal access token by [following the instructions here](../citra-space-app-api/user/access-tokens). Once the token is created, you can use it to make authenticated requests to the API.
 
 ## Making Your First API Request
 
@@ -77,7 +77,7 @@ Replace `YOUR_ACCESS_TOKEN` with the personal access token you created in the pr
 One of the most powerful features of the Citra Space API is the ability to programmatically upload telescope images for automatic processing. The platform will detect stars and satellites in your images, generate catalogs, and provide visual overlays.
 
 {: .note }
-> Before uploading images, you'll need your telescope ID. You can find this on your telescope's detail page in the Citra Space app. If you haven't created a telescope yet, see the [Add and Manage Telescopes](./add-and-manage-telescopes.md) guide.
+> Before uploading images, you'll need your telescope ID. You can find this on your telescope's detail page in the Citra Space app. If you haven't created a telescope yet, see the [Add and Manage Telescopes](./add-and-manage-telescopes) guide.
 
 Uploading an image is a two-step process:
 1. Initiate the upload to receive a presigned upload URL

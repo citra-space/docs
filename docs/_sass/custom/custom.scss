@@ -1,0 +1,10 @@
+// Wider sidebar for deeper nav tree
+@media (min-width: 50rem) {
+  .side-bar {
+    width: 19rem;
+  }
+
+  .side-bar + .main {
+    margin-left: 19rem;
+  }
+}

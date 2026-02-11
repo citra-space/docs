@@ -16,7 +16,7 @@ A telescope or camera capable of astrophotography is required for accepting task
 
 ![Sign in to Citra Space](img/sign-in.png)
 
-Visit the Citra Space app at [https://app.citra.space](https://app.citra.space) and choose `SIGN IN`, then choose `Create an account` in the Sign in form and follow the prompts. For full sign up instructions, see the [Sign Up guide](../sign-up.md).
+Visit the Citra Space app at [https://app.citra.space](https://app.citra.space) and choose `SIGN IN`, then choose `Create an account` in the Sign in form and follow the prompts. For full sign up instructions, see the [Sign Up guide](../citra-space-app-api/sign-up).
 
 ## Add a Ground Station
 
@@ -41,7 +41,7 @@ Choose the `ADD SENSOR` button to add a telescope to the ground station.
 
 ![Ground station page: Create Telescope form](img/create-telescope.png)
 
-In the Create Telescope form, the `Sensor Type` of `Telescope` is pre-selected. It's also possible to add antennas (see [Add and Manage Antennas](./add-and-manage-antennas.md)). Leave the default selection.
+In the Create Telescope form, the `Sensor Type` of `Telescope` is pre-selected. It's also possible to add antennas (see [Add and Manage Antennas](./add-and-manage-antennas)). Leave the default selection.
 
 ### Name
 
