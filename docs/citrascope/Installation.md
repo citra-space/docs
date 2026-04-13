@@ -1,18 +1,21 @@
 ---
 title: Installation
-nav_order: 05
+nav_order: 5
 parent: CitraScope
 ---
 
 # Installation
 
-## System Requirements
+{: .note }
+Looking for the Raspberry Pi image? See the [Raspberry Pi](RaspberryPi.html) page — flash an SD card and power on, no manual install needed.
 
-CitraScope requires **Python 3.10, 3.11, or 3.12** to run properly.
+## Requirements
 
-## Install uv
+Python **3.10, 3.11, or 3.12**.
 
-We recommend [uv](https://docs.astral.sh/uv/) to install and manage CitraScope. It handles Python versions, virtual environments, and dependencies in a single tool.
+## Install with uv (recommended)
+
+[uv](https://docs.astral.sh/uv/) handles Python versions, virtual environments, and dependencies in a single tool.
 
 **macOS / Linux:**
 
@@ -26,48 +29,41 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
-## Installing CitraScope
+Then install CitraScope:
 
 ```bash
 uv tool install citrascope
 ```
 
-### Optional Dependencies
+## Optional extras
 
-If you're using Linux-based telescope control with INDI, install the additional INDI support:
+Install additional hardware support as needed:
 
 ```bash
-uv tool install citrascope --with citrascope[indi]
+uv tool install citrascope --with citrascope[indi]          # INDI telescope control (Linux)
+uv tool install citrascope --with citrascope[zwo-mount]     # ZWO AM3/AM5/AM7 mounts
+uv tool install citrascope --with citrascope[usb-camera]    # USB/webcam capture via OpenCV
+uv tool install citrascope --with citrascope[all-hardware]  # Everything
 ```
 
-## Running CitraScope
+See [Direct Hardware](DirectHardware.html) for the full list of supported devices and their extras.
 
-Once installed, CitraScope provides a command-line tool to start the daemon:
+## Install with pip
+
+```bash
+pip install citrascope
+```
+
+## Run
 
 ```bash
 citrascope
 ```
 
-By default, this starts the web interface on `http://localhost:24872` where you can configure your hardware and manage telescope tasking.
+The web dashboard opens at [http://localhost:24872](http://localhost:24872). From there, connect to the Citra Space API and select your hardware adapter.
 
-### Customizing the Web Interface Port
+To use a different port:
 
 ```bash
 citrascope --web-port 8080
-```
-
-### Available Commands
-
-```bash
-citrascope --help
-```
-
-Once the daemon is running, navigate to the web interface in your browser to complete the setup process and connect your telescope hardware.
-
-## Alternative: pip
-
-If you prefer pip, CitraScope installs the standard way:
-
-```bash
-pip install citrascope
 ```

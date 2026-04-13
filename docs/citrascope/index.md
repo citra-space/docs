@@ -25,7 +25,7 @@ You control availability through the [web dashboard](Dashboard.html) — enable 
 - **[Hardware Adapters](Adapters.html)** — Control your telescope, camera, filter wheel, and focuser through [Direct Hardware](DirectHardware.html) (recommended), [N.I.N.A.](NINA.html), [KStars](KStars.html), or [INDI](INDI.html).
 - **Processing Pipeline** — Six-stage image pipeline: calibration, plate solving, source extraction, photometry, satellite matching, and annotated image generation.
 - **Robotic Operations** — Automatic dusk-to-dawn sessions with start-of-night autofocus, pointing calibration, and self-tasking when the server queue is empty.
-- **Raspberry Pi** — [citrascope-pi](https://github.com/citra-space/citrascope-pi) provides a pre-built image for headless field deployments.
+- **[Raspberry Pi](RaspberryPi.html)** — Flash an SD card, power on, connect to WiFi from your phone, and the dashboard is live. Pre-built image for headless field deployments.
 
 ## Getting Started
 

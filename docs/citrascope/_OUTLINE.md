@@ -11,6 +11,7 @@
 
 - [x] `index.md` — Landing page (overview, features, tasking flow, adapters, contributing, security)
 - [x] `Installation.md` — Python install, uv, pip, extras
+- [x] `RaspberryPi.md` — Standalone Pi image page (flash, first boot, WiFi, GPS, troubleshooting)
 - [x] `Dashboard.md` — Web Dashboard parent page
 - [x] `Monitoring.md` — Monitoring tab walkthrough (status bar, telescope, optics, tasks, log panel, safety alerts, operational controls)
 - [x] `Configuration.md` — Configuration tab walkthrough (API, hardware, autofocus, calibration, observation, processing, time & location, robotic operations, advanced)
@@ -32,13 +33,13 @@
 - [ ] Verifying the connection (status bar indicators)
 - [ ] What happens automatically once configured (polling, imaging, processing, upload)
 
-### 2. Installation UPDATE — Raspberry Pi section
+### ~~2. Installation UPDATE — Raspberry Pi section~~ DONE
 
-- [ ] Add Raspberry Pi image section to `Installation.md` (citrascope-pi)
-  - What the Pi image includes (systemd autostart, WiFi provisioning via Comitup, GPS/chrony)
-  - Flashing the SD card and first-boot WiFi setup
-  - Accessing the UI at `http://citrascope-<mission>.local`
-  - Pi image versioning vs CitraScope application version
+- [x] Add Raspberry Pi image section to `Installation.md` (citrascope-pi)
+  - [x] What the Pi image includes (systemd autostart, WiFi provisioning via Comitup, GPS/chrony)
+  - [x] Flashing the SD card and first-boot WiFi setup
+  - [x] Accessing the UI at `http://citrascope-<mission>.local`
+  - [x] Pi image versioning vs CitraScope application version
 
 ### 3. Troubleshooting — NEW (`Troubleshooting.md`, nav_order: 50)
 
