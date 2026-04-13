@@ -55,14 +55,7 @@
   - [ ] `keep_images` — retains raw FITS files after upload
   - [ ] `reprocess` CLI tool — replay a debug directory through the pipeline
 
-### 4. Observation Modes — NEW (`ObservationModes.md`, nav_order: 20, single page)
-
-- [ ] Auto mode: how the system decides between static and tracking per-task
-- [ ] Static mode: use case (GEO, survey), slew → plate solve → burst capture flow
-- [ ] Tracking mode: use case (LEO), lead position, custom tracking rates, motion compensation
-- [ ] When to use each mode
-
-### 5. Processing Pipeline — NEW (`Pipeline.md`, nav_order: 25, single page)
+### 4. Processing Pipeline — NEW (`Pipeline.md`, nav_order: 25, single page)
 
 - [ ] Overview: what happens after an image is captured (imaging → processing → upload queues)
 - [ ] Calibration processor: applying bias/dark/flat masters
@@ -72,7 +65,7 @@
 - [ ] Satellite Matcher: TLE propagation, source-to-prediction matching, elset cache
 - [ ] Annotated Image: overlay JPEG generation
 
-### 6. KStars / INDI review — minor
+### 5. KStars / INDI review — minor
 
 - [ ] Review `KStars.md` for completeness against current features
 - [ ] Review `INDI.md` for completeness against current features
@@ -90,6 +83,7 @@ These were in the original outline but are now fully documented in existing page
 | Autofocus & Alignment | Configuration.md Autofocus tab + Monitoring.md Optics/Telescope cards |
 | Safety & Operational Controls | Monitoring.md (abort, operator stop, cable wrap, safety alerts, mode switches) + Configuration.md Time & Location |
 | Configuration Reference | Configuration.md serves as the setting-by-setting reference |
+| Observation Modes (auto/static/tracking) | Configuration.md Observation tab covers the dropdown and per-mode guidance |
 | Development & Architecture | Developer-focused; covered in citrascope repo's CLAUDE.md |
 
 ---
