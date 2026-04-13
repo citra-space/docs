@@ -35,18 +35,15 @@ Then install CitraScope:
 uv tool install citrascope
 ```
 
-## Optional extras
+## Hardware extras
 
-Install additional hardware support as needed:
+Some devices need additional Python libraries. Install everything at once, or only what you need:
 
 ```bash
-uv tool install citrascope --with citrascope[indi]          # INDI telescope control (Linux)
-uv tool install citrascope --with citrascope[zwo-mount]     # ZWO AM3/AM5/AM7 mounts
-uv tool install citrascope --with citrascope[usb-camera]    # USB/webcam capture via OpenCV
-uv tool install citrascope --with citrascope[all-hardware]  # Everything
+uv tool install citrascope --with citrascope[all-hardware]
 ```
 
-See [Direct Hardware](DirectHardware.html) for the full list of supported devices and their extras.
+See [Direct Hardware](DirectHardware.html) for the per-device extras and the full list of supported hardware.
 
 ## Install with pip
 

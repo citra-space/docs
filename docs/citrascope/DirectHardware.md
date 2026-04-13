@@ -76,16 +76,13 @@ After selecting a device type, additional device-specific settings appear (e.g.,
 
 ### Install Extras
 
-If a device requires additional Python libraries, install them before selecting that device:
+Some devices require additional Python libraries — the **Install Extra** column in the tables above shows the command for each one. Install before selecting the device, then restart CitraScope.
+
+To install everything at once:
 
 ```bash
-uv tool install citrascope --with citrascope[zwo-mount]       # ZWO AM mount
-uv tool install citrascope --with citrascope[usb-camera]      # USB cameras
-uv tool install citrascope --with citrascope[rpi]             # Raspberry Pi camera
-uv tool install citrascope --with citrascope[all-hardware]    # Everything at once
+uv tool install citrascope --with citrascope[all-hardware]
 ```
-
-Moravian cameras, the ZWO EAF focuser, and Moravian filter wheels have no extra dependencies.
 
 ## Features
 
