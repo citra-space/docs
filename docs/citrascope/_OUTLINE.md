@@ -43,25 +43,25 @@
 - [ ] Verifying the connection (status bar indicators)
 - [ ] What happens automatically once configured (polling, imaging, processing, upload)
 
-### 4. Web Dashboard — NEW (`Dashboard.md`, nav_order: 07, has_children: true)
+### 4. Web Dashboard — DONE (`Dashboard.md`, nav_order: 07, has_children: true)
 
-#### 4a. Status Bar (`Dashboard-StatusBar.md`, parent: Web Dashboard)
+#### 4a. Status Bar — covered in Monitoring page (not a separate page)
 
-- [ ] Safety monitor indicator
-- [ ] WebSocket connection state
-- [ ] Telescope and camera connection
-- [ ] Task pipeline counts (imaging → processing → upload)
-- [ ] Time health indicator
+- [x] Safety monitor indicator
+- [x] WebSocket connection state
+- [x] Telescope and camera connection
+- [x] Task pipeline counts (imaging → processing → upload)
+- [x] Time health indicator
 
-#### 4b. Monitoring Tab (`Dashboard-Monitoring.md`, parent: Web Dashboard)
+#### 4b. Monitoring Tab (`Monitoring.md`, parent: Web Dashboard)
 
-- [ ] Telescope position and state
-- [ ] Camera status and live preview
-- [ ] Focus position and manual controls
-- [ ] Filter wheel position and controls
-- [ ] Active and queued tasks by pipeline stage
-- [ ] Real-time log viewer (WebSocket streaming)
-- [ ] Operational controls: pause/resume polling, emergency stop, operator stop
+- [x] Telescope position and state
+- [x] Camera status and live preview
+- [x] Focus position and manual controls
+- [x] Filter wheel position and controls
+- [x] Active and queued tasks by pipeline stage
+- [x] Real-time log viewer (WebSocket streaming)
+- [x] Operational controls: pause/resume polling, emergency stop, operator stop
 
 #### 4c. Configuration Tab (`Configuration.md`, parent: Web Dashboard)
 
@@ -75,50 +75,37 @@
 - [x] Time and GPS configuration
 - [x] Advanced settings (logging, retention, retry behavior)
 
-### 5. Hardware Adapters — NEW parent page (`Adapters.md`, nav_order: 09, has_children: true)
+### 5. Hardware Adapters — DONE (`Adapters.md`, nav_order: 09, has_children: true)
 
-> Move existing adapter pages under this parent. Update their `parent:` front
-> matter from `CitraScope` to the new parent title.
+> Adapter pages moved under this parent. Front matter updated.
 
-- [ ] Overview of the adapter pattern and how adapters are selected
-- [ ] Adapter capability comparison table (mount, camera, filter wheel, focuser, guiding, calibration, alignment)
+- [x] Overview of the adapter pattern and how adapters are selected
+- [x] Adapter capability comparison table (mount, camera, filter wheel, focuser, guiding, calibration, alignment)
 
-#### 5a. Direct Hardware — NEW (`DirectHardware.md`, parent: Hardware Adapters, nav_order: 1)
+#### 5a. Direct Hardware — DONE (`DirectHardware.md`, parent: Hardware Adapters, nav_order: 1)
 
-> Lead adapter — CitraScope's native hardware control, no intermediary software needed.
-
-- [ ] What "Direct" means (CitraScope controls devices without an intermediary program)
-- [ ] Supported devices:
+- [x] What "Direct" means (CitraScope controls devices without an intermediary program)
+- [x] Supported devices:
   - ZWO ASI cameras
   - Moravian cameras
   - Ximea cameras
   - USB webcams
   - ZWO EAF focuser
   - ZWO AM5 mount
-- [ ] Per-device setup notes and prerequisites
-- [ ] When to choose Direct vs an intermediary adapter
+- [x] Per-device setup notes and prerequisites
+- [x] When to choose Direct vs an intermediary adapter
 
-#### 5b. N.I.N.A. (`NINA.md`) — EXISTING, move under parent (nav_order: 2)
+#### 5b. N.I.N.A. (`NINA.md`) — moved under parent (nav_order: 2)
 
 - [x] Review for completeness against current features (2026-04-13: updated for NinaFocuser integration — autofocus and focuser control now fully supported; filter-change focus offsets documented)
 
-#### 5c. KStars / Ekos (`KStars.md`) — EXISTING, move under parent (nav_order: 3)
+#### 5c. KStars / Ekos (`KStars.md`) — moved under parent (nav_order: 3)
 
 - [ ] Review for completeness against current features
 
-#### 5d. INDI (`INDI.md`) — EXISTING, move under parent (nav_order: 4)
+#### 5d. INDI (`INDI.md`) — moved under parent (nav_order: 4)
 
 - [ ] Review for completeness against current features
-
-### 6. Citra API Connection — NEW (`CitraAPI.md`, nav_order: 15)
-
-- [ ] What the Citra API is and what data flows through it
-- [ ] Setting the API endpoint (production vs development vs custom URL)
-- [ ] Personal access tokens (where to generate on the platform, how to enter in CitraScope)
-- [ ] Telescope ID (how to find it on Citra Space)
-- [ ] Dummy API mode (offline operation for testing without a live backend)
-- [ ] Filter sync: how CitraScope and the Citra API keep filter libraries aligned
-- [ ] Automated scheduling toggle (how to enable/disable server-side task assignment)
 
 ### 7. Observation Modes — NEW (`ObservationModes.md`, nav_order: 20, has_children: true)
 
