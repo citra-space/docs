@@ -63,17 +63,17 @@
 - [ ] Real-time log viewer (WebSocket streaming)
 - [ ] Operational controls: pause/resume polling, emergency stop, operator stop
 
-#### 4c. Configuration Tab (`Dashboard-Config.md`, parent: Web Dashboard)
+#### 4c. Configuration Tab (`Configuration.md`, parent: Web Dashboard)
 
-- [ ] Citra API settings (endpoint, token, telescope ID, dummy mode)
-- [ ] Hardware adapter selection and dynamic adapter-specific settings
-- [ ] Observation settings (mode, exposure, frame count)
-- [ ] Processor toggles
-- [ ] Calibration settings
-- [ ] Autofocus scheduling and target presets
-- [ ] Alignment settings
-- [ ] Time and GPS configuration
-- [ ] Advanced settings (logging, retention, retry behavior)
+- [x] Citra API settings (endpoint, token, telescope ID, dummy mode)
+- [x] Hardware adapter selection and dynamic adapter-specific settings
+- [x] Observation settings (mode, exposure, frame count)
+- [x] Processor toggles
+- [x] Calibration settings
+- [x] Autofocus scheduling and target presets
+- [x] Alignment settings
+- [x] Time and GPS configuration
+- [x] Advanced settings (logging, retention, retry behavior)
 
 ### 5. Hardware Adapters — NEW parent page (`Adapters.md`, nav_order: 09, has_children: true)
 
