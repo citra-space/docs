@@ -255,7 +255,17 @@
 
 ## Writing guidelines
 
-- Follow the existing docs style: short pages, tables for settings, callouts for warnings
+### Audience and voice
+
+- **Reader**: Telescope operators using CitraScope in the field. They know astrophotography and their hardware — they are not developers and do not read the CitraScope source code.
+- **Voice**: Direct and task-oriented. Second person ("To configure X, go to..."). Present tense. Short sentences.
+- **Include**: Features visible in the UI, settings and what they do, step-by-step workflows, observable behavior, troubleshooting for things an operator can actually see or change.
+- **Exclude**: Internal class names, code architecture, algorithm details, refactors, and anything that only matters to a developer. If a code change doesn't affect what an operator sees or does, it doesn't belong in the docs.
+- **Test**: "Would an operator care about this?" If the answer is no, leave it out or reframe it as operator-visible behavior.
+
+### Format
+
+- Short pages, tables for settings, callouts for warnings
 - Dark screenshots where possible (operators use this at night)
 - Front matter pattern: `title`, `parent: CitraScope`, `nav_order`, optional `has_children`
 - For nested sections, use `grand_parent: CitraScope` on third-level pages
