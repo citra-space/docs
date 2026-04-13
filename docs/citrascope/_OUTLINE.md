@@ -7,236 +7,90 @@
 
 ---
 
-## Current pages
+## Published pages
 
 - [x] `index.md` — Landing page (overview, features, tasking flow, adapters, contributing, security)
-- [x] `Installation.md` — Python install, pyenv, venv, PyPI, extras
+- [x] `Installation.md` — Python install, uv, pip, extras
+- [x] `Dashboard.md` — Web Dashboard parent page
+- [x] `Monitoring.md` — Monitoring tab walkthrough (status bar, telescope, optics, tasks, log panel, safety alerts, operational controls)
+- [x] `Configuration.md` — Configuration tab walkthrough (API, hardware, autofocus, calibration, observation, processing, time & location, robotic operations, advanced)
+- [x] `Adapters.md` — Hardware Adapters parent page (overview, capability comparison table)
+- [x] `DirectHardware.md` — Direct Hardware adapter guide
 - [x] `NINA.md` — N.I.N.A. adapter guide
 - [x] `KStars.md` — KStars / Ekos adapter guide
 - [x] `INDI.md` — Direct INDI adapter guide
 
 ---
 
-## Proposed additions and updates
+## Outstanding work
 
-### 1. Landing page (`index.md`) — UPDATE
+### 1. Quick Start Guide — NEW (`QuickStart.md`, nav_order: 06)
 
-- [ ] Add Direct Hardware adapter to the adapter list (lead with it — it's the primary path)
-- [ ] Reorder adapter list: Direct → N.I.N.A. → KStars → INDI
-- [ ] Link to citrascope-pi for Raspberry Pi deployments
-- [ ] Mention processing pipeline (plate solving, photometry, satellite matching) in features
+- [ ] First launch (`citrascope` or `python -m citrascope`)
+- [ ] Opening the web UI (default port 24872)
+- [ ] Setup walkthrough (API endpoint, token, telescope ID, adapter selection)
+- [ ] Verifying the connection (status bar indicators)
+- [ ] What happens automatically once configured (polling, imaging, processing, upload)
 
-### 2. Installation (`Installation.md`) — UPDATE
+### 2. Installation UPDATE — Raspberry Pi section
 
-- [ ] Add Raspberry Pi image section (citrascope-pi)
-  - What the Pi image includes (systemd autostart, WiFi provisioning via Comitup, GPS/chrony, INDI packages)
+- [ ] Add Raspberry Pi image section to `Installation.md` (citrascope-pi)
+  - What the Pi image includes (systemd autostart, WiFi provisioning via Comitup, GPS/chrony)
   - Flashing the SD card and first-boot WiFi setup
   - Accessing the UI at `http://citrascope-<mission>.local`
   - Pi image versioning vs CitraScope application version
 
-### 3. Quick Start Guide — NEW (`QuickStart.md`, nav_order: 06)
+### 3. Troubleshooting — NEW (`Troubleshooting.md`, nav_order: 50)
 
-- [ ] First launch (`citrascope` or `python -m citrascope`)
-- [ ] CLI options (`--web-port`)
-- [ ] Opening the web UI (default port 24872)
-- [ ] Setup wizard walkthrough (API endpoint, token, telescope ID, adapter selection)
-- [ ] Verifying the connection (status bar indicators)
-- [ ] What happens automatically once configured (polling, imaging, processing, upload)
-
-### 4. Web Dashboard — DONE (`Dashboard.md`, nav_order: 07, has_children: true)
-
-#### 4a. Status Bar — covered in Monitoring page (not a separate page)
-
-- [x] Safety monitor indicator
-- [x] WebSocket connection state
-- [x] Telescope and camera connection
-- [x] Task pipeline counts (imaging → processing → upload)
-- [x] Time health indicator
-
-#### 4b. Monitoring Tab (`Monitoring.md`, parent: Web Dashboard)
-
-- [x] Telescope position and state
-- [x] Camera status and live preview
-- [x] Focus position and manual controls
-- [x] Filter wheel position and controls
-- [x] Active and queued tasks by pipeline stage
-- [x] Real-time log viewer (WebSocket streaming)
-- [x] Operational controls: pause/resume polling, emergency stop, operator stop
-
-#### 4c. Configuration Tab (`Configuration.md`, parent: Web Dashboard)
-
-- [x] Citra API settings (endpoint, token, telescope ID, dummy mode)
-- [x] Hardware adapter selection and dynamic adapter-specific settings
-- [x] Observation settings (mode, exposure, frame count)
-- [x] Processor toggles
-- [x] Calibration settings
-- [x] Autofocus scheduling and target presets
-- [x] Alignment settings
-- [x] Time and GPS configuration
-- [x] Advanced settings (logging, retention, retry behavior)
-
-### 5. Hardware Adapters — DONE (`Adapters.md`, nav_order: 09, has_children: true)
-
-> Adapter pages moved under this parent. Front matter updated.
-
-- [x] Overview of the adapter pattern and how adapters are selected
-- [x] Adapter capability comparison table (mount, camera, filter wheel, focuser, guiding, calibration, alignment)
-
-#### 5a. Direct Hardware — DONE (`DirectHardware.md`, parent: Hardware Adapters, nav_order: 1)
-
-- [x] What "Direct" means (CitraScope controls devices without an intermediary program)
-- [x] Supported devices:
-  - ZWO ASI cameras
-  - Moravian cameras
-  - Ximea cameras
-  - USB webcams
-  - ZWO EAF focuser
-  - ZWO AM5 mount
-- [x] Per-device setup notes and prerequisites
-- [x] When to choose Direct vs an intermediary adapter
-
-#### 5b. N.I.N.A. (`NINA.md`) — moved under parent (nav_order: 2)
-
-- [x] Review for completeness against current features (2026-04-13: updated for NinaFocuser integration — autofocus and focuser control now fully supported; filter-change focus offsets documented)
-
-#### 5c. KStars / Ekos (`KStars.md`) — moved under parent (nav_order: 3)
-
-- [ ] Review for completeness against current features
-
-#### 5d. INDI (`INDI.md`) — moved under parent (nav_order: 4)
-
-- [ ] Review for completeness against current features
-
-### 7. Observation Modes — NEW (`ObservationModes.md`, nav_order: 20, has_children: true)
-
-#### 7a. Auto Mode (`ObservationModes-Auto.md`, parent: Observation Modes)
-
-- [ ] How the system decides between static and tracking per-task
-- [ ] When to use auto (recommended default for most operators)
-
-#### 7b. Static Mode (`ObservationModes-Static.md`, parent: Observation Modes)
-
-- [ ] Use case (GEO satellites, survey, deep-sky targets)
-- [ ] Slew → optional plate solve after slew → burst capture flow
-- [ ] `num_exposures` and `exposure_seconds` settings
-- [ ] How plate_solve_after_slew improves pointing accuracy
-
-#### 7c. Tracking Mode (`ObservationModes-Tracking.md`, parent: Observation Modes)
-
-- [ ] Use case (LEO satellites with apparent motion)
-- [ ] Lead position calculation and custom tracking rates
-- [ ] Single-frame capture with motion compensation
-- [ ] Filter selection for tracking observations
-
-### 8. Processing Pipeline — NEW (`Pipeline.md`, nav_order: 25, has_children: true)
-
-- [ ] Overview: what happens after an image is captured
-- [ ] Three-queue architecture (imaging → processing → upload)
-- [ ] How to toggle processors on/off in settings
-- [ ] `skip_upload` mode (process locally but don't send results to API)
-
-#### 8a. Calibration Processor (`Pipeline-Calibration.md`, parent: Processing Pipeline)
-
-- [ ] Applying bias, dark, and flat frame masters to raw images
-- [ ] How masters are selected and matched
-- [ ] Relationship to the calibration capture UI (see section 9)
-
-#### 8b. Plate Solver (`Pipeline-PlateSolver.md`, parent: Processing Pipeline)
-
-- [ ] What it does (astrometric solution, WCS fitting to image)
-- [ ] astrometry.net (`solve-field`) solving engine
-- [ ] Source extraction (SEP) bundled into this step
-- [ ] Solve quality metrics: log-odds ratio, match/conflict counts, pixel scale, field geometry (added 2026-04-13)
-- [ ] When solving fails and what affects success (star count, FOV, pointing accuracy)
-
-#### 8c. Photometry Calibrator (`Pipeline-Photometry.md`, parent: Processing Pipeline)
-
-- [ ] APASS catalog cross-matching for photometric calibration
-- [ ] Zero-point calculation
-- [ ] Local APASS catalog option (`use_local_apass_catalog` for offline/air-gapped setups)
-
-#### 8d. Satellite Matcher (`Pipeline-SatelliteMatcher.md`, parent: Processing Pipeline)
-
-- [ ] TLE propagation to predict satellite positions at exposure time
-- [ ] Associating detected sources with predicted positions
-- [ ] Elset cache and `elset_refresh_interval_hours` setting
-
-#### 8e. Annotated Image (`Pipeline-AnnotatedImage.md`, parent: Processing Pipeline)
-
-- [ ] What it generates (overlay JPEG with sources, matches, and WCS grid)
-- [ ] Where to view annotated images (task preview in the UI)
-
-### 9. Calibration — NEW (`Calibration.md`, nav_order: 30)
-
-- [ ] Why calibration matters for photometric accuracy
-- [ ] Capturing bias frames from the UI
-- [ ] Capturing dark frames from the UI
-- [ ] Capturing flat frames (twilight helper endpoint in the UI)
-- [ ] `calibration_frame_count` and `flat_frame_count` settings
-- [ ] Managing calibration suites (view, download, delete masters)
-
-### 10. Autofocus & Alignment — NEW (`AutofocusAlignment.md`, nav_order: 35)
-
-#### 10a. Autofocus
-
-- [ ] Scheduled autofocus (enable, set interval in minutes)
-- [ ] Target presets (current position, named bright stars, custom RA/Dec)
-- [ ] Manual trigger from the monitoring tab
-- [ ] How autofocus coordinates with the imaging queue (waits for idle)
-
-#### 10b. Alignment
-
-- [ ] What alignment does (plate solve to sync mount model)
-- [ ] Align-on-startup behavior
-- [ ] `alignment_exposure_seconds` setting
-- [ ] Manual alignment trigger from the UI
-
-### 11. Safety & Operational Controls — NEW (`Safety.md`, nav_order: 40)
-
-- [ ] Emergency stop (what it does, how to trigger, how to clear)
-- [ ] Operator stop
-- [ ] Task polling pause/resume
-- [ ] Mount homing
-- [ ] Cable wrap / mount limits and unwind
-- [ ] Time health monitoring and the pause threshold
-- [ ] GPS location updates
-
-### 12. Configuration Reference — NEW (`ConfigReference.md`, nav_order: 45)
-
-- [ ] Complete table of every `CitraScopeSettings` field (name, type, default, description)
-- [ ] Config file location per platform (macOS, Linux, Windows via platformdirs)
-- [ ] How settings are persisted (JSON file, `update_and_save` merge behavior)
-- [ ] Adapter-specific settings storage (nested dict keyed by adapter name, survives adapter switching)
-- [ ] CLI-only settings (`--web-port`)
-
-### 13. Troubleshooting — NEW (`Troubleshooting.md`, nav_order: 50)
-
-- [ ] Log file locations and how to find them (`GET /api/config` returns paths)
-- [ ] WebSocket log streaming in the monitoring tab
+- [ ] Log file locations and how to find them
 - [ ] Common issues:
   - [ ] Can't connect to Citra API (bad token, wrong endpoint, SSL errors)
   - [ ] Hardware adapter won't connect (per-adapter common failures)
-  - [ ] Tasks not appearing (wrong telescope ID, automated scheduling disabled, API response issues)
+  - [ ] Tasks not appearing (wrong telescope ID, automated scheduling disabled)
   - [ ] Plate solving failures (too few stars, wrong FOV estimate, poor pointing)
-  - [ ] Upload failures (network issues, 404 on duplicate task, file size)
+  - [ ] Upload failures (network issues, 404 on duplicate task)
   - [ ] Time health warnings (NTP drift, GPS not connected, chrony misconfigured)
-  - [ ] Task retry behavior and backoff (max retries, delay escalation)
 - [ ] Debug aids:
-  - [ ] `keep_processing_output` — retains intermediate pipeline files for post-mortem
+  - [ ] `keep_processing_output` — retains intermediate pipeline files
   - [ ] `keep_images` — retains raw FITS files after upload
-  - [ ] `reprocess` CLI tool (`python -m citrascope.reprocess`) — replay a debug directory through the pipeline
+  - [ ] `reprocess` CLI tool — replay a debug directory through the pipeline
 
-### 14. Development & Architecture — NEW, OPTIONAL (`Development.md`, nav_order: 55)
+### 4. Observation Modes — NEW (`ObservationModes.md`, nav_order: 20, single page)
 
-> Lower priority. Useful for power users, contributors, and developers — not required for operators.
+- [ ] Auto mode: how the system decides between static and tracking per-task
+- [ ] Static mode: use case (GEO, survey), slew → plate solve → burst capture flow
+- [ ] Tracking mode: use case (LEO), lead position, custom tracking rates, motion compensation
+- [ ] When to use each mode
 
-- [ ] Dummy adapter (simulates hardware for testing and development)
-- [ ] Dummy API mode (offline operation without a live Citra backend)
-- [ ] `reprocess` CLI tool (`python -m citrascope.reprocess`) — replay a debug directory through the pipeline
-- [ ] Daemon lifecycle (startup → connect → poll → image → process → upload → repeat)
-- [ ] Thread model (main loop, queue worker threads, web server daemon thread)
-- [ ] Component diagram (daemon → task manager → queues → adapter + processors → API client)
-- [ ] Pointer to `CLAUDE.md` in the citrascope repo for full developer reference
+### 5. Processing Pipeline — NEW (`Pipeline.md`, nav_order: 25, single page)
+
+- [ ] Overview: what happens after an image is captured (imaging → processing → upload queues)
+- [ ] Calibration processor: applying bias/dark/flat masters
+- [ ] Plate Solver: astrometry.net, WCS fitting, solve quality metrics, common failure causes
+- [ ] Source Extractor: detecting stars and satellites via SExtractor
+- [ ] Photometry Calibrator: APASS cross-matching, zero-point calculation, local catalog option
+- [ ] Satellite Matcher: TLE propagation, source-to-prediction matching, elset cache
+- [ ] Annotated Image: overlay JPEG generation
+
+### 6. KStars / INDI review — minor
+
+- [ ] Review `KStars.md` for completeness against current features
+- [ ] Review `INDI.md` for completeness against current features
+
+---
+
+## Sections removed from outline (already covered)
+
+These were in the original outline but are now fully documented in existing pages:
+
+| Original section | Covered by |
+|---|---|
+| Landing page update (Direct adapter, Pi link, pipeline) | `index.md` already has all items |
+| Calibration (capturing frames, managing masters) | Configuration.md Calibration tab |
+| Autofocus & Alignment | Configuration.md Autofocus tab + Monitoring.md Optics/Telescope cards |
+| Safety & Operational Controls | Monitoring.md (abort, operator stop, cable wrap, safety alerts, mode switches) + Configuration.md Time & Location |
+| Configuration Reference | Configuration.md serves as the setting-by-setting reference |
+| Development & Architecture | Developer-focused; covered in citrascope repo's CLAUDE.md |
 
 ---
 
