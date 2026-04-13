@@ -1,7 +1,8 @@
 ---
-title: Working with N.I.N.A.
-nav_order: 10
-parent: CitraScope
+title: N.I.N.A.
+nav_order: 2
+parent: Hardware Adapters
+grand_parent: CitraScope
 ---
 
 # N.I.N.A.

@@ -1,7 +1,8 @@
 ---
-title: Working with KStars
-nav_order: 20
-parent: CitraScope
+title: KStars
+nav_order: 3
+parent: Hardware Adapters
+grand_parent: CitraScope
 ---
 
 # KStars
@@ -25,8 +26,7 @@ Before integrating KStars with CitraScope, ensure you have:
 - **Ekos configured** with your telescope hardware
 - **INDI server** running with your equipment profile
 - Your telescope hardware already configured and working in Ekos
-- Network connectivity between the KStars system and CitraScope
-- **Astrometry.net** or similar plate solving configured (recommended)
+- CitraScope running on the **same machine** as KStars (the adapter uses local D-Bus)
 
 ## Installation
 
@@ -86,27 +86,45 @@ Follow the [Installation Guide](Installation.html) if you haven't already instal
 
    The following settings are available:
 
-   | Setting | Default | Required/Optional | Description |
-   |---------|---------|-------------------|-------------|
-   | **D-Bus Service Name** | `org.kde.kstars` | Required | D-Bus service name for KStars. Only change if running a custom KStars instance. |
+   | Setting | Default | Description |
+   |---------|---------|-------------|
+   | **D-Bus Service Name** | `org.kde.kstars` | D-Bus service name for KStars. Only change if running a custom KStars instance. |
+   | **Camera/CCD Device Name** | `CCD Simulator` | Name of the camera device in your Ekos profile. Check Ekos logs on connect for available devices. |
+   | **Filter Wheel Device Name** | *(empty)* | Name of the filter wheel device. Leave empty if you have no filter wheel. |
+   | **Optical Train Name** | `Primary` | Name of the optical train in your Ekos profile. Check Ekos logs on connect for available trains. |
+   | **Exposure Time (seconds)** | `1.0` | Exposure duration in seconds for each frame (0.001–300). |
+   | **Frame Count** | `1` | Number of frames to capture per observation (1–100). |
+   | **Binning X** | `1` | Horizontal pixel binning (1–4). |
+   | **Binning Y** | `1` | Vertical pixel binning (1–4). |
+   | **Image Format** | `Mono` | Camera image format. Options: `Mono`, `RGGB`, `RGB`. |
 
-3. **Configure Connection Settings**
-   - Specify the equipment to use  (typically auto-detected on local systems)
+3. **Save Configuration**
+   - Save your settings. CitraScope will connect to KStars via D-Bus and report hardware status in the dashboard.
 
-4. **Save Configuration**
-   - Save settings once connection, and check to see that all the hardware reports as connected.
+## Supported Features
+
+The KStars adapter supports the following capabilities:
+
+- ✅ **Mount Control** - Slew to coordinates, position readout
+- ✅ **Camera Control** - Exposure, binning, image format
+- ✅ **Image Capture** - Single and multiple exposures via Ekos Scheduler
+- ✅ **Filter Wheel** - Automatic filter selection and discovery
+- ✅ **Plate Solving** - Position verification via Ekos Align module
 
 ## Limitations
 
 ### Known Limitations
 
-- **D-Bus Dependency** - Requires D-Bus for local communication, must run on telescope computer
+- **Local D-Bus Only** - The adapter communicates via session D-Bus. CitraScope must run on the same machine as KStars.
+- **No Autofocus** - Autofocus is not currently supported through this adapter.
+- **No Focuser Control** - Direct focuser movement is not available. Use KStars/Ekos to manage focus.
+- **No Disconnect** - CitraScope cannot programmatically disconnect from KStars. Close KStars manually when done.
+- **Windows Not Supported** - D-Bus is not natively available on Windows.
 
 ### Performance Considerations
 
 - KStars should remain running with Ekos active for CitraScope tasks
 - Plate solving requires appropriate index files for your imaging scale
-- Large FITS files may take time to transfer over network
 - Ensure adequate system resources for both KStars and CitraScope
 
 ## Troubleshooting
@@ -117,9 +135,9 @@ Follow the [Installation Guide](Installation.html) if you haven't already instal
 
 **Solutions**:
 - Verify KStars is running with Ekos started
-- Check that D-Bus is accessible (for local) or Web Manager is enabled (for remote)
+- Check that D-Bus is accessible: run `dbus-send --session --print-reply --dest=org.kde.kstars /KStars org.freedesktop.DBus.Peer.Ping` to test
 - Ensure **D-Bus Service Name** is correct in CitraScope settings (typically `org.kde.kstars`)
-- Check firewall settings allow D-Bus or Web Manager port
+- On macOS, confirm D-Bus is running: `brew services list | grep dbus`
 - Restart both KStars and CitraScope
 - Review KStars logs: **Help → Debug → View Logs**
 

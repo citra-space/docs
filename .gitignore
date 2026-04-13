@@ -2,3 +2,4 @@
 docs/vendor/
 docs/_site/
 docs/.jekyll-cache/
+.venv/

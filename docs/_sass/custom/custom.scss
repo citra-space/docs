@@ -8,3 +8,88 @@
     margin-left: 19rem;
   }
 }
+
+// Right-side sticky TOC on wide screens.
+// Uses CSS Grid to place the TOC in its own column outside the content area,
+// so it never overlaps body text. Only activates on pages that have a TOC
+// (scoped via :has(#markdown-toc)) and only at wide viewports.
+@media (min-width: 80rem) {
+  // Widen .main to make room for the TOC column
+  .side-bar + .main:has(#markdown-toc) {
+    max-width: 68rem;
+  }
+
+  // Two-column grid: content | TOC
+  .main-content main:has(> details > #markdown-toc) {
+    display: grid;
+    grid-template-columns: 1fr 15rem;
+    column-gap: 2rem;
+  }
+
+  // Everything except the TOC goes in the left column
+  .main-content main:has(> details > #markdown-toc) > *:not(details:has(> #markdown-toc)) {
+    grid-column: 1;
+    min-width: 0; // prevent grid blowout from wide tables/code
+  }
+
+  // TOC takes the right column, spans all rows, sticks on scroll
+  .main-content main > details:has(> #markdown-toc) {
+    grid-column: 2;
+    grid-row: 1 / 999;
+    position: sticky;
+    top: 2rem;
+    align-self: start;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+    padding: 0.5rem 0;
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+    padding-left: 0.75rem;
+    font-size: 0.75rem;
+    line-height: 1.4;
+
+    summary {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+    }
+
+    ul {
+      padding-left: 1rem;
+      margin: 0;
+      list-style: none;
+
+      li {
+        margin: 0.15rem 0;
+      }
+
+      a {
+        color: inherit;
+        opacity: 0.5;
+        text-decoration: none;
+        transition: opacity 0.15s;
+
+        &:hover,
+        &.toc-active {
+          opacity: 1;
+        }
+
+        &.toc-active {
+          font-weight: 600;
+        }
+      }
+
+      ul {
+        padding-left: 0.75rem;
+        font-size: 0.7rem;
+      }
+    }
+  }
+}
+
+// On smaller screens the TOC stays inline as a collapsible details block
+@media (max-width: 79.99rem) {
+  details:has(> #markdown-toc) {
+    margin-bottom: 1.5rem;
+  }
+}

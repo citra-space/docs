@@ -1,7 +1,8 @@
 ---
-title: Working with INDI
-nav_order: 30
-parent: CitraScope
+title: INDI
+nav_order: 4
+parent: Hardware Adapters
+grand_parent: CitraScope
 ---
 
 # INDI
@@ -44,8 +45,10 @@ INDI is for advanced users and as such, we assume you come bearing an INDI envir
 CitraScope requires the optional INDI dependencies:
 
 ```bash
-pip install citrascope[indi]
+uv tool install citrascope --with citrascope[indi]
 ```
+
+Or with pip: `pip install citrascope[indi]`
 
 This installs the `pyindi-client` library needed for INDI communication.
 
@@ -79,16 +82,23 @@ This installs the `pyindi-client` library needed for INDI communication.
 
 ## Supported Features
 
-The INDI adapter supports comprehensive hardware control:
+The INDI adapter provides basic mount and camera control:
 
-- ✅ **Mount/Telescope Control** - Slew, sync, track, park/unpark, abort
-- ✅ **Camera Control** - Exposure, gain, offset, binning, frame types
+- ✅ **Mount Control** - Slew to coordinates, position readout, tracking, custom tracking rates
+- ✅ **Camera Control** - Exposure control and image capture (FITS)
+
+{: .note }
+> The INDI adapter is best suited for simple mount + camera setups. If you need filter wheel control, focuser support, or autofocus, consider the [KStars](KStars.html) adapter (which uses INDI under the hood but adds Ekos features) or the Direct Hardware adapter.
 
 ## Limitations
 
 ### Known Limitations
 
 - **Linux Only** - INDI libraries only work on Linux systems (use KStars adapter for macOS/Windows)
+- **No Filter Wheel** - Filter wheel control is not implemented in this adapter
+- **No Focuser** - Focuser control is not available
+- **No Autofocus** - Autofocus is not supported
+- **Basic Camera Control** - Only exposure duration is configurable. Gain, offset, and binning are not adjustable through this adapter (fixed at 1x1 binning, light frames).
 - **Driver Availability** - Not all hardware has INDI drivers; check [INDI driver list](https://indilib.org/devices.html)
 
 ### Platform Considerations
@@ -134,8 +144,6 @@ The INDI adapter supports comprehensive hardware control:
 - Leave device names empty to use auto-detection
 - Ensure devices are connected in INDI before CitraScope connects
 - Check for typos in device name configuration
-
-### Performance Issues
 
 ### Image Capture Problems
 

@@ -5,3 +5,47 @@
     --cache-bust: "{{ site.version }}";
   }
 </style>
+
+<!-- Scrollspy: highlight the current TOC item while scrolling -->
+<script defer>
+(function () {
+  document.addEventListener('DOMContentLoaded', function () {
+    var toc = document.getElementById('markdown-toc');
+    if (!toc) return;
+
+    var links = [].slice.call(toc.querySelectorAll('a'));
+    var headings = links
+      .map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); })
+      .filter(Boolean);
+    if (!headings.length) return;
+
+    var sidebarMq = window.matchMedia('(min-width: 80rem)');
+    var OFFSET = 120;
+    var ticking = false;
+
+    function update() {
+      var scrollY = window.scrollY || window.pageYOffset;
+      var active = headings[0];
+      for (var i = 0; i < headings.length; i++) {
+        if (headings[i].offsetTop <= scrollY + OFFSET) active = headings[i];
+      }
+      links.forEach(function (a) { a.classList.remove('toc-active'); });
+      if (active) {
+        var hit = toc.querySelector('a[href="#' + active.id + '"]');
+        if (hit) {
+          hit.classList.add('toc-active');
+          if (sidebarMq.matches) hit.scrollIntoView({ block: 'nearest' });
+        }
+      }
+    }
+
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        requestAnimationFrame(function () { update(); ticking = false; });
+        ticking = true;
+      }
+    });
+    update();
+  });
+})();
+</script>
