@@ -87,11 +87,12 @@ The NINA adapter supports the following capabilities:
 - ✅ **Mount Control** - Slew to coordinates, track, park/unpark
 - ✅ **Camera Control** - Exposure control, gain, offset, binning
 - ✅ **Image Capture** - Single and multiple exposures
-- ✅ **Filter Wheel** - Automatic filter selection
+- ✅ **Filter Wheel** - Automatic filter selection with automatic focus offset on filter change
+- ✅ **Focuser Control** - Move, abort, and status via NINA Advanced API; manual controls work in the CitraScope web UI
 - ✅ **Cooling Control** - Camera temperature management
 - ✅ **Sequence Execution** - Custom NINA sequences triggered by tasks
 - ✅ **Plate Solving** - Position verification and sync
-- ⚠️ **Autofocus** - Supported but requires proper configuration in NINA
+- ✅ **Autofocus** - Full autofocus support via NINA; triggered by CitraScope's autofocus scheduler
 - ⚠️ **Guiding** - Integration depends on your guiding setup
 
 ## Limitations
@@ -101,6 +102,8 @@ The NINA adapter supports the following capabilities:
 - **Windows Only** - NINA is Windows-specific; Linux/Mac users should use INDI or KStars
 - **API Dependency** - Requires the Advanced API plugin to be installed and running
 - **Network Access** - Both NINA and CitraScope must be network accessible to each other
+- **Focuser move events** - NINA does not emit a WebSocket event when a focuser move completes; CitraScope polls the focuser position until the move finishes
+- **Guiding** - PHD2/NINA guiding state is not currently surfaced in the CitraScope web UI
 
 ### Performance Considerations
 

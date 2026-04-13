@@ -100,7 +100,7 @@
 
 #### 5b. N.I.N.A. (`NINA.md`) — EXISTING, move under parent (nav_order: 2)
 
-- [ ] Review for completeness against current features
+- [x] Review for completeness against current features (2026-04-13: updated for NinaFocuser integration — autofocus and focuser control now fully supported; filter-change focus offsets documented)
 
 #### 5c. KStars / Ekos (`KStars.md`) — EXISTING, move under parent (nav_order: 3)
 
@@ -157,8 +157,9 @@
 #### 8b. Plate Solver (`Pipeline-PlateSolver.md`, parent: Processing Pipeline)
 
 - [ ] What it does (astrometric solution, WCS fitting to image)
-- [ ] Tetra3 / pixelemon solving engine
+- [ ] astrometry.net (`solve-field`) solving engine
 - [ ] Source extraction (SEP) bundled into this step
+- [ ] Solve quality metrics: log-odds ratio, match/conflict counts, pixel scale, field geometry (added 2026-04-13)
 - [ ] When solving fails and what affects success (star count, FOV, pointing accuracy)
 
 #### 8c. Photometry Calibrator (`Pipeline-Photometry.md`, parent: Processing Pipeline)
