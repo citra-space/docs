@@ -19,9 +19,10 @@ The port number (24872) spells "CITRA" on a phone keypad.
 
 ## Sections
 
-The dashboard has two main tabs:
+The dashboard has three main tabs:
 
 - **[Monitoring](Monitoring.html)** — Live view of your telescope, camera, task pipeline, and operational controls. This is the default view when you open the dashboard.
+- **[Analysis](Analysis.html)** — Post-session pipeline performance dashboard. Shows per-task metrics, aggregate statistics, and tools for tuning detection settings (Auto-Tune) and reprocessing stored images.
 - **[Configuration](Configuration.html)** — Hardware adapter selection, API connection, observation settings, processor toggles, autofocus scheduling, and advanced options.
 
 A collapsible **Log Panel** at the bottom of every page streams real-time log output from the daemon.

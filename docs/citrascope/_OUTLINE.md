@@ -15,6 +15,7 @@
 - [x] `Dashboard.md` — Web Dashboard parent page
 - [x] `Monitoring.md` — Monitoring tab walkthrough (status bar, telescope, optics, tasks, log panel, safety alerts, operational controls)
 - [x] `Configuration.md` — Configuration tab walkthrough (API, hardware, autofocus, calibration, observation, processing, time & location, robotic operations, advanced)
+- [x] `Analysis.md` — Analysis tab walkthrough (summary cards, processor timing, filters, task list, Auto-Tune, reprocessing)
 - [x] `Adapters.md` — Hardware Adapters parent page (overview, capability comparison table)
 - [x] `DirectHardware.md` — Direct Hardware adapter guide
 - [x] `NINA.md` — N.I.N.A. adapter guide

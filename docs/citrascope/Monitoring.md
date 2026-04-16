@@ -119,7 +119,7 @@ The Telescope card shows your mount's current state and provides direct control 
 | Field | Description |
 |-------|-------------|
 | **Ground Station** | The name of your telescope's ground station in the Citra Space network. Links to the station page if a URL is configured. |
-| **Location** | Operating latitude and longitude. Click to see a map popup showing your position. |
+| **Location** | Operating latitude and longitude. Click to open Google Maps at your position. |
 | **Adapter** | The active hardware adapter (Direct Hardware, N.I.N.A., KStars, or INDI). |
 | **RA / Dec** | Current telescope pointing in degrees (Right Ascension / Declination). |
 | **Alt / Az** | Current altitude and azimuth in degrees, with a small polar diagram. The dot shows where the telescope is pointing — center is zenith, the edge is the horizon, and north is at the top. |
@@ -137,7 +137,15 @@ When the mount reports altitude limits, they are shown as the minimum (horizon) 
 
 ### Config Health
 
-Any telescope-related configuration checks appear here (e.g., slew rate). These compare your configured values against what the hardware actually reports. If there is a mismatch, a warning appears.
+Telescope-related configuration checks appear here. Each check compares a value you have configured against what the hardware actually reports. If the observed value differs significantly from the configured value, a yellow warning shows the discrepancy as `configured → observed (+N%)`.
+
+Currently tracked:
+
+| Check | What it compares |
+|-------|-----------------|
+| **Slew Rate** | Configured maximum slew rate vs. the rolling mean of observed slew times. Shows the sample count `(n=N)` used to compute the average; warnings appear only once enough samples have been collected. |
+
+More checks appear as the adapter collects data during a session.
 
 ### Pointing Model
 
@@ -220,6 +228,7 @@ When your adapter supports autofocus, the Autofocus section shows:
 - **Next in** — Countdown to the next scheduled autofocus run (if autofocus scheduling is enabled in settings).
 - **Target** — Which target the autofocus routine will slew to (configured in settings as a preset star or custom coordinates).
 
+
 ### Focus HFR Health
 
 Below autofocus, a Focus HFR readout tracks focus quality over time:
@@ -228,6 +237,14 @@ Below autofocus, a Focus HFR readout tracks focus quality over time:
 - **Sparkline** — A mini chart showing HFR trend over recent observations, color-coded per filter
 - **Baseline** — The HFR established during the last autofocus, used as the reference point
 - **Refocus threshold** — If HFR-triggered refocus is enabled, shows the percentage increase that will trigger an automatic refocus
+
+---
+
+## Dependency Warnings
+
+If CitraScope detects missing system binaries at startup (for example, `solve-field` for plate solving or `source-extractor` for source extraction), a yellow alert banner appears near the top of the Monitoring tab. The banner lists each missing component along with the install command to resolve it. A clipboard button next to each install command lets you copy it in one click.
+
+Once the dependency is installed and the daemon is restarted, the banner disappears.
 
 ---
 
@@ -295,11 +312,12 @@ The table lists each scheduled task with:
 |--------|-------------|
 | **Target** | The name of the observation target |
 | **Filter** | The assigned filter, shown as a color-coded badge matching the filter wheel |
-| **Start Time** | When the observation window opens (local time) |
-| **End Time** | When the observation window closes, or "-" for open-ended tasks |
-| **Status** | Current state: Pending, Active, Completed, or Failed |
+| **Sky** | A miniature polar compass showing where the target sits in the sky. The center is zenith and the edge is the horizon, with North at the top. The dot is **green** when the target is well above your minimum elevation, **yellow** when it is within 10° of that limit, and **red** when it is below it. A dashed ring marks the configured minimum elevation. Hover for exact altitude, azimuth, trend, peak altitude, and estimated slew time. |
+| **Countdown** | Time until the observation window opens (or closes, if the task is active) |
+| **Window** | The start–end time range for the observation window (hidden on small screens) |
+| **Actions** | A **Cancel** button (×) appears for pending tasks. Pressing it cancels the task on the Citra Space server and removes it from the queue immediately. The button is not shown for the currently active task. |
 
-Active tasks are highlighted. Completed tasks remain in the table until the next poll cycle clears them.
+Active tasks are highlighted. Completed and cancelled tasks are removed on the next poll cycle.
 
 ---
 

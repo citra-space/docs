@@ -1,6 +1,6 @@
 ---
 title: Configuration
-nav_order: 2
+nav_order: 3
 parent: Web Dashboard
 grand_parent: CitraScope
 ---
@@ -159,9 +159,18 @@ The Observation tab controls how CitraScope images satellites.
 
 | Setting | Description |
 |---------|-------------|
-| **Satellite Observation Strategy** | How the telescope tracks during capture. **Auto** lets CitraScope decide per-task based on the satellite's apparent motion. **Tracking** matches the mount's motion to the satellite for point-source images. **Static** holds the mount still for streak images. |
-| **Exposure Duration (seconds)** | How long each frame is exposed (0.01–300 seconds). Shorter exposures (1–3s) work well for static/streak mode. Longer exposures (10–20s) work better for tracking mode. |
+| **Satellite Observation Strategy** | How the telescope tracks during capture. **Auto** lets CitraScope decide per-task based on the satellite's apparent motion. **Tracking** matches the mount's motion to the satellite for point-source images. **Sidereal** holds the mount on the sky background, producing a satellite streak. |
+| **Exposure Duration (seconds)** | How long each frame is exposed (0.01–300 seconds). Shorter exposures (1–3s) work well for sidereal/streak mode. Longer exposures (10–20s) work better for tracking mode. |
 | **Exposures Per Task** | Number of frames captured per observation task (1–50). Multiple frames improve satellite detection reliability. |
+| **Adaptive Exposure** | When enabled, CitraScope computes the exposure time automatically based on the satellite's angular rate and your telescope's plate scale, instead of using the fixed Exposure Duration above. The goal is to keep the satellite trail within the pixel limit you configure. Only applies to sidereal (streak) mode. |
+
+When Adaptive Exposure is enabled, three additional settings appear:
+
+| Setting | Description |
+|---------|-------------|
+| **Max Trail (pixels)** | The maximum satellite trail length in pixels. CitraScope shortens the exposure to stay within this limit for fast-moving targets. |
+| **Min Exposure (s)** | The shortest exposure the adaptive algorithm will use, even for very fast satellites. |
+| **Max Exposure (s)** | The longest exposure the adaptive algorithm will use, even for very slow targets. |
 
 ---
 
@@ -195,6 +204,19 @@ Each processor in the pipeline can be individually enabled or disabled:
 | **Annotated Image** | Renders an overlay JPEG with satellite annotations for visual review. |
 
 Each processor shows a success/failure progress bar when statistics are available, along with the last failure reason if one occurred.
+
+### Source Extraction
+
+These settings control how SExtractor detects stars and satellites in each image. Lower thresholds find fainter objects but increase false positives from noise and hot pixels.
+
+| Setting | Description |
+|---------|-------------|
+| **Detection threshold (σ)** | How many sigma above the background an object must be to be detected (1–20). Lower values find fainter streaks; higher values reduce noise detections. |
+| **Min pixel area** | Minimum number of connected pixels required to count as a real detection (1–50). Increase this to suppress hot-pixel triggers. |
+| **Convolution kernel** | The filter applied before detection. Smaller Gaussian kernels (3×3) suit sharp, undersampled PSFs. Larger kernels (5×5, 9×9) help with well-sampled or defocused stars. Top-hat kernels suppress single hot-pixel noise while preserving point sources. |
+
+{: .note }
+> The [Auto-Tune](Analysis.html#auto-tune-beta) tool in the Analysis tab can sweep parameter combinations automatically and suggest the best settings for your telescope.
 
 ### Plate Solving
 
@@ -298,13 +320,26 @@ The Advanced tab holds logging, storage, and development settings.
 |---------|-------------|
 | **Keep captured images** | Retain raw FITS files after upload. By default, images are deleted after successful upload to save disk space. Enable this for post-processing or archival. |
 
-The current images directory path is shown as read-only text.
-
 ### Development
 
 | Setting | Description |
 |---------|-------------|
 | **Use Dummy API (Local Testing)** | Replace the live Citra API connection with a local mock server. Useful for testing CitraScope without an internet connection or API account. When enabled, the [API tab](#api) shows a warning and its settings are ignored. |
+
+### Paths & Files
+
+A read-only table at the bottom of the Advanced tab shows the file system paths CitraScope is using for this session. Each path has a clipboard button to copy it.
+
+| Path | What it points to |
+|------|--------------------|
+| **Config file** | The `config.json` file where all settings are persisted |
+| **Log file** | The current day's log file (shown only when file logging is enabled). A download button lets you save the log directly from the browser. |
+| **Images directory** | Where captured FITS files are stored |
+| **Processing directory** | Where intermediate pipeline files are written |
+| **Astrometry indexes** | The directory containing astrometry.net index files (shown only when configured) |
+
+{: .note }
+> These paths are read-only and are shown for reference and troubleshooting. To change the log or data directories, use the Logging and Image Storage settings above.
 
 ---
 
