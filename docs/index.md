@@ -13,6 +13,7 @@ Welcome to Citra Space! Here you'll find everything you need to get started with
 
 - [Citra Space App](https://app.citra.space) — Sign in or create an account
 - [API Documentation](https://api.citra.space/docs) — Interactive API reference
+- [CitraScope](citrascope/) — Open source telescope automation daemon
 - [Discord Community](https://discord.gg/STgJQkWe9y) — Support and discussion
 - [GitHub Projects](https://github.com/citra-space) — Open source repositories
 
@@ -49,7 +50,9 @@ Follow the [API Quickstart Guide](guides-and-tutorials/api-quickstart-guide) to 
 
 ### Automate with CitraScope
 
-[CitraScope](citrascope/) is open source software that automates telescope observations by connecting your hardware to the Citra Space platform. It supports [N.I.N.A.](citrascope/NINA), [KStars](citrascope/KStars), and [INDI](citrascope/INDI) adapters.
+[CitraScope](citrascope/) is open source software that automates telescope observations by connecting your hardware to the Citra Space platform. Once installed, you'll spend most of your time in the [web dashboard](citrascope/Dashboard): [Monitoring](citrascope/Monitoring) for live status, [Analysis](citrascope/Analysis) for post-session review, and [Configuration](citrascope/Configuration) for setup.
+
+Hardware options: [Direct Hardware](citrascope/DirectHardware) (recommended), [N.I.N.A.](citrascope/NINA), [KStars](citrascope/KStars), or [INDI](citrascope/INDI). A pre-built [Raspberry Pi image](citrascope/RaspberryPi) is also available for headless field deployments.
 
 ## More Resources
 
