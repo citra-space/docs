@@ -196,6 +196,8 @@ Once the first task finishes, switch to the **Analysis** tab. Your completed tas
 
 Click the row to expand the detail panel:
 
+![Expanded Analysis task detail panel: annotated image on the left (highlighted in red) with overlaid stars and the matched satellite, dense diagnostics on the right including convergence, pointing, imaging, plate solve, photometry, satellite matching, window bar, and per-processor timing](img/operating-analysis-detail-highlight.png)
+
 - **Annotated image** on the left — click to open fullscreen. Stars and satellites are overlaid; the target is highlighted.
 - **Reprocess panel** lets you re-run the pipeline against the same frame with different SExtractor settings (detection threshold, minimum area, convolution kernel). Great for tuning.
 - **Window bar** on the right — shows how the observation window was spent (delay → slew → imaging → margin).
@@ -211,6 +213,8 @@ At this point you have two choices.
 **Stay hands-on.** Press **Request Batch** again when your queue runs low, re-run autofocus when HFR drifts off baseline, and cancel any task that looks troubled (weather, elevation, whatever). You're doing the scheduling, CitraScope is doing the imaging and processing.
 
 **Hand off.** When you're confident things are running cleanly, flip **Robotic** (handles unpark at dusk, park at dawn, scheduled autofocus) and optionally **Self-Tasking** (auto-requests new task batches when the queue runs low). Both are documented in the [Monitoring reference](Monitoring#robotic-session). That's the "walk-away" mode — worth a separate session to set up properly.
+
+![Status bar switches row with the Robotic and Self-Tasking toggles highlighted in red](img/operating-robotic-switches-highlight.png)
 
 For tonight, staying hands-on is the right call. You'll learn what every number on the dashboard means, and you'll recognize the weird cases when they come up.
 

@@ -140,28 +140,50 @@ After a successful reprocess, two more options appear:
 
 Below the bar, start delay and remaining time are shown as text. If the task overran its window, an ⚠ overran warning appears.
 
+![Task window bar with delay, slew, imaging, and margin segments, plus start delay and remaining time](img/analysis-task-window-highlight.png)
+
 **Lateness attribution** — When a task started late, a box explains where the delay came from:
 - *Late by Xs · inherited Ys from [previous task] · self-added Zs*
 - If this task was the **slip origin** (i.e., it added the most delay), the box is highlighted in yellow and lists specific causes: slew overrun (estimated vs. actual slew time) and extra convergence iterations.
 - The previous task name is a link — click it to jump to that task's detail panel.
 
+![Lateness attribution box showing inherited and self-added delay with a link to the previous task](img/analysis-lateness-highlight.png)
+
 **Convergence** — Whether the telescope converged, how many pointing iterations it took, total slew time, observed slew rate, and the convergence threshold used.
+
+![Convergence row showing converged status, iteration count, slew time, and threshold](img/analysis-convergence-highlight.png)
 
 **Pointing** — Target RA/Dec requested, solved RA/Dec from the plate solve, and final pointing error.
 
+![Pointing block showing target RA/Dec, solved RA/Dec, and pointing error in degrees](img/analysis-pointing-highlight.png)
+
 **Imaging** — Exposure duration, frame count, and an **Adaptive** badge if adaptive exposure was active for this task.
+
+![Imaging row showing exposure duration in seconds and frame count](img/analysis-imaging-highlight.png)
 
 **Plate solve** — Solved/not, source count, pixel scale, field dimensions, a **Calibrated** badge if calibration frames were applied, HFR (half-flux radius), and solve quality metrics: log-odds score, match/conflict counts, field rotation, and parity.
 
+![Plate solve row with source count, pixel scale, field size, HFR, and solve quality metrics](img/analysis-plate-solve-highlight.png)
+
 **Photometry** — Zero-point value, calibration star count, and the filter used.
+
+![Photometry row showing zero point, calibration star count, and filter badge](img/analysis-photometry-highlight.png)
 
 **Satellite matching** — Target name with ✓/✗ and its magnitude, total satellites detected in the frame, incidental match count, and a table of every satellite predicted to be in the field at the time of observation. The table shows name, NORAD ID, matched/predicted status, magnitude, RA, Dec, and phase angle.
 
+![Satellite matching section with target status, detection counts, and a table of predicted satellites](img/analysis-satellite-matching-highlight.png)
+
 **Upload** — Upload type (photometric observation, image-only, or skipped), success/failure status, and skip reason when applicable.
+
+![Upload row showing upload type and success status](img/analysis-upload-highlight.png)
 
 **Task phases bar** — A stacked bar showing the full task duration broken into Slew / Imaging / Queue wait / Processing, with a labeled legend.
 
+![Task phases stacked bar with slew, imaging, queue, and processing segments and legend](img/analysis-task-phases-highlight.png)
+
 **Processing breakdown bar** — A second stacked bar zooming into the processing stage: Calibration / Plate solve / Source extraction / Photometry / Satellite matching / Annotated image.
+
+![Processing breakdown stacked bar with per-stage segments and timings](img/analysis-processing-breakdown-highlight.png)
 
 ---
 
