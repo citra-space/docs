@@ -5,6 +5,7 @@ parent: Guides and Tutorials
 ---
 
 # API Quickstart Guide
+{: .no_toc }
 
 Welcome to the Citra Space API Quickstart Guide! This guide will help you get started with using the Citra Space API to interact with our platform programmatically. Whether you're an enthusiast wanting to automate satellite observation tasks or a developer looking to integrate Citra Space into your enterprise applications, this guide will provide you with the essential steps to get up and running.
 

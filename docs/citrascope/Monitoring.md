@@ -13,15 +13,6 @@ The Monitoring tab is the default view when you open the CitraScope dashboard. I
 
 This page walks through every section of the Monitoring tab from top to bottom.
 
-<details open markdown="block">
-  <summary>
-    Table of contents
-  </summary>
-  {: .text-delta }
-- TOC
-{:toc}
-</details>
-
 ---
 
 ## Status Bar

@@ -6,6 +6,7 @@ grand_parent: CitraScope
 ---
 
 # INDI
+{: .no_toc }
 
 ## What is INDI
 

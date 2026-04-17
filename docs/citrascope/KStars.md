@@ -6,6 +6,7 @@ grand_parent: CitraScope
 ---
 
 # KStars
+{: .no_toc }
 
 ## What is KStars
 

@@ -6,6 +6,7 @@ grand_parent: CitraScope
 ---
 
 # Direct Hardware
+{: .no_toc }
 
 ## What is Direct Hardware
 

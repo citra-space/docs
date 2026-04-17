@@ -4,6 +4,7 @@ nav_order: 7
 ---
 
 # Contribute
+{: .no_toc }
 
 Citra Space is built on open source software and we welcome contributions of all kinds — code, documentation, bug reports, and feature requests.
 

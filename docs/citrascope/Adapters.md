@@ -6,6 +6,7 @@ has_children: true
 ---
 
 # Hardware Adapters
+{: .no_toc }
 
 CitraScope uses hardware adapters to communicate with your telescope equipment. You choose an adapter based on your hardware and platform.
 

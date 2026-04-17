@@ -5,6 +5,7 @@ parent: Guides and Tutorials
 ---
 
 # Add and Manage Telescopes
+{: .no_toc }
 
 Welcome to Citra Space! This guide will walk you through the process of adding and managing telescopes for tasking within the Citra platform. Whether you're a new user or looking to expand your existing setup, this tutorial will provide step-by-step instructions to help you get started.
 

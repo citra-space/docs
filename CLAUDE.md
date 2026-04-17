@@ -21,7 +21,7 @@ Site runs at `http://127.0.0.1:4000`. Auto-regenerates on file changes.
 ```
 docs/                          # Jekyll source root
 ├── _config.yml                # Site config, theme, color scheme, version
-├── _includes/head_custom.html # Injected into <head> — scrollspy JS lives here
+├── _includes/head_custom.html # Injected into <head> — auto-TOC + scrollspy JS
 ├── _sass/custom/custom.scss   # Theme overrides — sticky TOC, wider sidebar
 ├── citrascope/                # CitraScope product docs
 │   ├── _OUTLINE.md            # Planning doc (not published, _ prefix)
@@ -52,7 +52,7 @@ scripts/
 
 ### Long pages with TOC
 
-For comprehensive pages (like Monitoring, Configuration), use a single long page with an auto-generated TOC:
+**You don't need to add a TOC block — any page with 3+ H2/H3 headings gets one automatically** via the auto-TOC script in `head_custom.html`. Just write the page:
 
 ```markdown
 # Page Title
@@ -60,21 +60,14 @@ For comprehensive pages (like Monitoring, Configuration), use a single long page
 
 Intro text.
 
-<details open markdown="block">
-  <summary>
-    Table of contents
-  </summary>
-  {: .text-delta }
-- TOC
-{:toc}
-</details>
-
----
-
 ## First Section
+
+...
 ```
 
-On wide screens (80rem+), the TOC floats as a sticky sidebar on the right via CSS Grid (`custom.scss`). The scrollspy in `head_custom.html` highlights the active heading. On smaller screens, the TOC stays inline as a collapsible `<details>` block. The `scrollIntoView` call is gated behind a media query to avoid hijacking scroll on small viewports.
+On wide screens (80rem+), the generated TOC floats as a sticky sidebar on the right via CSS Grid (`custom.scss`). The scrollspy (same file) highlights the active heading. On smaller screens, the TOC stays inline as a collapsible `<details>` block.
+
+**Opt out:** to suppress the auto-TOC on a specific page, add class `no-auto-toc` to `<main>`, or include a manual `#markdown-toc` element (the auto-TOC skips if one is already present). Individual headings can be excluded with kramdown's `{: .no_toc }` attribute.
 
 ## Screenshots
 
@@ -128,9 +121,13 @@ At 80rem+ viewport, pages with a `#markdown-toc` element get a CSS Grid layout: 
 
 The CSS uses `:has()` selectors scoped to pages that actually contain a TOC, so pages without one are unaffected.
 
+### Auto-TOC (`head_custom.html`)
+
+Vanilla JS that runs on `DOMContentLoaded`. If a page has no manual `#markdown-toc` and ≥3 H2/H3 headings, it builds a `<details><summary>Page contents</summary><ul id="markdown-toc">…</ul></details>` block that mirrors kramdown's `{:toc}` output, then inserts it right after the page's H1. Because the DOM shape matches the manual pattern exactly, the sticky-TOC CSS and the scrollspy below light up with no further wiring. Respects `{: .no_toc }` on individual headings and a `.no-auto-toc` class on `<main>` as an opt-out.
+
 ### Scrollspy (`head_custom.html`)
 
-Vanilla JS using scroll events + `requestAnimationFrame`. Walks all `#markdown-toc` links, finds the furthest heading above `scrollY + 120px`, and adds `.toc-active` to the matching TOC link. `scrollIntoView({ block: 'nearest' })` keeps the active link visible in the sidebar — but only on wide screens (`min-width: 80rem` media query) to avoid scroll-fighting on mobile where the TOC is inline.
+Vanilla JS using scroll events + `requestAnimationFrame`. Walks all `#markdown-toc` links (whether auto-generated or manual), finds the furthest heading above `scrollY + 120px`, and adds `.toc-active` to the matching TOC link. `scrollIntoView({ block: 'nearest' })` keeps the active link visible in the sidebar — but only on wide screens (`min-width: 80rem` media query) to avoid scroll-fighting on mobile where the TOC is inline. Listener registration order matters: the auto-TOC script runs first so that by the time the scrollspy's `DOMContentLoaded` callback fires, `#markdown-toc` exists.
 
 ### Wider sidebar
 

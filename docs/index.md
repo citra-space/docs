@@ -6,6 +6,7 @@ nav_order: 1
 <img src="img/citra-space-corporation.svg" alt="Citra Space Corporation Logo" width="300">
 
 # Citra Space Documentation
+{: .no_toc }
 
 Welcome to Citra Space! Here you'll find everything you need to get started with the platform — from using the app and API, to setting up hardware, automating observations, and more.
 

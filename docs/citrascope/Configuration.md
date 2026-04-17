@@ -11,15 +11,6 @@ The Configuration tab is where you connect CitraScope to the Citra Space platfor
 
 The page has a vertical side navigation on the left with nine sub-tabs. Your last-selected tab is remembered across sessions. Changes across all tabs are saved together with the **Save Configuration** button at the bottom.
 
-<details open markdown="block">
-  <summary>
-    Table of contents
-  </summary>
-  {: .text-delta }
-- TOC
-{:toc}
-</details>
-
 ---
 
 ## API

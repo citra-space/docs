@@ -4,6 +4,7 @@ nav_order: 5
 ---
 
 # KepLemon
+{: .no_toc }
 
 KepLemon is a Rust-accelerated astrodynamics Python library developed by Citra Space. It provides high-performance satellite propagation, orbit determination, and close approach detection capabilities, and is used internally by the Citra Space app to power its orbital analysis features.
 

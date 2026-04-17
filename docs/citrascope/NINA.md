@@ -6,6 +6,7 @@ grand_parent: CitraScope
 ---
 
 # N.I.N.A.
+{: .no_toc }
 
 ## What is NINA
 

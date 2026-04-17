@@ -5,6 +5,7 @@ has_children: true
 ---
 
 # CitraScope
+{: .no_toc }
 
 CitraScope automates satellite imaging for the [Citra Space](https://citra.space) network. It runs as a daemon on your telescope computer, polls for observation tasks, controls your hardware, processes captured images, and uploads results — all unattended.
 

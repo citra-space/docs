@@ -5,6 +5,7 @@ parent: CitraScope
 ---
 
 # Getting Started
+{: .no_toc }
 
 {: .note }
 Looking for the Raspberry Pi image? See the [Raspberry Pi](RaspberryPi.html) page — flash an SD card and power on, no manual install needed.
@@ -23,7 +24,7 @@ Then open your browser to:
 ### [http://localhost:24872](http://localhost:24872)
 {: .no_toc }
 
-The port number spells **CITRA** on a phone keypad. When the dashboard opens you'll see the Monitoring tab:
+When the dashboard opens you'll see the Monitoring tab:
 
 ![The CitraScope Monitoring dashboard in a browser, showing status bar, Telescope and Optics cards, scheduled tasks, and the collapsible log panel](img/monitoring-overview.png)
 

@@ -4,6 +4,7 @@ nav_order: 6
 ---
 
 # Legal Information
+{: .no_toc }
 
 This page provides links to Citra Space's legal policies and terms of service.
 

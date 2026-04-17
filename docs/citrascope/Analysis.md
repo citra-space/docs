@@ -11,15 +11,6 @@ The Analysis tab is a post-session performance dashboard. It reads the task hist
 
 ![Pipeline Analysis tab showing summary cards, timing bar, filters, and task list](img/analysis.png)
 
-<details open markdown="block">
-  <summary>
-    Table of contents
-  </summary>
-  {: .text-delta }
-- TOC
-{:toc}
-</details>
-
 ---
 
 ## Summary Cards

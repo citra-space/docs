@@ -6,6 +6,99 @@
   }
 </style>
 
+<!-- Auto-TOC: generate a page-level table of contents for any page with 3+
+     H2/H3 headings. Produces the same DOM shape as kramdown's `{:toc}`
+     directive (details > #markdown-toc > ul) so the existing custom CSS
+     and scroll-spy script pick it up with no further changes.
+
+     Skip conditions:
+       * An element with id `markdown-toc` already exists (page keeps its
+         manual TOC block — safe during migration)
+       * The <main> has class `no-auto-toc` (explicit opt-out)
+       * Fewer than 3 eligible H2/H3 headings (short pages stay clean)
+
+     Respects kramdown's `{: .no_toc }` directive: headings with class
+     `no_toc` are excluded from the generated list.
+
+     Must register its DOMContentLoaded listener BEFORE the scroll-spy
+     script below so the TOC exists when scroll-spy wakes up. -->
+<script>
+/* NOTE: Jekyll collapses this include onto a single line when rendering,
+   so line comments (two slashes) would eat the rest of the script and
+   break parsing. Only block comments like this one are safe here. */
+(function () {
+  document.addEventListener('DOMContentLoaded', function () {
+    if (document.getElementById('markdown-toc')) return;
+
+    var main = document.querySelector('.main-content main');
+    if (!main || main.classList.contains('no-auto-toc')) return;
+
+    var headings = [].slice.call(main.querySelectorAll('h1[id], h2[id], h3[id]'))
+      .filter(function (h) { return !h.classList.contains('no_toc'); });
+    if (headings.length < 3) return;
+
+    /* Strip theme-injected anchor links so the TOC text stays clean. */
+    function cleanText(h) {
+      var clone = h.cloneNode(true);
+      clone.querySelectorAll('.anchor-heading').forEach(function (a) {
+        a.remove();
+      });
+      return clone.textContent.trim();
+    }
+
+    var details = document.createElement('details');
+    details.setAttribute('open', '');
+    var summary = document.createElement('summary');
+    summary.className = 'text-delta';
+    summary.textContent = 'Page contents';
+    details.appendChild(summary);
+
+    var rootUl = document.createElement('ul');
+    rootUl.id = 'markdown-toc';
+
+    /* Stack-based walker that nests each heading under the nearest
+       preceding heading of a shallower level. H2s land inside their
+       enclosing H1, H3s inside their enclosing H2 (or H1 if no H2
+       separates them). Matches kramdown's nested-list output. */
+    var stack = [{ level: 0, ul: rootUl, li: null }];
+    headings.forEach(function (h) {
+      var level = parseInt(h.tagName.substring(1), 10);
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.setAttribute('href', '#' + h.id);
+      a.textContent = cleanText(h);
+      li.appendChild(a);
+
+      /* Pop frames until the top of the stack is a strict ancestor. */
+      while (stack.length > 1 && stack[stack.length - 1].level >= level) {
+        stack.pop();
+      }
+      var parent = stack[stack.length - 1];
+      /* Lazily create the nested <ul> on the parent <li> when the first
+         descendant arrives. The root frame is pre-seeded with rootUl. */
+      if (!parent.ul) {
+        parent.ul = document.createElement('ul');
+        parent.li.appendChild(parent.ul);
+      }
+      parent.ul.appendChild(li);
+
+      stack.push({ level: level, ul: null, li: li });
+    });
+
+    details.appendChild(rootUl);
+
+    /* Insert right after the H1 so narrow-screen layout matches the old
+       manual pattern. On wide screens the CSS Grid repositions this. */
+    var h1 = main.querySelector('h1');
+    if (h1 && h1.nextSibling) {
+      main.insertBefore(details, h1.nextSibling);
+    } else {
+      main.insertBefore(details, main.firstChild);
+    }
+  });
+})();
+</script>
+
 <!-- Scrollspy: highlight the current TOC item while scrolling -->
 <script defer>
 (function () {

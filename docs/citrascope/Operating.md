@@ -13,15 +13,6 @@ Unattended operation (the robotic, walk-away mode) is covered separately. This g
 
 For reference material on any section, see [Monitoring](Monitoring), [Configuration](Configuration), and [Analysis](Analysis).
 
-<details open markdown="block">
-  <summary>
-    Table of contents
-  </summary>
-  {: .text-delta }
-- TOC
-{:toc}
-</details>
-
 ---
 
 ## Before you start
