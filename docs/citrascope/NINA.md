@@ -41,7 +41,7 @@ Before integrating NINA with CitraScope, ensure you have:
 
 ### Install CitraScope
 
-If you haven't already installed CitraScope, follow the [Installation Guide](Installation.html).
+If you haven't already installed CitraScope, follow the [Getting Started](GettingStarted.html) guide.
 
 ## Configuration
 

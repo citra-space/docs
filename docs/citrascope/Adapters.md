@@ -1,6 +1,6 @@
 ---
 title: Hardware Adapters
-nav_order: 7
+nav_order: 2
 parent: CitraScope
 has_children: true
 ---

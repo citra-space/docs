@@ -53,7 +53,7 @@ sudo apt-get install kstars-bleeding indi-full
 
 ### Install CitraScope
 
-Follow the [Installation Guide](Installation.html) if you haven't already installed CitraScope.
+Follow the [Getting Started](GettingStarted.html) guide if you haven't already installed CitraScope.
 
 ## Configuration
 

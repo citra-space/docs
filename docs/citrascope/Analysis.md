@@ -1,8 +1,7 @@
 ---
 title: Analysis
-nav_order: 2
-parent: Web Dashboard
-grand_parent: CitraScope
+nav_order: 5
+parent: CitraScope
 ---
 
 # Analysis

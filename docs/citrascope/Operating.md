@@ -1,6 +1,6 @@
 ---
 title: Operating CitraScope
-nav_order: 9
+nav_order: 6
 parent: CitraScope
 ---
 
@@ -28,7 +28,7 @@ For reference material on any section, see [Monitoring](Monitoring), [Configurat
 
 Make sure the following are already in place:
 
-- **CitraScope is installed and running** at [http://localhost:24872](http://localhost:24872) (or `http://citrascope.local` on a Pi). See [Installation](Installation) if not.
+- **CitraScope is installed and running** at [http://localhost:24872](http://localhost:24872) (or `http://citrascope-{name}.local` on a Pi). See [Getting Started](GettingStarted.html) if not.
 - **Your telescope is registered** in the [Citra Space app](https://app.citra.space). See [Add and Manage Telescopes](../guides-and-tutorials/add-and-manage-telescopes) to walk through it.
 - **The API is connected**. On **Configuration → API**, your endpoint, token, and telescope ID are set. The **TLEs** badge in the status bar is green (25,000+ elsets loaded).
 - **Hardware is connected**. On **Configuration → Hardware**, you've picked an adapter ([Direct Hardware](DirectHardware), [N.I.N.A.](NINA), [KStars](KStars), or [INDI](INDI) — the [Adapters](Adapters) page has a comparison table). The **Telescope**, **Camera**, and **Focuser** badges in the status bar are green, and your filter wheel shows the right filters on the Optics card.
@@ -229,7 +229,7 @@ For tonight, staying hands-on is the right call. You'll learn what every number 
 
 ## Learn more
 
-- [Installation](Installation) — get CitraScope running
+- [Getting Started](GettingStarted.html) — install and launch CitraScope
 - [Raspberry Pi image](RaspberryPi) — headless field deployment
 - [Configuration reference](Configuration) — every setting explained
 - [Monitoring reference](Monitoring) — the live dashboard in detail

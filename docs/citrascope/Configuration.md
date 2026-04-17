@@ -1,8 +1,7 @@
 ---
 title: Configuration
-nav_order: 3
-parent: Web Dashboard
-grand_parent: CitraScope
+nav_order: 4
+parent: CitraScope
 ---
 
 # Configuration

@@ -21,7 +21,7 @@ Here you'll find a collection of guides and tutorials designed to help you get t
 Once your telescope is registered, [CitraScope](../citrascope/) runs unattended observation sessions against it — polling tasks, slewing, imaging, processing, and uploading results.
 
 - [Operating CitraScope](../citrascope/Operating) — Walk through a full observing session: prep, align, focus, run a task, review
-- [Installation guide](../citrascope/Installation) — Get CitraScope running on your telescope computer
+- [Getting Started](../citrascope/GettingStarted) — Get CitraScope running on your telescope computer
 - [Raspberry Pi image](../citrascope/RaspberryPi) — Plug-and-play headless field deployment
 
 ---

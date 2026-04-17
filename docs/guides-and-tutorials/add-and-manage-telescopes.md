@@ -116,7 +116,7 @@ Visit the telescope's ground station page for weather and visibility forecasts. 
 
 ### Automate observations with CitraScope
 
-Once your telescope is registered, you can hand over tasking, imaging, and upload to [CitraScope](../citrascope/) — an open source daemon that runs on the telescope computer and handles full dusk-to-dawn sessions unattended. See the [Installation guide](../citrascope/Installation) or flash the [Raspberry Pi image](../citrascope/RaspberryPi) for a pre-built headless setup.
+Once your telescope is registered, you can hand over tasking, imaging, and upload to [CitraScope](../citrascope/) — an open source daemon that runs on the telescope computer and handles full dusk-to-dawn sessions unattended. See [Getting Started](../citrascope/GettingStarted) or flash the [Raspberry Pi image](../citrascope/RaspberryPi) for a pre-built headless setup.
 
 ## Support
 

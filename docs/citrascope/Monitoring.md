@@ -1,8 +1,7 @@
 ---
 title: Monitoring
-nav_order: 1
-parent: Web Dashboard
-grand_parent: CitraScope
+nav_order: 3
+parent: CitraScope
 ---
 
 # Monitoring

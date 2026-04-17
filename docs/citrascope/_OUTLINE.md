@@ -10,10 +10,9 @@
 ## Published pages
 
 - [x] `index.md` — Landing page (overview, features, tasking flow, adapters, contributing, security)
-- [x] `Installation.md` — Python install, uv, pip, extras
+- [x] `GettingStarted.md` — Quick start, Python install, uv, pip, extras, next steps
 - [x] `RaspberryPi.md` — Standalone Pi image page (flash, first boot, WiFi, GPS, troubleshooting)
-- [x] `Dashboard.md` — Web Dashboard parent page
-- [x] `Monitoring.md` — Monitoring tab walkthrough (status bar, telescope, optics, tasks, log panel, safety alerts, operational controls)
+- [x] `Monitoring.md` — Monitoring tab walkthrough (status bar, telescope, optics, tasks, log panel, safety alerts, operational controls). Peer of Configuration/Analysis; the former `Dashboard.md` parent page was flattened away.
 - [x] `Configuration.md` — Configuration tab walkthrough (API, hardware, autofocus, calibration, observation, processing, time & location, robotic operations, advanced)
 - [x] `Analysis.md` — Analysis tab walkthrough (summary cards, processor timing, filters, task list, Auto-Tune, reprocessing)
 - [x] `Adapters.md` — Hardware Adapters parent page (overview, capability comparison table)
