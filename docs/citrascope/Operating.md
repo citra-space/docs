@@ -47,6 +47,23 @@ Before CitraScope can start pulling satellite passes, the scope has to be genuin
 >
 > The rest of Part 1 is a hands-on walkthrough for operators on the **[Direct Hardware](DirectHardware)** adapter, where CitraScope owns the full prep flow end to end.
 
+## Capture calibration frames (optional — timing matters)
+{: #calibration-frames }
+
+Calibration frames (bias, darks, flats) aren't captured during an observing run — they go in ahead of time, and CitraScope applies them automatically during processing. Imaging still works without them, but photometry degrades.
+
+Skip this step if your current masters are still valid. You don't capture calibration every night.
+
+**When to do this**: Flats need a bright twilight sky, so they have to happen **at dusk before the rest of Part 1** (or at dawn after your session). Bias and darks can be taken any time — a cloudy night, the dome closed, even during the day.
+
+Typical cadence:
+
+- **Bias**: once per camera setup, re-capture if you change gain or offset.
+- **Darks**: one set per exposure time at your cooling setpoint — re-capture when the setpoint changes, or every couple of months.
+- **Flats**: one set per filter — re-capture when dust shifts on the sensor, filter wheel, or optics.
+
+Capture masters through **Configuration → Calibration**. The tab also shows where masters are stored on disk and how they're matched at runtime.
+
 ## Reset the pointing model if the scope has moved
 
 If this is a fresh site, a new physical setup, or anything that changed the mount's relationship to the sky since last night, clear the old pointing model first. A stale model applied to the wrong geometry makes pointing *worse*, not better.
@@ -102,7 +119,7 @@ A full five-filter sweep takes about a minute. If you want to refocus a single f
 
 ## Build the pointing model (optional)
 
-One Align Now sync is enough to get started, but a full pointing model is better — it corrects systematic errors (polar misalignment, cone error, tube flex) across the whole sky, not just near the patch you aligned on. You have two ways to get there:
+One Align Now sync is enough to get started, but a full pointing model is better — it corrects systematic errors (leveling errors, cone error, tube flex) across the whole sky, not just near the patch you aligned on. You have two ways to get there:
 
 **Run Calibrate now.** On the Telescope card, press **Calibrate**. The routine slews to a sequence of points across the sky, takes a frame at each, plate-solves it, and compares the solved center to the commanded center. Residuals get fit into a model. A progress bar tracks the run. When it finishes, the Pointing Model badge flips to **Trained** and the **Model Fit RMS** and **Live Accuracy** readouts update with the new numbers. Expand **Model details** to see the per-term breakdown (leveling errors, cone angle, non-perpendicularity).
 
@@ -137,7 +154,7 @@ A table fills in:
 |--------|-----------------------|
 | **Target** | Satellite name |
 | **Filter** | Which filter the pass was assigned |
-| **Sky** | A mini polar compass showing where the target sits right now. Green = well above minimum elevation, yellow = close to the limit, red = below |
+| **Sky** | A mini sky compass showing where the target sits right now. Green = well above minimum elevation, yellow = close to the limit, red = below |
 | **Countdown** | Time until the observation window opens |
 | **Window** | Start–end time range |
 | **Actions** | Cancel (×) — removes the task from the server and your queue |
@@ -197,22 +214,10 @@ At this point you have two choices.
 
 For tonight, staying hands-on is the right call. You'll learn what every number on the dashboard means, and you'll recognize the weird cases when they come up.
 
-## About calibration frames
-
-Calibration (bias, darks, flats) is not captured during an observing run — it happens ahead of time. Typical cadence:
-
-- **Bias**: once per camera setup, re-do if you change gain/offset.
-- **Darks**: for each exposure time you use, at the same temperature setpoint — re-do when setpoint changes or every couple of months.
-- **Flats**: at dusk or dawn on the sky (or with a flat panel), for each filter — re-do when dust shifts on the sensor, filter wheel, or optics.
-
-Store masters in the calibration directory. Configuration → **Calibration** shows you exactly where they go and how they're matched at runtime. Missing masters don't block imaging — they just degrade photometry.
-
-On Direct Hardware and N.I.N.A. you can capture masters through CitraScope's Calibration tab. On KStars and INDI, capture with your adapter's native tools (Ekos Calibration module, etc.) and drop the files into the calibration directory. The runtime application of masters during processing works identically for every adapter.
-
 ## Things to check between sessions
 
-- **Dark, flat, bias masters** — refresh monthly or when conditions change.
-- **Pointing model** (Direct Hardware) — rebuild after a polar realign, mount teardown, or large temperature shift. Other adapters rely on the mount's own alignment scheme instead.
+- **Dark, flat, bias masters** — refresh monthly or when conditions change. On Direct Hardware, capture through Configuration → Calibration (see [Capture calibration frames](#calibration-frames) in Part 1 — flats need dusk or dawn). On N.I.N.A., KStars, and INDI, use your adapter's native calibration tools — CitraScope applies whatever masters it finds at processing time.
+- **Pointing model** (Direct Hardware) — rebuild after re-leveling the mount, a teardown, or a large temperature shift. Other adapters rely on the mount's own alignment scheme instead.
 - **Disk space** — raw FITS and processing artifacts add up fast. **Keep Images** and **Keep Processing Output** settings control retention (Configuration → Processing and Advanced).
 - **Log files** — CitraScope rotates daily logs at `~/Library/Logs/citrascope/` (macOS). Paths and copy buttons are on Configuration → **Advanced** → **Paths & Files**.
 

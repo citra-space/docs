@@ -30,7 +30,9 @@ docs/                          # Jekyll source root
 ├── guides-and-tutorials/      # How-to guides
 └── index.md                   # Landing page
 scripts/
-└── screenshots/capture.py     # Playwright screenshot tool
+└── screenshots/
+    ├── capture.py                         # CLI: single-shot Playwright screenshots (+ annotated highlights)
+    └── capture_operating_highlights.py    # Template: multi-shot annotated-highlight series
 ```
 
 ## Writing conventions
@@ -76,13 +78,13 @@ On wide screens (80rem+), the TOC floats as a sticky sidebar on the right via CS
 
 ## Screenshots
 
-Use the Playwright capture tool. See the `screenshots` skill (`.cursor/skills/screenshots/SKILL.md`) for full usage.
+Use the Playwright capture tool. See the `screenshots` skill (`.cursor/skills/screenshots/SKILL.md`) for full usage — prerequisites, dummy-mode setup, selector catalog, and all recipes including annotated highlights.
 
-Key points:
+### Single shot (CLI)
 
 ```bash
 cd /path/to/docs
-PYENV_VERSION=3.12.0 python3 scripts/screenshots/capture.py \
+.venv/bin/python3 scripts/screenshots/capture.py \
   --url "http://localhost:24872/#config" \
   --selector "#configSection" \
   --output "docs/citrascope/img/config-hardware.png" \
@@ -91,9 +93,32 @@ PYENV_VERSION=3.12.0 python3 scripts/screenshots/capture.py \
   --viewport 1280x900
 ```
 
+### Annotated highlight (red outline on a specific control)
+
+Add `--highlight SELECTOR` for paragraph-scoped "press *this* button" shots.
+`--pad` auto-defaults to 24px when `--highlight` is used so the outline and
+shadow stay in frame.
+
+```bash
+.venv/bin/python3 scripts/screenshots/capture.py \
+  --url "http://localhost:24872/#monitoring" \
+  --selector ".card:has(.card-header:has-text('Telescope'))" \
+  --highlight "button:has-text('Align Now')" \
+  --output "docs/citrascope/img/operating-align-now-highlight.png" \
+  --wait-for "#globalStatusBar" \
+  --hide "#logAccordion"
+```
+
+For *multiple* highlighted shots from the same page state (e.g., a walkthrough
+guide with one highlight per step), copy and adapt
+`scripts/screenshots/capture_operating_highlights.py` — the canonical series
+template. Run series scripts with `.venv/bin/python3`.
+
+### Key points
+
 - Always `--hide` sticky/fixed overlays on tall screenshots (log panel, save bar, toasts)
-- Store images in `docs/citrascope/img/`, named `{page}-{section}.png`
-- CitraScope runs at `http://localhost:24872`, Playwright needs `PYENV_VERSION=3.12.0`
+- Store images in `docs/citrascope/img/`, named `{page}-{section}.png`; annotated highlights end in `-highlight.png`
+- CitraScope runs at `http://localhost:24872`; Playwright runs out of the local venv (`.venv/bin/python3`). One-time setup is in the skill doc's Prerequisites section.
 
 ## Custom theme additions
 

@@ -9,6 +9,12 @@
   }
 }
 
+// Soften image corners in content. Matches the rounded Bootstrap cards inside
+// the CitraScope UI screenshots and gives photos a more polished feel.
+.main-content img {
+  border-radius: 6px;
+}
+
 // Right-side sticky TOC on wide screens.
 // Uses CSS Grid to place the TOC in its own column outside the content area,
 // so it never overlaps body text. Only activates on pages that have a TOC

@@ -17,19 +17,7 @@ Python **3.10, 3.11, or 3.12**.
 
 [uv](https://docs.astral.sh/uv/) handles Python versions, virtual environments, and dependencies in a single tool.
 
-**macOS / Linux:**
-
-```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
-```
-
-**Windows (PowerShell):**
-
-```powershell
-powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
-```
-
-Then install CitraScope:
+Install CitraScope:
 
 ```bash
 uv tool install citrascope

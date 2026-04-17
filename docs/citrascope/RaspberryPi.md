@@ -8,6 +8,8 @@ parent: CitraScope
 
 [citrascope-pi](https://github.com/citra-space/citrascope-pi) is a turnkey SD card image that transforms a Raspberry Pi into a dedicated telescope node. Flash it, power on, connect to WiFi from your phone, and the dashboard is live — no SSH, no terminal, no manual setup.
 
+![A Raspberry Pi running citrascope-pi mounted alongside an Askar refractor on a ZWO AM5 mount, outdoors in daylight](img/pi-scope.jpg)
+
 ## What's on the image
 
 | Component | Details |
