@@ -36,7 +36,7 @@ uv tool install citrascope
 citrascope
 ```
 
-The dashboard opens at [http://localhost:24872](http://localhost:24872). From there, connect to the Citra Space API and select your hardware adapter. See [Installation](Installation.html) for details.
+The dashboard opens at [http://localhost:24872](http://localhost:24872). From there, connect to the Citra Space API and select your hardware adapter. See [Installation](Installation.html) for details, or read [Operating CitraScope](Operating.html) for a walkthrough of a full session.
 
 ## Open Source
 

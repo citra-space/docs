@@ -82,7 +82,7 @@ python scripts/screenshots/capture.py \
   --wait-for "#globalStatusBar"
 ```
 
-See `.cursor/skills/citrascope-screenshots/SKILL.md` for the full selector catalog, navigation patterns, and example invocations for CitraScope.
+See `.cursor/skills/screenshots/SKILL.md` for the full selector catalog, navigation patterns, annotated-highlight recipes, and example invocations for CitraScope.
 
 ## Links
 
