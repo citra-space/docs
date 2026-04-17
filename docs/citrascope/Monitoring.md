@@ -92,7 +92,7 @@ When Self-Tasking is also enabled, the right side of the card shows:
 
 - When the last batch of tasks was requested and how many were created
 - When the next batch request is scheduled
-- A summary of the targeting criteria: collection type (Track/Static), orbit regimes (LEO, MEO, GEO, etc.), and object types (Payload, Rocket Body, Debris)
+- A summary of the targeting criteria: collection type (Track/Characterization), orbit regimes (LEO, MEO, GEO, etc.), and object types (Payload, Rocket Body, Debris)
 
 These targeting criteria are configured in the Configuration tab under Robotic Operations.
 
@@ -217,6 +217,8 @@ When your adapter supports autofocus, the Autofocus section shows:
 - **V-curve chart** — A plot of HFR (Half-Flux Radius) vs. focuser position for each filter, showing the characteristic V-shape that autofocus uses to find best focus.
 - **Next in** — Countdown to the next scheduled autofocus run (if autofocus scheduling is enabled in settings).
 - **Target** — Which target the autofocus routine will slew to (configured in settings as a preset star or custom coordinates).
+
+When an autofocus run completes or fails, a toast notification appears briefly with the result (succeeded with best position, or failed with the reason).
 
 
 ### Focus HFR Health
