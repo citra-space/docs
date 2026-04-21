@@ -5,7 +5,7 @@ Usage:
     python scripts/screenshots/capture.py \
         --url "http://localhost:24872/#monitoring" \
         --selector "#globalStatusBar" \
-        --output "docs/citrascope/img/status-bar.png" \
+        --output "docs/citrasense/img/status-bar.png" \
         --wait-for "#globalStatusBar" \
         --click "a:has-text('Hardware')" \
         --hide "#logAccordion" \
@@ -20,7 +20,7 @@ Annotated highlights:
         --url "http://localhost:24872/#monitoring" \
         --selector ".card:has(.card-header:has-text('Telescope'))" \
         --highlight "button:has-text('Align Now')" \
-        --output "docs/citrascope/img/operating-align-now.png"
+        --output "docs/citrasense/img/operating-align-now.png"
 """
 
 from __future__ import annotations

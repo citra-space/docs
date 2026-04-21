@@ -1,7 +1,7 @@
 ---
 title: Raspberry Pi
 nav_order: 7
-parent: CitraScope
+parent: CitraSense
 ---
 
 # Raspberry Pi
@@ -16,8 +16,8 @@ parent: CitraScope
 | Component | Details |
 |-----------|---------|
 | **OS** | Raspberry Pi OS Lite ARM64 (Debian Trixie) |
-| **CitraScope** | Auto-starts on boot, dashboard on port 80 |
-| **INDI** | Pre-installed drivers — CitraScope starts them as needed |
+| **CitraSense** | Auto-starts on boot, dashboard on port 80 |
+| **INDI** | Pre-installed drivers — CitraSense starts them as needed |
 | **GPS timing** | Automatic detection; UART + PPS for Stratum 1 accuracy, USB GPS for position |
 | **WiFi** | Captive portal for network setup, automatic hotspot fallback |
 | **SSH** | Enabled on port 22 |
@@ -61,7 +61,7 @@ Once you're on the same network:
 http://citrascope-{name}.local
 ```
 
-For example, `http://citrascope-voyager.local`. The dashboard runs on port 80, so no port number is needed. From here the experience is identical to a desktop CitraScope install — connect to the Citra Space API, select your hardware, and you're imaging.
+For example, `http://citrascope-voyager.local`. The dashboard runs on port 80, so no port number is needed. From here the experience is identical to a desktop CitraSense install — connect to the Citra Space API, select your hardware, and you're imaging.
 
 ### SSH access
 
@@ -92,11 +92,11 @@ Release filenames use dual versioning so you know exactly what's on the card:
 ```
 citrascope-pi-v0.4-cs1.3.0.img.xz
               ────  ───────
-              │     └─ CitraScope version (telescope control software)
+              │     └─ CitraSense version (telescope control software)
               └─ Pi image version (OS config, drivers, WiFi, GPS setup)
 ```
 
-The build always installs the latest CitraScope release available at build time.
+The build always installs the latest CitraSense release available at build time.
 
 ## Troubleshooting
 

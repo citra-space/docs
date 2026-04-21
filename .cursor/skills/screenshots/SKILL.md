@@ -1,15 +1,15 @@
 ---
 name: screenshots
 description: >-
-  Capture CitraScope UI screenshots for documentation using Playwright.
+  Capture CitraSense UI screenshots for documentation using Playwright.
   Use when taking screenshots of the web dashboard, config tabs, monitoring
-  page, or any CitraScope UI element for the docs site — including annotated
+  page, or any CitraSense UI element for the docs site — including annotated
   shots with red-outline highlights on specific controls.
 ---
 
-# CitraScope UI Screenshots
+# CitraSense UI Screenshots
 
-Capture dark-themed screenshots of the CitraScope web UI via Playwright. The
+Capture dark-themed screenshots of the CitraSense web UI via Playwright. The
 thin `scripts/screenshots/capture.py` CLI handles single shots (including
 annotated ones); multi-shot series use dedicated scripts — template lives at
 `scripts/screenshots/capture_operating_highlights.py`.
@@ -33,7 +33,7 @@ Always invoke scripts with `.venv/bin/python3` (not bare `python3`):
 .venv/bin/python3 scripts/screenshots/capture.py ...
 ```
 
-### 2. Verify CitraScope is running
+### 2. Verify CitraSense is running
 
 ```bash
 curl -s http://localhost:24872/api/status | python3 -m json.tool
@@ -41,7 +41,7 @@ curl -s http://localhost:24872/api/status | python3 -m json.tool
 
 JSON back with status fields = daemon is up and the UI is ready.
 
-### 3. Put CitraScope in dummy mode (for documentation screenshots)
+### 3. Put CitraSense in dummy mode (for documentation screenshots)
 
 Dummy mode gives a fully functional dashboard with simulated hardware and
 tasks — realistic UI state without needing a real telescope. Configure it
@@ -70,7 +70,7 @@ navigate, wait, click, hide, highlight, screenshot, close.
 |------|---------|
 | `--url` | Page URL (e.g., `http://localhost:24872/#config`) |
 | `--selector` | CSS selector of the element to screenshot |
-| `--output` | Output PNG path (e.g., `docs/citrascope/img/config-api.png`) |
+| `--output` | Output PNG path (e.g., `docs/citrasense/img/config-api.png`) |
 | `--wait-for` | Wait for this selector to be visible before acting |
 | `--click` | Click a selector before capture (repeatable) |
 | `--hide` | Hide elements matching this CSS selector before capture (repeatable) |
@@ -84,7 +84,7 @@ flag (`--selector`, `--click`, `--highlight`) — they're resolved by Playwright
 Locator engine, not the DOM. The `--hide` flag uses `querySelectorAll` and
 does *not* support them; use stable CSS (ids, classes) for hides.
 
-## CitraScope navigation
+## CitraSense navigation
 
 ### Main sections (URL hash)
 
@@ -132,7 +132,7 @@ page.locator("#setupWizard .modal-dialog").screenshot(path="...")
 
 ## Hiding sticky / fixed UI elements
 
-CitraScope has two viewport-fixed elements that float over tall screenshots:
+CitraSense has two viewport-fixed elements that float over tall screenshots:
 
 - **Log panel**: `#logAccordion` — `position: fixed; bottom: 0`
 - **Save button bar**: `.config-save-bar` — `position: sticky; bottom: ...` on config pages
@@ -193,7 +193,7 @@ the whole pane with `--selector "#configSection"` and use the anchor as
 .venv/bin/python3 scripts/screenshots/capture.py \
   --url "http://localhost:24872/#monitoring" \
   --selector "#globalStatusBar" \
-  --output "docs/citrascope/img/status-bar.png" \
+  --output "docs/citrasense/img/status-bar.png" \
   --wait-for "#globalStatusBar"
 ```
 
@@ -203,7 +203,7 @@ the whole pane with `--selector "#configSection"` and use the anchor as
 .venv/bin/python3 scripts/screenshots/capture.py \
   --url "http://localhost:24872/#monitoring" \
   --selector ".card:has(.card-header:has-text('Telescope'))" \
-  --output "docs/citrascope/img/monitoring-telescope.png" \
+  --output "docs/citrasense/img/monitoring-telescope.png" \
   --wait-for "#monitoringSection" \
   --hide "#logAccordion" --hide "#toastContainer" \
   --viewport 1280x800
@@ -215,7 +215,7 @@ the whole pane with `--selector "#configSection"` and use the anchor as
 .venv/bin/python3 scripts/screenshots/capture.py \
   --url "http://localhost:24872/#config" \
   --selector "#configSection" \
-  --output "docs/citrascope/img/config-hardware.png" \
+  --output "docs/citrasense/img/config-hardware.png" \
   --wait-for "#hardwareAdapterSelect" \
   --click "a.nav-link:has-text('Hardware')" \
   --hide "#logAccordion" --hide ".config-save-bar" --hide "#toastContainer" \
@@ -228,7 +228,7 @@ the whole pane with `--selector "#configSection"` and use the anchor as
 .venv/bin/python3 scripts/screenshots/capture.py \
   --url "http://localhost:24872/#monitoring" \
   --selector "#logContainer" \
-  --output "docs/citrascope/img/log-panel.png" \
+  --output "docs/citrasense/img/log-panel.png" \
   --wait-for "#globalStatusBar" \
   --click "#logAccordionHeader"
 ```
@@ -252,7 +252,7 @@ for paragraph-scoped screenshots ("press *this* button") in walkthrough guides.
   --url "http://localhost:24872/#monitoring" \
   --selector ".card:has(.card-header:has-text('Telescope'))" \
   --highlight "button:has-text('Align Now')" \
-  --output "docs/citrascope/img/operating-align-now-highlight.png" \
+  --output "docs/citrasense/img/operating-align-now-highlight.png" \
   --wait-for "#globalStatusBar" \
   --hide "#logAccordion"
 ```
@@ -281,7 +281,7 @@ Canonical template: **`scripts/screenshots/capture_operating_highlights.py`**
 
 ## Output conventions
 
-- **Directory**: `docs/citrascope/img/`
+- **Directory**: `docs/citrasense/img/`
 - **Naming**: `{section}-{element}.png`
   - `monitoring-telescope.png`, `monitoring-optics.png`, `monitoring-active-tasks.png`
   - `config-api.png`, `config-hardware.png`

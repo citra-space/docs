@@ -12,9 +12,9 @@ Citra Space is built on open source software and we welcome contributions of all
 
 Help improve these docs by forking the repository and opening a pull request at [github.com/citra-space/docs](https://github.com/citra-space/docs). You can also open an issue to suggest changes or additions.
 
-## CitraScope
+## CitraSense
 
-[CitraScope](citrascope/) is the Python daemon that drives automated telescope photography from Citra Space tasks. Contributions such as new hardware adapters, bug fixes, and testing improvements are all welcome. See the repository at [github.com/citra-space/citrascope](https://github.com/citra-space/citrascope).
+[CitraSense](citrasense/) is the Python daemon that drives automated telescope photography from Citra Space tasks. Contributions such as new hardware adapters, bug fixes, and testing improvements are all welcome. See the repository at [github.com/citra-space/citrasense](https://github.com/citra-space/citrasense).
 
 ## KepLemon
 

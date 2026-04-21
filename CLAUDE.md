@@ -23,9 +23,9 @@ docs/                          # Jekyll source root
 ├── _config.yml                # Site config, theme, color scheme, version
 ├── _includes/head_custom.html # Injected into <head> — auto-TOC + scrollspy JS
 ├── _sass/custom/custom.scss   # Theme overrides — sticky TOC, wider sidebar
-├── citrascope/                # CitraScope product docs
+├── citrasense/                # CitraSense product docs
 │   ├── _OUTLINE.md            # Planning doc (not published, _ prefix)
-│   └── img/                   # Screenshots for CitraScope pages
+│   └── img/                   # Screenshots for CitraSense pages
 ├── citra-space-app-api/       # Web app / API docs
 ├── guides-and-tutorials/      # How-to guides
 └── index.md                   # Landing page
@@ -80,7 +80,7 @@ cd /path/to/docs
 .venv/bin/python3 scripts/screenshots/capture.py \
   --url "http://localhost:24872/#config" \
   --selector "#configSection" \
-  --output "docs/citrascope/img/config-hardware.png" \
+  --output "docs/citrasense/img/config-hardware.png" \
   --click "a:has-text('Hardware')" \
   --hide "#logAccordion" --hide ".config-save-bar" --hide "#toastContainer" \
   --viewport 1280x900
@@ -97,7 +97,7 @@ shadow stay in frame.
   --url "http://localhost:24872/#monitoring" \
   --selector ".card:has(.card-header:has-text('Telescope'))" \
   --highlight "button:has-text('Align Now')" \
-  --output "docs/citrascope/img/operating-align-now-highlight.png" \
+  --output "docs/citrasense/img/operating-align-now-highlight.png" \
   --wait-for "#globalStatusBar" \
   --hide "#logAccordion"
 ```
@@ -110,8 +110,8 @@ template. Run series scripts with `.venv/bin/python3`.
 ### Key points
 
 - Always `--hide` sticky/fixed overlays on tall screenshots (log panel, save bar, toasts)
-- Store images in `docs/citrascope/img/`, named `{page}-{section}.png`; annotated highlights end in `-highlight.png`
-- CitraScope runs at `http://localhost:24872`; Playwright runs out of the local venv (`.venv/bin/python3`). One-time setup is in the skill doc's Prerequisites section.
+- Store images in `docs/citrasense/img/`, named `{page}-{section}.png`; annotated highlights end in `-highlight.png`
+- CitraSense runs at `http://localhost:24872`; Playwright runs out of the local venv (`.venv/bin/python3`). One-time setup is in the skill doc's Prerequisites section.
 
 ## Custom theme additions
 
@@ -135,7 +135,7 @@ The Just the Docs sidebar is widened from 16rem to 19rem at 50rem+ viewports to 
 
 ## Planning
 
-`docs/citrascope/_OUTLINE.md` tracks what CitraScope doc pages need to be written. Checked items are done. Use it to decide what to work on next.
+`docs/citrasense/_OUTLINE.md` tracks what CitraSense doc pages need to be written. Checked items are done. Use it to decide what to work on next.
 
 ## Cache busting
 

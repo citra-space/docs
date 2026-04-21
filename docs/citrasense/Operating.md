@@ -1,13 +1,13 @@
 ---
-title: Operating CitraScope
+title: Operating CitraSense
 nav_order: 6
-parent: CitraScope
+parent: CitraSense
 ---
 
-# Operating CitraScope
+# Operating CitraSense
 {: .no_toc }
 
-This guide walks through a full observing session with CitraScope: getting the telescope aligned and focused, pulling a task from the Citra Space queue, and reviewing the result afterward. By the end you'll know what every card on the Monitoring tab does and when to touch it.
+This guide walks through a full observing session with CitraSense: getting the telescope aligned and focused, pulling a task from the Citra Space queue, and reviewing the result afterward. By the end you'll know what every card on the Monitoring tab does and when to touch it.
 
 Unattended operation (the robotic, walk-away mode) is covered separately. This guide assumes you're at the dashboard.
 
@@ -19,7 +19,7 @@ For reference material on any section, see [Monitoring](Monitoring), [Configurat
 
 Make sure the following are already in place:
 
-- **CitraScope is installed and running** at [http://localhost:24872](http://localhost:24872) (or `http://citrascope-{name}.local` on a Pi). See [Getting Started](GettingStarted.html) if not.
+- **CitraSense is installed and running** at [http://localhost:24872](http://localhost:24872) (or `http://citrascope-{name}.local` on a Pi). See [Getting Started](GettingStarted.html) if not.
 - **Your telescope is registered** in the [Citra Space app](https://app.citra.space). See [Add and Manage Telescopes](../guides-and-tutorials/add-and-manage-telescopes) to walk through it.
 - **The API is connected**. On **Configuration → API**, your endpoint, token, and telescope ID are set. The **TLEs** badge in the status bar is green (25,000+ elsets loaded).
 - **Hardware is connected**. On **Configuration → Hardware**, you've picked an adapter ([Direct Hardware](DirectHardware), [N.I.N.A.](NINA), [KStars](KStars), or [INDI](INDI) — the [Adapters](Adapters) page has a comparison table). The **Telescope**, **Camera**, and **Focuser** badges in the status bar are green, and your filter wheel shows the right filters on the Optics card.
@@ -31,17 +31,17 @@ Open the dashboard on the **Monitoring** tab — that's your console for the who
 
 # Part 1 — Get the telescope ready
 
-Before CitraScope can start pulling satellite passes, the scope has to be genuinely ready: aligned, focused, and with calibration masters on disk. *How* you get there depends on your hardware adapter.
+Before CitraSense can start pulling satellite passes, the scope has to be genuinely ready: aligned, focused, and with calibration masters on disk. *How* you get there depends on your hardware adapter.
 
 {: .note }
-> **If you're on [N.I.N.A.](NINA), [KStars](KStars), or [INDI](INDI), skip the rest of Part 1.** In those configurations CitraScope is driving your existing control app — alignment, focus, calibration frames, and general scope readiness stay your responsibility in that app's native workflow. Do your usual startup routine (park → polar align / pointing align → focus → flats), then jump straight to [Part 2 — Run the session](#part-2--run-the-session) once the mount is tracking and the stars are sharp.
+> **If you're on [N.I.N.A.](NINA), [KStars](KStars), or [INDI](INDI), skip the rest of Part 1.** In those configurations CitraSense is driving your existing control app — alignment, focus, calibration frames, and general scope readiness stay your responsibility in that app's native workflow. Do your usual startup routine (park → polar align / pointing align → focus → flats), then jump straight to [Part 2 — Run the session](#part-2--run-the-session) once the mount is tracking and the stars are sharp.
 >
-> The rest of Part 1 is a hands-on walkthrough for operators on the **[Direct Hardware](DirectHardware)** adapter, where CitraScope owns the full prep flow end to end.
+> The rest of Part 1 is a hands-on walkthrough for operators on the **[Direct Hardware](DirectHardware)** adapter, where CitraSense owns the full prep flow end to end.
 
 ## Capture calibration frames (optional — timing matters)
 {: #calibration-frames }
 
-Calibration frames (bias, darks, flats) aren't captured during an observing run — they go in ahead of time, and CitraScope applies them automatically during processing. Imaging still works without them, but photometry degrades.
+Calibration frames (bias, darks, flats) aren't captured during an observing run — they go in ahead of time, and CitraSense applies them automatically during processing. Imaging still works without them, but photometry degrades.
 
 Skip this step if your current masters are still valid. You don't capture calibration every night.
 
@@ -80,7 +80,7 @@ Iterate: jog, Snap, jog, Snap. Once you have stars in the frame — any stars �
 
 ## Align
 
-With stars in the frame, press **Align Now** on the Telescope card. CitraScope takes one frame, plate-solves it against the whole-sky catalog, and syncs the mount to the solved position.
+With stars in the frame, press **Align Now** on the Telescope card. CitraSense takes one frame, plate-solves it against the whole-sky catalog, and syncs the mount to the solved position.
 
 ![Mount controls with the Align Now button highlighted in red](img/operating-align-now-highlight.png)
 
@@ -92,7 +92,7 @@ Time to sharpen up. On the Optics card, the **Autofocus** section has a big butt
 
 ![Autofocus subsection with the Autofocus button highlighted in red](img/operating-autofocus-highlight.png)
 
-CitraScope's autofocus target is configured in Configuration → **Autofocus** as a preset star (e.g., Mirach, Vega) or custom coordinates. Leave the default. The routine will:
+CitraSense's autofocus target is configured in Configuration → **Autofocus** as a preset star (e.g., Mirach, Vega) or custom coordinates. Leave the default. The routine will:
 
 1. Slew to the autofocus target (Go To works now because you aligned).
 2. For each enabled filter: step the focuser through a coarse sweep, compute HFR at each stop, fit a hyperbola to the curve, and land on the minimum.
@@ -125,7 +125,7 @@ One Align Now sync is enough to get started, but a full pointing model is better
 
 # Part 2 — Run the session
 
-From here, everything is the same on every adapter. You've got a telescope that's aligned and focused, and CitraScope is connected to the Citra Space API. It's time to pull some tasks.
+From here, everything is the same on every adapter. You've got a telescope that's aligned and focused, and CitraSense is connected to the Citra Space API. It's time to pull some tasks.
 
 ## Pull a task and watch it run
 
@@ -150,7 +150,7 @@ A table fills in:
 | **Window** | Start–end time range |
 | **Actions** | Cancel (×) — removes the task from the server and your queue |
 
-Pick the first task with a short countdown. When the window opens, CitraScope automatically picks it up.
+Pick the first task with a short countdown. When the window opens, CitraSense automatically picks it up.
 
 Flip the **Processing** switch on. This is what tells the daemon it's allowed to start executing tasks. Now watch the **Active Tasks** card below Scheduled Tasks. Your task moves through three stages from left to right:
 
@@ -158,7 +158,7 @@ Flip the **Processing** switch on. This is what tells the daemon it's allowed to
 
 ### Imaging stage
 
-CitraScope slews to the predicted RA/Dec, rotates the filter wheel to the assigned filter, applies that filter's focus offset, and runs the exposure. The preview updates with the final image.
+CitraSense slews to the predicted RA/Dec, rotates the filter wheel to the assigned filter, applies that filter's focus offset, and runs the exposure. The preview updates with the final image.
 
 ### Processing stage
 
@@ -201,7 +201,7 @@ If the task didn't find its target, the annotated image tells you why: the satel
 
 At this point you have two choices.
 
-**Stay hands-on.** Press **Request Batch** again when your queue runs low, re-run autofocus when HFR drifts off baseline, and cancel any task that looks troubled (weather, elevation, whatever). You're doing the scheduling, CitraScope is doing the imaging and processing.
+**Stay hands-on.** Press **Request Batch** again when your queue runs low, re-run autofocus when HFR drifts off baseline, and cancel any task that looks troubled (weather, elevation, whatever). You're doing the scheduling, CitraSense is doing the imaging and processing.
 
 **Hand off.** When you're confident things are running cleanly, flip **Robotic** (handles unpark at dusk, park at dawn, scheduled autofocus) and optionally **Self-Tasking** (auto-requests new task batches when the queue runs low). Both are documented in the [Monitoring reference](Monitoring#robotic-session). That's the "walk-away" mode — worth a separate session to set up properly.
 
@@ -211,16 +211,16 @@ For tonight, staying hands-on is the right call. You'll learn what every number 
 
 ## Things to check between sessions
 
-- **Dark, flat, bias masters** — refresh monthly or when conditions change. On Direct Hardware, capture through Configuration → Calibration (see [Capture calibration frames](#calibration-frames) in Part 1 — flats need dusk or dawn). On N.I.N.A., KStars, and INDI, use your adapter's native calibration tools — CitraScope applies whatever masters it finds at processing time.
+- **Dark, flat, bias masters** — refresh monthly or when conditions change. On Direct Hardware, capture through Configuration → Calibration (see [Capture calibration frames](#calibration-frames) in Part 1 — flats need dusk or dawn). On N.I.N.A., KStars, and INDI, use your adapter's native calibration tools — CitraSense applies whatever masters it finds at processing time.
 - **Pointing model** (Direct Hardware) — rebuild after re-leveling the mount, a teardown, or a large temperature shift. Other adapters rely on the mount's own alignment scheme instead.
 - **Disk space** — raw FITS and processing artifacts add up fast. **Keep Images** and **Keep Processing Output** settings control retention (Configuration → Processing and Advanced).
-- **Log files** — CitraScope rotates daily logs at `~/Library/Logs/citrascope/` (macOS). Paths and copy buttons are on Configuration → **Advanced** → **Paths & Files**.
+- **Log files** — CitraSense rotates daily logs at `~/Library/Logs/citrasense/` (macOS). Paths and copy buttons are on Configuration → **Advanced** → **Paths & Files**.
 
 ---
 
 ## Learn more
 
-- [Getting Started](GettingStarted.html) — install and launch CitraScope
+- [Getting Started](GettingStarted.html) — install and launch CitraSense
 - [Raspberry Pi image](RaspberryPi) — headless field deployment
 - [Configuration reference](Configuration) — every setting explained
 - [Monitoring reference](Monitoring) — the live dashboard in detail

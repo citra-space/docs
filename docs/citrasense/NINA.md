@@ -2,7 +2,7 @@
 title: N.I.N.A.
 nav_order: 2
 parent: Hardware Adapters
-grand_parent: CitraScope
+grand_parent: CitraSense
 ---
 
 # N.I.N.A.
@@ -12,7 +12,7 @@ grand_parent: CitraScope
 
 [N.I.N.A.](https://nighttime-imaging.eu/) (Nighttime Imaging 'N' Astronomy) is a free, open-source Windows application designed for astrophotography. It provides advanced sequencing capabilities, equipment control, and image capture automation. NINA supports a wide range of cameras, mounts, filter wheels, focusers, and other observatory equipment through ASCOM and native drivers.
 
-## Why Use NINA with CitraScope
+## Why Use NINA with CitraSense
 
 NINA's robust API and sequencing engine make it an excellent platform for automated telescope tasking. You'll choose NINA if your telescope control stack in Windows-based.
 
@@ -20,7 +20,7 @@ NINA's robust API and sequencing engine make it an excellent platform for automa
 
 ### Note: Presently only Planewave telescopes supported, more scopes coming soon.
 
-Before integrating NINA with CitraScope, ensure you have:
+Before integrating NINA with CitraSense, ensure you have:
 
 - **Windows 10 or Windows 11** (64-bit recommended)
 - **NINA 3.2 or later** installed ([download here](https://nighttime-imaging.eu/download/))
@@ -28,7 +28,7 @@ Before integrating NINA with CitraScope, ensure you have:
 - **JOKO Orbitals plugin** enabled
 - **Planewave tools** enabled 
 - Your telescope hardware already configured and working in NINA
-- Network connectivity between the NINA system and CitraScope
+- Network connectivity between the NINA system and CitraSense
 
 ## Installation
 
@@ -40,9 +40,9 @@ Before integrating NINA with CitraScope, ensure you have:
 4. Configure the API to listen on a specific port (default: 1888)
 5. Restart NINA to activate the plugin
 
-### Install CitraScope
+### Install CitraSense
 
-If you haven't already installed CitraScope, follow the [Getting Started](GettingStarted.html) guide.
+If you haven't already installed CitraSense, follow the [Getting Started](GettingStarted.html) guide.
 
 ## Configuration
 
@@ -61,12 +61,12 @@ If you haven't already installed CitraScope, follow the [Getting Started](Gettin
 
 3. **Set Up Your Camera Settings**
    - Configure camera gain, offset, and other imaging parameters
-   - These will be used as defaults for CitraScope tasks
+   - These will be used as defaults for CitraSense tasks
 
-### In CitraScope Web Interface
+### In CitraSense Web Interface
 
 1. **Navigate to the Hardware Configuration Page**
-   - Open CitraScope web interface (default: `http://localhost:24872`)
+   - Open CitraSense web interface (default: `http://localhost:24872`)
    - Go to **Hardware Settings**
 
 2. **Select NINA Adapter**
@@ -77,10 +77,10 @@ If you haven't already installed CitraScope, follow the [Getting Started](Gettin
    | Setting | Default | Required/Optional | Description |
    |---------|---------|-------------------|-------------|
    | **N.I.N.A. API URL** | `http://nina:1888/v2/api` | Required | Base URL for the NINA Advanced HTTP API. Must start with `http://` or `https://`. |
-   | **Bypass Autofocus** | `False` | Optional | Skip autofocus routine when initializing. When enabled, CitraScope will use cached focus positions if available. |
+   | **Bypass Autofocus** | `False` | Optional | Skip autofocus routine when initializing. When enabled, CitraSense will use cached focus positions if available. |
 
 3. **Save Configuration**
-   - Save your settings and Citrascope will try to connect to your hardware.
+   - Save your settings and Citrasense will try to connect to your hardware.
 
 ## Supported Features
 
@@ -90,11 +90,11 @@ The NINA adapter supports the following capabilities:
 - ✅ **Camera Control** - Exposure control, gain, offset, binning
 - ✅ **Image Capture** - Single and multiple exposures
 - ✅ **Filter Wheel** - Automatic filter selection with automatic focus offset on filter change
-- ✅ **Focuser Control** - Move, abort, and status via NINA Advanced API; manual controls work in the CitraScope web UI
+- ✅ **Focuser Control** - Move, abort, and status via NINA Advanced API; manual controls work in the CitraSense web UI
 - ✅ **Cooling Control** - Camera temperature management
 - ✅ **Sequence Execution** - Custom NINA sequences triggered by tasks
 - ✅ **Plate Solving** - Position verification and sync
-- ✅ **Autofocus** - Full autofocus support via NINA; triggered by CitraScope's autofocus scheduler
+- ✅ **Autofocus** - Full autofocus support via NINA; triggered by CitraSense's autofocus scheduler
 - ⚠️ **Guiding** - Integration depends on your guiding setup
 
 ## Limitations
@@ -103,28 +103,28 @@ The NINA adapter supports the following capabilities:
 
 - **Windows Only** - NINA is Windows-specific; Linux/Mac users should use INDI or KStars
 - **API Dependency** - Requires the Advanced API plugin to be installed and running
-- **Network Access** - Both NINA and CitraScope must be network accessible to each other
-- **Focuser move events** - NINA does not emit a WebSocket event when a focuser move completes; CitraScope polls the focuser position until the move finishes
-- **Guiding** - PHD2/NINA guiding state is not currently surfaced in the CitraScope web UI
+- **Network Access** - Both NINA and CitraSense must be network accessible to each other
+- **Focuser move events** - NINA does not emit a WebSocket event when a focuser move completes; CitraSense polls the focuser position until the move finishes
+- **Guiding** - PHD2/NINA guiding state is not currently surfaced in the CitraSense web UI
 
 ### Performance Considerations
 
-- NINA should be running continuously for CitraScope to execute tasks
+- NINA should be running continuously for CitraSense to execute tasks
 - Large image files may take time to upload depending on network bandwidth
-- Ensure your system has adequate resources for both NINA and CitraScope
+- Ensure your system has adequate resources for both NINA and CitraSense
 
 ## Troubleshooting
 
 ### Connection Issues
 
-**Problem**: CitraScope cannot connect to NINA
+**Problem**: CitraSense cannot connect to NINA
 
 **Solutions**:
 - Verify NINA is running and the Advanced API plugin is enabled
-- Check that the **N.I.N.A. API URL** is correct in CitraScope settings
+- Check that the **N.I.N.A. API URL** is correct in CitraSense settings
 - Ensure Windows Firewall allows connections on the API port
-- Test connectivity with `telnet <hostname> <port>` from the CitraScope system
-- Restart both NINA and CitraScope
+- Test connectivity with `telnet <hostname> <port>` from the CitraSense system
+- Restart both NINA and CitraSense
 
 ### API Errors
 
@@ -142,7 +142,7 @@ The NINA adapter supports the following capabilities:
 
 **Solutions**:
 - Verify camera settings in NINA (gain, offset, cooling)
-- Check available disk space on both NINA and CitraScope systems
+- Check available disk space on both NINA and CitraSense systems
 - Ensure the camera is properly cooled and stabilized
 - Review exposure settings for the task
 - Check network bandwidth for upload issues

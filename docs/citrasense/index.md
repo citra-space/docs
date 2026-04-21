@@ -1,19 +1,19 @@
 ---
-title: CitraScope
+title: CitraSense
 nav_order: 4
 has_children: true
 ---
 
-# CitraScope
+# CitraSense
 {: .no_toc }
 
-CitraScope automates satellite imaging for the [Citra Space](https://citra.space) network. It runs as a daemon on your telescope computer, polls for observation tasks, controls your hardware, processes captured images, and uploads results — all unattended.
+CitraSense automates satellite imaging for the [Citra Space](https://citra.space) network. It runs as a daemon on your telescope computer, polls for observation tasks, controls your hardware, processes captured images, and uploads results — all unattended.
 
-![CitraScope monitoring dashboard showing telescope status, task pipeline, and scheduled observations](img/monitoring-overview.png)
+![CitraSense monitoring dashboard showing telescope status, task pipeline, and scheduled observations](img/monitoring-overview.png)
 
 ## How It Works
 
-1. CitraScope polls the Citra Space API for assigned tasks
+1. CitraSense polls the Citra Space API for assigned tasks
 2. Slews the telescope to the target and captures images
 3. Runs each image through the processing pipeline (calibration, plate solving, source extraction, photometry, satellite matching, annotated image)
 4. Uploads results to Citra Space
@@ -30,19 +30,19 @@ You control availability through the [web dashboard](Monitoring.html) — enable
 
 ## Getting Started
 
-Install CitraScope, launch it, and open the web dashboard:
+Install CitraSense, launch it, and open the web dashboard:
 
 ```bash
-uv tool install citrascope
-citrascope
+uv tool install citrasense
+citrasense
 ```
 
-The dashboard opens at [http://localhost:24872](http://localhost:24872). From there, connect to the Citra Space API and select your hardware adapter. See [Getting Started](GettingStarted.html) for details, or read [Operating CitraScope](Operating.html) for a walkthrough of a full session.
+The dashboard opens at [http://localhost:24872](http://localhost:24872). From there, connect to the Citra Space API and select your hardware adapter. See [Getting Started](GettingStarted.html) for details, or read [Operating CitraSense](Operating.html) for a walkthrough of a full session.
 
 ## Open Source
 
-CitraScope is open source on [GitHub](https://github.com/citra-space/citrascope). Contributions are welcome — check the open issues or submit a pull request.
+CitraSense is open source on [GitHub](https://github.com/citra-space/citrasense). Contributions are welcome — check the open issues or submit a pull request.
 
-All source code is publicly auditable. CitraScope only transmits data needed for tasking (observation parameters, images, task status). Credentials and configuration stay local. No telemetry or analytics. All API traffic is HTTPS.
+All source code is publicly auditable. CitraSense only transmits data needed for tasking (observation parameters, images, task status). Credentials and configuration stay local. No telemetry or analytics. All API traffic is HTTPS.
 
-Report security concerns through [GitHub security advisories](https://github.com/citra-space/citrascope/security/advisories).
+Report security concerns through [GitHub security advisories](https://github.com/citra-space/citrasense/security/advisories).

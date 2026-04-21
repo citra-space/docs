@@ -115,9 +115,9 @@ Click the VIEW button to see the image preview with processed data overlay that 
 
 Visit the telescope's ground station page for weather and visibility forecasts. Calculate what satellites will be flying over the telescope's location over a given time range. Join our [Discord community](https://discord.gg/STgJQkWe9y) to offer feedback.
 
-### Automate observations with CitraScope
+### Automate observations with CitraSense
 
-Once your telescope is registered, you can hand over tasking, imaging, and upload to [CitraScope](../citrascope/) — an open source daemon that runs on the telescope computer and handles full dusk-to-dawn sessions unattended. See [Getting Started](../citrascope/GettingStarted) or flash the [Raspberry Pi image](../citrascope/RaspberryPi) for a pre-built headless setup.
+Once your telescope is registered, you can hand over tasking, imaging, and upload to [CitraSense](../citrasense/) — an open source daemon that runs on the telescope computer and handles full dusk-to-dawn sessions unattended. See [Getting Started](../citrasense/GettingStarted) or flash the [Raspberry Pi image](../citrasense/RaspberryPi) for a pre-built headless setup.
 
 ## Support
 

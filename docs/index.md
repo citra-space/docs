@@ -14,7 +14,7 @@ Welcome to Citra Space! Here you'll find everything you need to get started with
 
 - [Citra Space App](https://app.citra.space) — Sign in or create an account
 - [API Documentation](https://api.citra.space/docs) — Interactive API reference
-- [CitraScope](citrascope/) — Open source telescope automation daemon
+- [CitraSense](citrasense/) — Open source telescope automation daemon
 - [Discord Community](https://discord.gg/STgJQkWe9y) — Support and discussion
 - [GitHub Projects](https://github.com/citra-space) — Open source repositories
 
@@ -49,16 +49,16 @@ Follow the [API Quickstart Guide](guides-and-tutorials/api-quickstart-guide) to 
 - [Add and Manage Telescopes](guides-and-tutorials/add-and-manage-telescopes) — Configure your optical sensors
 - [Add and Manage Antennas](guides-and-tutorials/add-and-manage-antennas) — Configure your RF sensors
 
-### Automate with CitraScope
+### Automate with CitraSense
 
-[CitraScope](citrascope/) is open source software that automates telescope observations by connecting your hardware to the Citra Space platform. Once installed, you'll spend most of your time in the [web dashboard](citrascope/Dashboard): [Monitoring](citrascope/Monitoring) for live status, [Analysis](citrascope/Analysis) for post-session review, and [Configuration](citrascope/Configuration) for setup.
+[CitraSense](citrasense/) is open source software that automates telescope observations by connecting your hardware to the Citra Space platform. Once installed, you'll spend most of your time in the [web dashboard](citrasense/Dashboard): [Monitoring](citrasense/Monitoring) for live status, [Analysis](citrasense/Analysis) for post-session review, and [Configuration](citrasense/Configuration) for setup.
 
-Hardware options: [Direct Hardware](citrascope/DirectHardware) (recommended), [N.I.N.A.](citrascope/NINA), [KStars](citrascope/KStars), or [INDI](citrascope/INDI). A pre-built [Raspberry Pi image](citrascope/RaspberryPi) is also available for headless field deployments.
+Hardware options: [Direct Hardware](citrasense/DirectHardware) (recommended), [N.I.N.A.](citrasense/NINA), [KStars](citrasense/KStars), or [INDI](citrasense/INDI). A pre-built [Raspberry Pi image](citrasense/RaspberryPi) is also available for headless field deployments.
 
 ## More Resources
 
 - [KepLemon](keplemon) — Rust-accelerated astrodynamics Python library for satellite propagation, orbit determination, and close approach detection
-- [Contribute](contribute) — Help improve our docs, CitraScope, KepLemon, and other open source projects
+- [Contribute](contribute) — Help improve our docs, CitraSense, KepLemon, and other open source projects
 - [Legal](legal) — Terms of use, privacy policy, and cookie policy
 
 ## Support

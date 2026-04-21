@@ -1,7 +1,7 @@
 ---
 title: Getting Started
 nav_order: 1
-parent: CitraScope
+parent: CitraSense
 ---
 
 # Getting Started
@@ -15,8 +15,8 @@ Looking for the Raspberry Pi image? See the [Raspberry Pi](RaspberryPi.html) pag
 Two commands get you to a running dashboard:
 
 ```bash
-uv tool install citrascope
-citrascope
+uv tool install citrasense
+citrasense
 ```
 
 Then open your browser to:
@@ -26,7 +26,7 @@ Then open your browser to:
 
 When the dashboard opens you'll see the Monitoring tab:
 
-![The CitraScope Monitoring dashboard in a browser, showing status bar, Telescope and Optics cards, scheduled tasks, and the collapsible log panel](img/monitoring-overview.png)
+![The CitraSense Monitoring dashboard in a browser, showing status bar, Telescope and Optics cards, scheduled tasks, and the collapsible log panel](img/monitoring-overview.png)
 
 From here, [connect to the Citra Space API](Configuration.html#api) and pick a [hardware adapter](Adapters.html) — then you're imaging.
 
@@ -40,7 +40,7 @@ From here, [connect to the Citra Space API](Configuration.html#api) and pick a [
 Some devices need additional Python libraries (ZWO SDK, Moravian GxCCD, Ximea, etc.). Install every extra in one go, or only what you need:
 
 ```bash
-uv tool install citrascope --with citrascope[all-hardware]
+uv tool install citrasense --with citrasense[all-hardware]
 ```
 
 See [Direct Hardware](DirectHardware.html) for the per-device extras and the full list of supported cameras, mounts, filter wheels, and focusers.
@@ -52,19 +52,19 @@ See [Direct Hardware](DirectHardware.html) for the per-device extras and the ful
 If you'd rather manage your own Python environment:
 
 ```bash
-pip install citrascope
+pip install citrasense
 ```
 
 ### Use a different port
 
 ```bash
-citrascope --web-port 8080
+citrasense --web-port 8080
 ```
 
 Useful when port 24872 is already taken, or when you're running multiple instances on one machine for testing.
 
 ## Next steps
 
-- **[Hardware Adapters](Adapters.html)** — pick how CitraScope talks to your telescope. Direct Hardware is recommended on Linux/macOS/Pi; N.I.N.A. is the Windows path.
+- **[Hardware Adapters](Adapters.html)** — pick how CitraSense talks to your telescope. Direct Hardware is recommended on Linux/macOS/Pi; N.I.N.A. is the Windows path.
 - **[Configuration](Configuration.html)** — API credentials, observation settings, processors, and autofocus.
-- **[Operating CitraScope](Operating.html)** — a full walkthrough of a night's session, from alignment to batch imaging to robotic mode.
+- **[Operating CitraSense](Operating.html)** — a full walkthrough of a night's session, from alignment to batch imaging to robotic mode.

@@ -1,7 +1,7 @@
-# CitraScope Documentation Outline
+# CitraSense Documentation Outline
 
 > **This is a planning document, not published content.**
-> Jekyll ignores files prefixed with `_`. This outline tracks what the CitraScope
+> Jekyll ignores files prefixed with `_`. This outline tracks what the CitraSense
 > docs section should cover. Check off sections as they get written. Delete this
 > file when coverage is complete.
 
@@ -28,7 +28,7 @@
 
 ### 1. Quick Start Guide — NEW (`QuickStart.md`, nav_order: 06)
 
-- [ ] First launch (`citrascope` or `python -m citrascope`)
+- [ ] First launch (`citrasense` or `python -m citrasense`)
 - [ ] Opening the web UI (default port 24872)
 - [ ] Setup walkthrough (API endpoint, token, telescope ID, adapter selection)
 - [ ] Verifying the connection (status bar indicators)
@@ -40,7 +40,7 @@
   - [x] What the Pi image includes (systemd autostart, WiFi provisioning via Comitup, GPS/chrony)
   - [x] Flashing the SD card and first-boot WiFi setup
   - [x] Accessing the UI at `http://citrascope-<mission>.local`
-  - [x] Pi image versioning vs CitraScope application version
+  - [x] Pi image versioning vs CitraSense application version
 
 ### 3. Troubleshooting — NEW (`Troubleshooting.md`, nav_order: 50)
 
@@ -86,7 +86,7 @@ These were in the original outline but are now fully documented in existing page
 | Safety & Operational Controls | Monitoring.md (abort, operator stop, cable wrap, safety alerts, mode switches) + Configuration.md Time & Location |
 | Configuration Reference | Configuration.md serves as the setting-by-setting reference |
 | Observation Modes (auto/static/tracking) | Configuration.md Observation tab covers the dropdown and per-mode guidance |
-| Development & Architecture | Developer-focused; covered in citrascope repo's CLAUDE.md |
+| Development & Architecture | Developer-focused; covered in citrasense repo's CLAUDE.md |
 
 ---
 
@@ -94,7 +94,7 @@ These were in the original outline but are now fully documented in existing page
 
 ### Audience and voice
 
-- **Reader**: Telescope operators using CitraScope in the field. They know astrophotography and their hardware — they are not developers and do not read the CitraScope source code.
+- **Reader**: Telescope operators using CitraSense in the field. They know astrophotography and their hardware — they are not developers and do not read the CitraSense source code.
 - **Voice**: Direct and task-oriented. Second person ("To configure X, go to..."). Present tense. Short sentences.
 - **Include**: Features visible in the UI, settings and what they do, step-by-step workflows, observable behavior, troubleshooting for things an operator can actually see or change.
 - **Exclude**: Internal class names, code architecture, algorithm details, refactors, and anything that only matters to a developer. If a code change doesn't affect what an operator sees or does, it doesn't belong in the docs.
@@ -104,6 +104,6 @@ These were in the original outline but are now fully documented in existing page
 
 - Short pages, tables for settings, callouts for warnings
 - Dark screenshots where possible (operators use this at night)
-- Front matter pattern: `title`, `parent: CitraScope`, `nav_order`, optional `has_children`
-- For nested sections, use `grand_parent: CitraScope` on third-level pages
+- Front matter pattern: `title`, `parent: CitraSense`, `nav_order`, optional `has_children`
+- For nested sections, use `grand_parent: CitraSense` on third-level pages
 - Test locally: `cd docs && bundle exec jekyll serve`

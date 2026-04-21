@@ -1,4 +1,4 @@
-"""Capture the annotated screenshot series used in the Operating CitraScope guide.
+"""Capture the annotated screenshot series used in the Operating CitraSense guide.
 
 This is a *series* capture script — it opens the Monitoring tab once and takes
 several small, focused screenshots, each with a red highlight on a specific
@@ -37,7 +37,7 @@ from playwright.sync_api import Locator, Page, sync_playwright
 
 # Resolve relative to the repo root (this file lives in scripts/screenshots/).
 REPO_ROOT = Path(__file__).resolve().parents[2]
-OUT_DIR = REPO_ROOT / "docs" / "citrascope" / "img"
+OUT_DIR = REPO_ROOT / "docs" / "citrasense" / "img"
 URL = "http://localhost:24872/#monitoring"
 VIEWPORT = {"width": 1280, "height": 900}
 

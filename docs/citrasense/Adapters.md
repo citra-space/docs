@@ -1,21 +1,21 @@
 ---
 title: Hardware Adapters
 nav_order: 2
-parent: CitraScope
+parent: CitraSense
 has_children: true
 ---
 
 # Hardware Adapters
 {: .no_toc }
 
-CitraScope uses hardware adapters to communicate with your telescope equipment. You choose an adapter based on your hardware and platform.
+CitraSense uses hardware adapters to communicate with your telescope equipment. You choose an adapter based on your hardware and platform.
 
 ## Choosing an Adapter
 
 Most operators will use one of the two primary adapters:
 
-- **Direct Hardware** — CitraScope controls your devices end-to-end with no intermediary software. This is the recommended path for Linux, macOS, and Raspberry Pi deployments. Supports ZWO ASI cameras, Moravian cameras, ZWO AM3/AM5/AM7 mounts, ZWO EAF focusers, and more.
-- **N.I.N.A.** — For Windows setups running N.I.N.A. with Planewave mounts. CitraScope communicates with N.I.N.A.'s Advanced API to control your entire equipment chain.
+- **Direct Hardware** — CitraSense controls your devices end-to-end with no intermediary software. This is the recommended path for Linux, macOS, and Raspberry Pi deployments. Supports ZWO ASI cameras, Moravian cameras, ZWO AM3/AM5/AM7 mounts, ZWO EAF focusers, and more.
+- **N.I.N.A.** — For Windows setups running N.I.N.A. with Planewave mounts. CitraSense communicates with N.I.N.A.'s Advanced API to control your entire equipment chain.
 
 Additional adapters are available for specific environments:
 
@@ -48,6 +48,6 @@ Not every adapter supports every feature. This table shows what each adapter can
 
 ## How Adapters Work
 
-When you select an adapter in the Configuration tab, CitraScope loads that adapter and presents its settings. Each adapter defines its own connection parameters (e.g., an API URL for N.I.N.A., a D-Bus service name for KStars, or device selections for Direct Hardware).
+When you select an adapter in the Configuration tab, CitraSense loads that adapter and presents its settings. Each adapter defines its own connection parameters (e.g., an API URL for N.I.N.A., a D-Bus service name for KStars, or device selections for Direct Hardware).
 
-Once connected, the adapter translates CitraScope's task commands into the appropriate protocol for your hardware. The rest of the system — task polling, processing pipeline, upload — works identically regardless of which adapter you choose.
+Once connected, the adapter translates CitraSense's task commands into the appropriate protocol for your hardware. The rest of the system — task polling, processing pipeline, upload — works identically regardless of which adapter you choose.

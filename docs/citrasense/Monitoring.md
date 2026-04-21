@@ -1,13 +1,13 @@
 ---
 title: Monitoring
 nav_order: 3
-parent: CitraScope
+parent: CitraSense
 ---
 
 # Monitoring
 {: .no_toc }
 
-The Monitoring tab is the default view when you open the CitraScope dashboard. It shows the live state of your telescope, camera, task pipeline, and all operational controls in one place.
+The Monitoring tab is the default view when you open the CitraSense dashboard. It shows the live state of your telescope, camera, task pipeline, and all operational controls in one place.
 
 ![The Monitoring tab showing the status bar, Telescope and Optics cards, and the log panel](img/monitoring-overview.png)
 
@@ -28,7 +28,7 @@ Each badge is **green** when healthy, **yellow** for a warning state, **red** fo
 | Badge | What it shows |
 |-------|---------------|
 | **Safety** | Overall safety status. Aggregates all safety checks (operator stop, cable wrap, disk space, time health, hardware safety monitor). Shows the worst active condition. |
-| **Daemon** | WebSocket connection between your browser and the CitraScope daemon. Green means you are receiving live updates. Yellow means the connection dropped and is reconnecting. Red means the daemon is unreachable. |
+| **Daemon** | WebSocket connection between your browser and the CitraSense daemon. Green means you are receiving live updates. Yellow means the connection dropped and is reconnecting. Red means the daemon is unreachable. |
 | **Telescope** | Whether the mount is connected. Tooltip shows the mount type and tracking state. |
 | **Camera** | Whether the camera is connected. Shows the sensor temperature when available. Yellow if calibration frames are missing (bias, dark, or flat). |
 | **Focuser** | Whether a focuser is connected. Shows temperature if the focuser reports it. Gray if no focuser is configured. |
@@ -48,14 +48,14 @@ Use this if something goes wrong and you need to halt all motion immediately. To
 
 ### Mode Switches
 
-Below the badges is a row of toggle switches that control how CitraScope operates:
+Below the badges is a row of toggle switches that control how CitraSense operates:
 
 | Switch | What it controls |
 |--------|-----------------|
 | **Scheduling** | When enabled, the Citra Space server assigns observation tasks to this telescope automatically. Turn this off to stop receiving new tasks. |
 | **Processing** | When enabled, the daemon executes queued tasks (imaging, processing, uploading). Turn this off to pause all task execution while keeping your connection to the server active. |
-| **Robotic** | Enables the robotic observing session lifecycle. When on, CitraScope automatically unparks at dusk, observes through the night, and parks at dawn. See [Robotic Session](#robotic-session) below. |
-| **Self-Tasking** | When enabled, CitraScope automatically requests batches of observation tasks from the server when the queue runs low. Requires Scheduling and Robotic to also be enabled. |
+| **Robotic** | Enables the robotic observing session lifecycle. When on, CitraSense automatically unparks at dusk, observes through the night, and parks at dawn. See [Robotic Session](#robotic-session) below. |
+| **Self-Tasking** | When enabled, CitraSense automatically requests batches of observation tasks from the server when the queue runs low. Requires Scheduling and Robotic to also be enabled. |
 
 {: .warning }
 > If you enable Self-Tasking but leave Scheduling, Robotic, or Processing off, a yellow warning triangle appears next to the switches telling you which prerequisites are missing.
@@ -73,9 +73,9 @@ The session cycles through four states, shown as a colored badge:
 | State | Badge | What happens |
 |-------|-------|-------------|
 | **Daytime** | Gray | Telescope is parked. The card shows a countdown to the next dark window. |
-| **Starting Up** | Blue | Sun has dropped below the twilight threshold. CitraScope unparks the mount and runs startup autofocus. |
+| **Starting Up** | Blue | Sun has dropped below the twilight threshold. CitraSense unparks the mount and runs startup autofocus. |
 | **Observing** | Green | The system is actively executing observation tasks. |
-| **Shutting Down** | Yellow | Dawn is approaching. CitraScope finishes the current task, parks the mount, and prepares for daytime. |
+| **Shutting Down** | Yellow | Dawn is approaching. CitraSense finishes the current task, parks the mount, and prepares for daytime. |
 
 ### Session Info
 
@@ -234,7 +234,7 @@ Below autofocus, a Focus HFR readout tracks focus quality over time:
 
 ## Dependency Warnings
 
-If CitraScope detects missing system binaries at startup (for example, `solve-field` for plate solving or `source-extractor` for source extraction), a yellow alert banner appears near the top of the Monitoring tab. The banner lists each missing component along with the install command to resolve it. A clipboard button next to each install command lets you copy it in one click.
+If CitraSense detects missing system binaries at startup (for example, `solve-field` for plate solving or `source-extractor` for source extraction), a yellow alert banner appears near the top of the Monitoring tab. The banner lists each missing component along with the install command to resolve it. A clipboard button next to each install command lets you copy it in one click.
 
 Once the dependency is installed and the daemon is restarted, the banner disappears.
 
@@ -315,7 +315,7 @@ Active tasks are highlighted. Completed and cancelled tasks are removed on the n
 
 ## Log Panel
 
-The Log Panel is a collapsible terminal overlay pinned to the bottom of every page. It streams real-time log output from the CitraScope daemon over the WebSocket connection.
+The Log Panel is a collapsible terminal overlay pinned to the bottom of every page. It streams real-time log output from the CitraSense daemon over the WebSocket connection.
 
 ![Expanded log panel showing real-time daemon output](img/monitoring-log-expanded.png)
 

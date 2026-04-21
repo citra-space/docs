@@ -2,7 +2,7 @@
 title: INDI
 nav_order: 4
 parent: Hardware Adapters
-grand_parent: CitraScope
+grand_parent: CitraSense
 ---
 
 # INDI
@@ -12,7 +12,7 @@ grand_parent: CitraScope
 
 [INDI](https://indilib.org/) (Instrument Neutral Distributed Interface) is a protocol for controlling astronomical instrumentation. It provides a distributed, device-independent control protocol for astronomical equipment that operates over TCP/IP networks. INDI is the underlying technology that powers many observatory control applications, including KStars/Ekos.
 
-## Why Use INDI with CitraScope
+## Why Use INDI with CitraSense
 
 Direct INDI integration provides the most flexible and powerful hardware control option:
 
@@ -27,7 +27,7 @@ Direct INDI integration provides the most flexible and powerful hardware control
 
 ## Prerequisites
 
-Before integrating INDI with CitraScope, ensure you have:
+Before integrating INDI with CitraSense, ensure you have:
 
 - **Linux operating system** (Ubuntu, Debian, Fedora, or similar)
 - **INDI Library 2.0.0 or later** installed
@@ -41,24 +41,24 @@ Before integrating INDI with CitraScope, ensure you have:
 ### Install INDI Library and Drivers
 INDI is for advanced users and as such, we assume you come bearing an INDI environment.
 
-### Install CitraScope with INDI Support
+### Install CitraSense with INDI Support
 
-CitraScope requires the optional INDI dependencies:
+CitraSense requires the optional INDI dependencies:
 
 ```bash
-uv tool install citrascope --with citrascope[indi]
+uv tool install citrasense --with citrasense[indi]
 ```
 
-Or with pip: `pip install citrascope[indi]`
+Or with pip: `pip install citrasense[indi]`
 
 This installs the `pyindi-client` library needed for INDI communication.
 
 ## Configuration
 
-### In CitraScope Web Interface
+### In CitraSense Web Interface
 
 1. **Navigate to Hardware Configuration**
-   - Open CitraScope web interface (default: `http://localhost:24872`)
+   - Open CitraSense web interface (default: `http://localhost:24872`)
    - Go to **Hardware Settings**
 
 2. **Select INDI Adapter**
@@ -111,12 +111,12 @@ The INDI adapter provides basic mount and camera control:
 
 ### Connection Issues
 
-**Problem**: CitraScope cannot connect to INDI server
+**Problem**: CitraSense cannot connect to INDI server
 
 **Solutions**:
 - Verify INDI server is running: `ps aux | grep indiserver`
 - Check server is listening: `netstat -tlnp | grep 7624`
-- Ensure **INDI Server Host** and **INDI Server Port** are correct in CitraScope settings
+- Ensure **INDI Server Host** and **INDI Server Port** are correct in CitraSense settings
 - Test with indi_getprop: `indi_getprop -h localhost -p 7624`
 - Check firewall allows connections on INDI port
 - Review INDI server logs for errors
@@ -136,14 +136,14 @@ The INDI adapter provides basic mount and camera control:
 
 ### Device Name Problems
 
-**Problem**: CitraScope can't find specified devices
+**Problem**: CitraSense can't find specified devices
 
 **Solutions**:
 - List available devices: `indi_getprop | grep DEVICE`
 - Verify exact device names (case-sensitive)
-- Update **Telescope Device Name** and **Camera Device Name** in CitraScope settings
+- Update **Telescope Device Name** and **Camera Device Name** in CitraSense settings
 - Leave device names empty to use auto-detection
-- Ensure devices are connected in INDI before CitraScope connects
+- Ensure devices are connected in INDI before CitraSense connects
 - Check for typos in device name configuration
 
 ### Image Capture Problems

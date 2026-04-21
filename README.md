@@ -61,7 +61,7 @@ bundle exec jekyll serve
 
 ## Screenshot Tool
 
-The repo includes a Playwright-based tool for capturing screenshots of web UIs (e.g., the CitraScope dashboard) for use in documentation.
+The repo includes a Playwright-based tool for capturing screenshots of web UIs (e.g., the CitraSense dashboard) for use in documentation.
 
 ### Setup
 
@@ -78,11 +78,11 @@ playwright install chromium
 python scripts/screenshots/capture.py \
   --url "http://localhost:24872/#monitoring" \
   --selector "#globalStatusBar" \
-  --output "docs/citrascope/img/status-bar.png" \
+  --output "docs/citrasense/img/status-bar.png" \
   --wait-for "#globalStatusBar"
 ```
 
-See `.cursor/skills/screenshots/SKILL.md` for the full selector catalog, navigation patterns, annotated-highlight recipes, and example invocations for CitraScope.
+See `.cursor/skills/screenshots/SKILL.md` for the full selector catalog, navigation patterns, annotated-highlight recipes, and example invocations for CitraSense.
 
 ## Links
 

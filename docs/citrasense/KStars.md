@@ -2,7 +2,7 @@
 title: KStars
 nav_order: 3
 parent: Hardware Adapters
-grand_parent: CitraScope
+grand_parent: CitraSense
 ---
 
 # KStars
@@ -12,7 +12,7 @@ grand_parent: CitraScope
 
 [KStars](https://edu.kde.org/kstars/) is a powerful, free desktop planetarium application for Linux, macOS, and Windows. Beyond its planetarium capabilities, KStars includes Ekos, a complete astrophotography suite that provides observatory control, image capture, guiding, focusing, and alignment capabilities.
 
-## Why Use KStars with CitraScope
+## Why Use KStars with CitraSense
 
 KStars/Ekos provides a professional-grade observatory control platform with excellent automation capabilities:
 - **Cross-Platform** - Runs on Linux, macOS, and Windows
@@ -21,13 +21,13 @@ KStars/Ekos provides a professional-grade observatory control platform with exce
 
 ## Prerequisites
 
-Before integrating KStars with CitraScope, ensure you have:
+Before integrating KStars with CitraSense, ensure you have:
 
 - **KStars 3.6.0 or later** installed ([download here](https://edu.kde.org/kstars/))
 - **Ekos configured** with your telescope hardware
 - **INDI server** running with your equipment profile
 - Your telescope hardware already configured and working in Ekos
-- CitraScope running on the **same machine** as KStars (the adapter uses local D-Bus)
+- CitraSense running on the **same machine** as KStars (the adapter uses local D-Bus)
 
 ## Installation
 
@@ -41,7 +41,7 @@ sudo apt-get install kstars-bleeding indi-full
 ```
 
 **macOS**:
-1. **Install D-Bus with brew** (required for CitraScope integration):
+1. **Install D-Bus with brew** (required for CitraSense integration):
   ```bash
   brew install dbus
   brew services start dbus
@@ -52,9 +52,9 @@ sudo apt-get install kstars-bleeding indi-full
 
 **Windows**: Not currently tested or supported on windows.
 
-### Install CitraScope
+### Install CitraSense
 
-Follow the [Getting Started](GettingStarted.html) guide if you haven't already installed CitraScope.
+Follow the [Getting Started](GettingStarted.html) guide if you haven't already installed CitraSense.
 
 ## Configuration
 
@@ -76,10 +76,10 @@ Follow the [Getting Started](GettingStarted.html) guide if you haven't already i
    - Configure image format (FITS recommended)
    - Set your capture directory
 
-### In CitraScope Web Interface
+### In CitraSense Web Interface
 
 1. **Navigate to Hardware Configuration**
-   - Open CitraScope web interface (default: `http://localhost:24872`)
+   - Open CitraSense web interface (default: `http://localhost:24872`)
    - Go to **Hardware Settings**
 
 2. **Select KStars Adapter**
@@ -100,7 +100,7 @@ Follow the [Getting Started](GettingStarted.html) guide if you haven't already i
    | **Image Format** | `Mono` | Camera image format. Options: `Mono`, `RGGB`, `RGB`. |
 
 3. **Save Configuration**
-   - Save your settings. CitraScope will connect to KStars via D-Bus and report hardware status in the dashboard.
+   - Save your settings. CitraSense will connect to KStars via D-Bus and report hardware status in the dashboard.
 
 ## Supported Features
 
@@ -116,30 +116,30 @@ The KStars adapter supports the following capabilities:
 
 ### Known Limitations
 
-- **Local D-Bus Only** - The adapter communicates via session D-Bus. CitraScope must run on the same machine as KStars.
+- **Local D-Bus Only** - The adapter communicates via session D-Bus. CitraSense must run on the same machine as KStars.
 - **No Autofocus** - Autofocus is not currently supported through this adapter.
 - **No Focuser Control** - Direct focuser movement is not available. Use KStars/Ekos to manage focus.
-- **No Disconnect** - CitraScope cannot programmatically disconnect from KStars. Close KStars manually when done.
+- **No Disconnect** - CitraSense cannot programmatically disconnect from KStars. Close KStars manually when done.
 - **Windows Not Supported** - D-Bus is not natively available on Windows.
 
 ### Performance Considerations
 
-- KStars should remain running with Ekos active for CitraScope tasks
+- KStars should remain running with Ekos active for CitraSense tasks
 - Plate solving requires appropriate index files for your imaging scale
-- Ensure adequate system resources for both KStars and CitraScope
+- Ensure adequate system resources for both KStars and CitraSense
 
 ## Troubleshooting
 
 ### Connection Issues
 
-**Problem**: CitraScope cannot connect to KStars
+**Problem**: CitraSense cannot connect to KStars
 
 **Solutions**:
 - Verify KStars is running with Ekos started
 - Check that D-Bus is accessible: run `dbus-send --session --print-reply --dest=org.kde.kstars /KStars org.freedesktop.DBus.Peer.Ping` to test
-- Ensure **D-Bus Service Name** is correct in CitraScope settings (typically `org.kde.kstars`)
+- Ensure **D-Bus Service Name** is correct in CitraSense settings (typically `org.kde.kstars`)
 - On macOS, confirm D-Bus is running: `brew services list | grep dbus`
-- Restart both KStars and CitraScope
+- Restart both KStars and CitraSense
 - Review KStars logs: **Help → Debug → View Logs**
 
 ### Equipment Profile Issues

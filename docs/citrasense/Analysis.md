@@ -1,13 +1,13 @@
 ---
 title: Analysis
 nav_order: 5
-parent: CitraScope
+parent: CitraSense
 ---
 
 # Analysis
 {: .no_toc }
 
-The Analysis tab is a post-session performance dashboard. It reads the task history CitraScope records on disk and surfaces per-task metrics, timing breakdowns, lateness attribution, and tools for reprocessing and resubmitting observations.
+The Analysis tab is a post-session performance dashboard. It reads the task history CitraSense records on disk and surfaces per-task metrics, timing breakdowns, lateness attribution, and tools for reprocessing and resubmitting observations.
 
 ![Pipeline Analysis tab showing summary cards, timing bar, filters, and task list](img/analysis.png)
 
@@ -97,7 +97,7 @@ Click any row to expand a two-column detail panel beneath it.
 **Download bundle** — Downloads a ZIP containing the raw FITS images, source catalog, and metadata JSON for this task. Useful for offline debugging. Available while artifacts are retained.
 
 {: .note }
-> Both buttons show an **Artifacts expired** badge instead when CitraScope has cleaned up the files. Retention duration is configured by the **Keep Processing Output** setting.
+> Both buttons show an **Artifacts expired** badge instead when CitraSense has cleaned up the files. Retention duration is configured by the **Keep Processing Output** setting.
 
 #### Reprocess panel
 
