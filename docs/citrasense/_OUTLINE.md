@@ -36,10 +36,10 @@
 
 ### ~~2. Installation UPDATE — Raspberry Pi section~~ DONE
 
-- [x] Add Raspberry Pi image section to `Installation.md` (citrascope-pi)
+- [x] Add Raspberry Pi image section to `Installation.md` (citrasense-pi)
   - [x] What the Pi image includes (systemd autostart, WiFi provisioning via Comitup, GPS/chrony)
   - [x] Flashing the SD card and first-boot WiFi setup
-  - [x] Accessing the UI at `http://citrascope-<mission>.local`
+  - [x] Accessing the UI at `http://citrasense-<mission>.local`
   - [x] Pi image versioning vs CitraSense application version
 
 ### 3. Troubleshooting — NEW (`Troubleshooting.md`, nav_order: 50)

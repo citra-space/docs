@@ -19,7 +19,7 @@ This is the recommended adapter for Linux, macOS, and Raspberry Pi deployments.
 - **Simplest deployment** — no additional software to install, configure, or keep running
 - **Full CitraSense integration** — autofocus, alignment, pointing model calibration, camera preview, and calibration frame capture are all built in
 - **Composable** — connect only the devices you have. A camera alone works fine; add a mount, focuser, or filter wheel as your setup grows.
-- **Headless-friendly** — ideal for unattended Raspberry Pi deployments via [citrascope-pi](https://github.com/citra-space/citrascope-pi)
+- **Headless-friendly** — ideal for unattended Raspberry Pi deployments via [citrasense-pi](https://github.com/citra-space/citrasense-pi)
 
 ## Supported Devices
 
