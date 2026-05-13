@@ -40,10 +40,3 @@ citrasense
 
 The dashboard opens at [http://localhost:24872](http://localhost:24872). From there, connect to the Citra Space API and select your hardware adapter. See [Getting Started](GettingStarted.html) for details, or read [Operating CitraSense](Operating.html) for a walkthrough of a full session.
 
-## Open Source
-
-CitraSense is open source on [GitHub](https://github.com/citra-space/citrasense). Contributions are welcome — check the open issues or submit a pull request.
-
-All source code is publicly auditable. CitraSense only transmits data needed for tasking (observation parameters, images, task status). Credentials and configuration stay local. No telemetry or analytics. All API traffic is HTTPS.
-
-Report security concerns through [GitHub security advisories](https://github.com/citra-space/citrasense/security/advisories).

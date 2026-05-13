@@ -7,7 +7,7 @@ parent: CitraSense
 # Raspberry Pi
 {: .no_toc }
 
-[citrasense-pi](https://github.com/citra-space/citrasense-pi) is a turnkey SD card image that transforms a Raspberry Pi into a dedicated telescope node. Flash it, power on, connect to WiFi from your phone, and the dashboard is live — no SSH, no terminal, no manual setup.
+citrasense-pi is a turnkey SD card image that transforms a Raspberry Pi into a dedicated telescope node. Flash it, power on, connect to WiFi from your phone, and the dashboard is live — no SSH, no terminal, no manual setup.
 
 ![A Raspberry Pi running citrasense-pi mounted alongside an Askar refractor on a ZWO AM5 mount, outdoors in daylight](img/pi-scope.jpg)
 
@@ -24,12 +24,6 @@ parent: CitraSense
 | **User** | `citra` / `citra` (sudo enabled) |
 
 **Supported models:** Raspberry Pi 4 (2 GB+) and Raspberry Pi 5.
-
-## Flash the SD card
-
-1. Download the latest `.img.xz` from [citrasense-pi releases](https://github.com/citra-space/citrasense-pi/releases)
-2. Flash with [Raspberry Pi Imager](https://www.raspberrypi.com/software/) or [Balena Etcher](https://etcher.balena.io/)
-3. Insert the card and power on
 
 ## First boot
 
