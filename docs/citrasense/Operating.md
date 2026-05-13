@@ -1,17 +1,17 @@
 ---
 title: Operating CitraSense
-nav_order: 6
+nav_order: 7
 parent: CitraSense
 ---
 
 # Operating CitraSense
 {: .no_toc }
 
-This guide walks through a full observing session with CitraSense: getting the telescope aligned and focused, pulling a task from the Citra Space queue, and reviewing the result afterward. By the end you'll know what every card on the Monitoring tab does and when to touch it.
+This guide walks through a full observing session with CitraSense: getting the telescope aligned and focused, pulling a task from the Citra Space queue, and reviewing the result afterward. By the end you'll know which controls to reach for and when to touch them.
 
 Unattended operation (the robotic, walk-away mode) is covered separately. This guide assumes you're at the dashboard.
 
-For reference material on any section, see [Monitoring](Monitoring), [Configuration](Configuration), and [Analysis](Analysis).
+For reference material on any section, see [Monitoring](Monitoring.html), [Telescope Sensor Detail](TelescopeSensor.html), [Configuration](Configuration.html), and [Analysis](Analysis.html).
 
 ---
 
@@ -22,10 +22,10 @@ Make sure the following are already in place:
 - **CitraSense is installed and running** at [http://localhost:24872](http://localhost:24872) (or `http://citrasense-{name}.local` on a Pi). See [Getting Started](GettingStarted.html) if not.
 - **Your telescope is registered** in the [Citra Space app](https://app.citra.space). See [Add and Manage Telescopes](../guides-and-tutorials/add-and-manage-telescopes) to walk through it.
 - **The API is connected**. On **Configuration → API**, your endpoint, token, and telescope ID are set. The **TLEs** badge in the status bar is green (25,000+ elsets loaded).
-- **Hardware is connected**. On **Configuration → Hardware**, you've picked an adapter ([Direct Hardware](DirectHardware), [N.I.N.A.](NINA), [KStars](KStars), or [INDI](INDI) — the [Adapters](Adapters) page has a comparison table). The **Telescope**, **Camera**, and **Focuser** badges in the status bar are green, and your filter wheel shows the right filters on the Optics card.
+- **Hardware is connected**. On the telescope's **Configuration → Hardware** tab, you've picked an adapter ([Direct Hardware](DirectHardware.html), [N.I.N.A.](NINA.html), [KStars](KStars.html), or [INDI](INDI.html) — the [Adapters](Adapters.html) page has a comparison table). The telescope's hero card on **Monitoring** shows green mount / camera / focuser pills.
 - **A dark sky** — or at least nautical twilight. You can do most of this guide against a bright sky, but plate solving needs stars.
 
-Open the dashboard on the **Monitoring** tab — that's your console for the whole session.
+Open the dashboard on the **Monitoring** tab and click your telescope's **Open** button to jump to its [sensor detail page](TelescopeSensor.html) — that's your console for the rest of this session.
 
 ---
 
@@ -53,34 +53,34 @@ Typical cadence:
 - **Darks**: one set per exposure time at your cooling setpoint — re-capture when the setpoint changes, or every couple of months.
 - **Flats**: one set per filter — re-capture when dust shifts on the sensor, filter wheel, or optics.
 
-Capture masters through **Configuration → Calibration**. The tab also shows where masters are stored on disk and how they're matched at runtime.
+Capture masters through the per-telescope **Configuration → Calibration** tab. The tab also shows where masters are stored on disk and how they're matched at runtime. On the N.I.N.A. adapter with a trained Flat Wizard profile, the **Run Flat Wizard** button captures flats per-filter without operator action; pair it with the "Automatically capture flats during flat windows" switch for hands-off refreshes.
 
 ## Reset the pointing model if the scope has moved
 
 If this is a fresh site, a new physical setup, or anything that changed the mount's relationship to the sky since last night, clear the old pointing model first. A stale model applied to the wrong geometry makes pointing *worse*, not better.
 
-On the Telescope card, in the **Pointing Model** section, press **Reset**. Confirm. The model state drops back to **Untrained**. If nothing has moved since your last successful night, skip this and keep the model you've got.
+On the telescope detail page, in the Telescope card's **Pointing Model** section, press **Reset**. Confirm. The model state drops back to **Untrained**. If nothing has moved since your last successful night, skip this and keep the model you've got.
 
 ![Pointing Model subsection with the Reset button highlighted in red](img/operating-reset-highlight.png)
 
 ## Find some stars
 
-Point the scope at a patch of sky with visible stars. You don't need to know exactly where you are — the mount doesn't yet. Use the **Jog Pad** on the Telescope card (N/S/E/W directional buttons, press and hold) to slew.
+Point the scope at a patch of sky with visible stars. You don't need to know exactly where you are — the mount doesn't yet. Use the **Jog Pad** at the bottom of the Telescope card (N/S/E/W directional buttons, press and hold) to slew.
 
 ![Mount controls with the Jog Pad highlighted in red](img/operating-jog-pad-highlight.png)
 
-On the Optics card, press **Snap** with a short exposure (say, 2 seconds) to check what the camera sees.
+On the same page's Optics card, press **Snap** with a short exposure (say, 2 seconds) to check what the camera sees.
 
 ![Camera controls row with the Snap button highlighted in red](img/operating-snap-highlight.png)
 
 Iterate: jog, Snap, jog, Snap. Once you have stars in the frame — any stars — you're ready to align.
 
 {: .note }
-> No frame coming back? Check the Camera badge in the status bar. If the temperature is off or the sensor isn't connected, Snap just hangs. The log panel at the bottom will show you why.
+> No frame coming back? Check the camera pill in the sensor card header — if it's not green, the camera isn't connected. The log panel at the bottom will show you why.
 
 ## Align
 
-With stars in the frame, press **Align Now** on the Telescope card. CitraSense takes one frame, plate-solves it against the whole-sky catalog, and syncs the mount to the solved position.
+With stars in the frame, press **Align Now** in the Telescope card's mount controls. CitraSense takes one frame, plate-solves it against the whole-sky catalog, and syncs the mount to the solved position.
 
 ![Mount controls with the Align Now button highlighted in red](img/operating-align-now-highlight.png)
 
@@ -88,7 +88,7 @@ That's it — the mount now knows where it's pointing. From here, **Go To** actu
 
 ## Focus
 
-Time to sharpen up. On the Optics card, the **Autofocus** section has a big button that kicks off the routine.
+Time to sharpen up. The Optics card's **Autofocus** section has a big button that kicks off the routine.
 
 ![Autofocus subsection with the Autofocus button highlighted in red](img/operating-autofocus-highlight.png)
 
@@ -102,7 +102,7 @@ Watch the Optics card while it runs:
 
 - A **V-curve chart** builds up live, with one curve per filter color.
 - **Per-filter results** list the best position and HFR for each.
-- At the end, the **Focus HFR Health** readout shows the baseline HFR — that's your reference point for the rest of the night.
+- At the end, the **Focus HFR Health** readout shows the baseline HFR — that's your reference point for the rest of the night, used by HFR-triggered refocus during the session.
 
 ![Autofocus subsection with per-filter best positions, HFR values, and a V-curve chart with one colored curve per filter](img/monitoring-autofocus.png)
 
@@ -112,11 +112,11 @@ A full five-filter sweep takes about a minute. If you want to refocus a single f
 
 One Align Now sync is enough to get started, but a full pointing model is better — it corrects systematic errors (leveling errors, cone error, tube flex) across the whole sky, not just near the patch you aligned on. You have two ways to get there:
 
-**Run Calibrate now.** On the Telescope card, press **Calibrate**. The routine slews to a sequence of points across the sky, takes a frame at each, plate-solves it, and compares the solved center to the commanded center. Residuals get fit into a model. A progress bar tracks the run. When it finishes, the Pointing Model badge flips to **Trained** and the **Model Fit RMS** and **Live Accuracy** readouts update with the new numbers. Expand **Model details** to see the per-term breakdown (leveling errors, cone angle, non-perpendicularity).
+**Run Calibrate now.** In the Pointing Model section, press **Calibrate**. The routine slews to a sequence of points across the sky, takes a frame at each, plate-solves it, and compares the solved center to the commanded center. Residuals get fit into a model. A progress bar tracks the run with a step counter (e.g., "5 / 25") and a Cancel button. When it finishes, the Pointing Model badge flips to **Trained** and the **Model Fit RMS** and **Live Accuracy** readouts update with the new numbers. Expand **Model details** to see the per-term breakdown (leveling errors, cone angle, non-perpendicularity).
 
 ![Pointing Model subsection with the Calibrate button highlighted in red](img/operating-calibrate-highlight.png)
 
-**Let it build itself.** Skip the up-front calibration and start observing. Every real task's pointing-convergence loop contributes a plate-solved data point to the model. The **Live Accuracy** sparkline on the Telescope card shows it improving as the night goes on. This is the lazy path — the first few tasks will converge in more iterations than later ones, but you're imaging sooner.
+**Let it build itself.** Skip the up-front calibration and start observing. Every real task's pointing-convergence loop contributes a plate-solved data point to the model. The **Live Accuracy** sparkline shows it improving as the night goes on. This is the lazy path — the first few tasks will converge in more iterations than later ones, but you're imaging sooner.
 
 {: .note }
 > Which to pick? If you've got time before your first pass and want tight pointing from task one, run Calibrate. If a pass is starting in two minutes, skip it and let the model self-train.
@@ -129,30 +129,26 @@ From here, everything is the same on every adapter. You've got a telescope that'
 
 ## Pull a task and watch it run
 
-Flip the **Scheduling** switch on at the top of the Monitoring tab. Leave **Robotic** and **Self-Tasking** off for now — we want to drive this manually.
+On the telescope's hero card (Monitoring tab) or its detail page header, flip the **Scheduling** switch on. Leave **Robotic** off for now — we want to drive this manually. These switches are per-telescope, so they only affect this scope; other sensors on the same host stay where you left them.
 
-![Status bar switches row with the Scheduling and Processing toggles highlighted in red](img/operating-switches-highlight.png)
+![Telescope card switches row with the Scheduling and Processing toggles highlighted in red](img/operating-switches-highlight.png)
 
-On the **Scheduled Tasks** card, press **Request Batch**. This asks the Citra Space server for a fresh set of satellite passes assigned to your telescope.
-
-![Scheduled Tasks card header with the Request Batch button highlighted in red](img/operating-request-batch-highlight.png)
-
-A table fills in:
+The Citra Space scheduler assigns tasks automatically. Open the telescope's detail page — within a poll cycle or two, the **Scheduled Tasks** card lists every pass the scheduler has handed out for this telescope:
 
 ![Scheduled Tasks card listing nine upcoming DIRECTV passes with target, filter, sky-position indicator, countdown, observation window, and a per-row cancel action](img/monitoring-scheduled-tasks.png)
 
 | Column | What you're looking at |
 |--------|-----------------------|
-| **Target** | Satellite name |
+| **Target** | Satellite name (links to the satellite page on citra.space when an app URL is configured) |
 | **Filter** | Which filter the pass was assigned |
-| **Sky** | A mini sky compass showing where the target sits right now. Green = well above minimum elevation, yellow = close to the limit, red = below |
+| **Sky** | A mini sky compass showing where the target sits right now. Green = well above minimum elevation, yellow = close to the limit, red = below. A dashed ring marks your configured minimum elevation. |
 | **Countdown** | Time until the observation window opens |
-| **Window** | Start–end time range |
+| **Window** | Start time plus window duration. An **overlap** badge appears when a window opens before the previous task's window closes. |
 | **Actions** | Cancel (×) — removes the task from the server and your queue |
 
 Pick the first task with a short countdown. When the window opens, CitraSense automatically picks it up.
 
-Flip the **Processing** switch on. This is what tells the daemon it's allowed to start executing tasks. Now watch the **Active Tasks** card below Scheduled Tasks. Your task moves through three stages from left to right:
+Flip the **Processing** switch on. This is what tells the daemon it's allowed to start executing tasks for this telescope. Now watch the **Active Tasks** card below Scheduled Tasks. Your task moves through three stages from left to right:
 
 ![Active Tasks card showing three stage boxes — Imaging, Processing, and Submission — connected by arrows](img/monitoring-active-tasks.png)
 
@@ -201,19 +197,19 @@ If the task didn't find its target, the annotated image tells you why: the satel
 
 At this point you have two choices.
 
-**Stay hands-on.** Press **Request Batch** again when your queue runs low, re-run autofocus when HFR drifts off baseline, and cancel any task that looks troubled (weather, elevation, whatever). You're doing the scheduling, CitraSense is doing the imaging and processing.
+**Stay hands-on.** Re-run autofocus when HFR drifts off baseline (the Focus HFR sparkline turns yellow then red against the baseline), and cancel any task that looks troubled (weather, elevation, whatever). The scheduler keeps your queue filled.
 
-**Hand off.** When you're confident things are running cleanly, flip **Robotic** (handles unpark at dusk, park at dawn, scheduled autofocus) and optionally **Self-Tasking** (auto-requests new task batches when the queue runs low). Both are documented in the [Monitoring reference](Monitoring#robotic-session). That's the "walk-away" mode — worth a separate session to set up properly.
+**Hand off.** When you're confident things are running cleanly, flip **Robotic** on the telescope's card. That enables the nightly lifecycle: unpark at dusk, run start-of-night autofocus and pointing calibration (per your [Robotic config](Configuration.html#robotic)), observe through the dark window, park at dawn. The Robotic Session card on the detail page shows what the session is doing right now. That's the "walk-away" mode — worth a separate session to set up properly.
 
-![Status bar switches row with the Robotic and Self-Tasking toggles highlighted in red](img/operating-robotic-switches-highlight.png)
+![Telescope card switches row with the Robotic toggle highlighted in red](img/operating-robotic-switches-highlight.png)
 
 For tonight, staying hands-on is the right call. You'll learn what every number on the dashboard means, and you'll recognize the weird cases when they come up.
 
 ## Things to check between sessions
 
-- **Dark, flat, bias masters** — refresh monthly or when conditions change. On Direct Hardware, capture through Configuration → Calibration (see [Capture calibration frames](#calibration-frames) in Part 1 — flats need dusk or dawn). On N.I.N.A., KStars, and INDI, use your adapter's native calibration tools — CitraSense applies whatever masters it finds at processing time.
+- **Dark, flat, bias masters** — refresh monthly or when conditions change. On Direct Hardware, capture through the telescope's Configuration → Calibration tab (see [Capture calibration frames](#calibration-frames) in Part 1 — flats need dusk or dawn). On N.I.N.A. the Flat Wizard automation can handle flats hands-off. On KStars and INDI, use your adapter's native calibration tools — CitraSense applies whatever masters it finds at processing time.
 - **Pointing model** (Direct Hardware) — rebuild after re-leveling the mount, a teardown, or a large temperature shift. Other adapters rely on the mount's own alignment scheme instead.
-- **Disk space** — raw FITS and processing artifacts add up fast. **Keep Images** and **Keep Processing Output** settings control retention (Configuration → Processing and Advanced).
+- **Disk space** — raw FITS and processing artifacts add up fast. Site-level **Pipeline → Processing output retention** controls how long bundles stick around; per-sensor **Advanced → Keep captured images** controls raw FITS retention.
 - **Log files** — CitraSense rotates daily logs at `~/Library/Logs/citrasense/` (macOS). Paths and copy buttons are on Configuration → **Advanced** → **Paths & Files**.
 
 ---
@@ -221,7 +217,8 @@ For tonight, staying hands-on is the right call. You'll learn what every number 
 ## Learn more
 
 - [Getting Started](GettingStarted.html) — install and launch CitraSense
-- [Raspberry Pi image](RaspberryPi) — headless field deployment
-- [Configuration reference](Configuration) — every setting explained
-- [Monitoring reference](Monitoring) — the live dashboard in detail
-- [Analysis reference](Analysis) — post-session review tools
+- [Raspberry Pi image](RaspberryPi.html) — headless field deployment
+- [Telescope Sensor Detail](TelescopeSensor.html) — every control on the telescope detail page
+- [Configuration reference](Configuration.html) — every setting explained
+- [Monitoring reference](Monitoring.html) — the live dashboard in detail
+- [Analysis reference](Analysis.html) — post-session review tools

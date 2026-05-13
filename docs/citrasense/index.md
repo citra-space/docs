@@ -22,10 +22,11 @@ You control availability through the [web dashboard](Monitoring.html) — enable
 
 ## Features
 
-- **Web dashboard** — [Monitor](Monitoring.html) telescope status, task pipeline, and scheduled observations in real time. [Configure](Configuration.html) every setting from your browser. [Analyze](Analysis.html) past sessions to tune detection settings and reprocess stored images. Dark theme throughout to preserve night vision, and the layout adapts to phones and tablets for field use.
-- **[Hardware Adapters](Adapters.html)** — Control your telescope, camera, filter wheel, and focuser through [Direct Hardware](DirectHardware.html) (recommended), [N.I.N.A.](NINA.html), [KStars](KStars.html), or [INDI](INDI.html).
+- **Web dashboard** — [Monitor](Monitoring.html) every sensor's live status, task pipeline, and scheduled observations in real time. [Configure](Configuration.html) every setting from your browser. [Analyze](Analysis.html) past sessions to tune detection settings and reprocess stored images. Dark theme throughout to preserve night vision, and the layout adapts to phones and tablets for field use.
+- **Multi-sensor** — Run multiple sensors from a single CitraSense host: optical telescopes, all-sky cameras, and staring cameras. Each sensor gets its own configuration, task queue, and hero card on the dashboard. Switch the active ground station from the UI without restarting the daemon.
+- **[Hardware Adapters](Adapters.html)** — Control telescopes through [Direct Hardware](DirectHardware.html) (recommended — supports ZWO and Rainbow Astro mounts), [N.I.N.A.](NINA.html), [KStars](KStars.html), or [INDI](INDI.html).
 - **Processing Pipeline** — Six-stage image pipeline: calibration, plate solving, source extraction, photometry, satellite matching, and annotated image generation.
-- **Robotic Operations** — Automatic dusk-to-dawn sessions with start-of-night autofocus, pointing calibration, and self-tasking when the server queue is empty.
+- **Robotic Operations** — Per-telescope dusk-to-dawn sessions with start-of-night autofocus and pointing calibration. Tasks come from the Citra Space scheduler.
 - **[Raspberry Pi](RaspberryPi.html)** — Flash an SD card, power on, connect to WiFi from your phone, and the dashboard is live. Pre-built image for headless field deployments.
 
 ## Getting Started

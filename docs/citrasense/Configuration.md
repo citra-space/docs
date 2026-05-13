@@ -1,15 +1,23 @@
 ---
 title: Configuration
-nav_order: 4
+nav_order: 5
 parent: CitraSense
 ---
 
 # Configuration
 {: .no_toc }
 
-The Configuration tab is where you connect CitraSense to the Citra Space platform, select and configure your hardware, tune observation and processing settings, and set up automated operations.
+The Configuration tab is where you connect CitraSense to the Citra Space platform, register every sensor attached to this ground station, tune observation and processing settings, and set up automated operations.
 
-The page has a vertical side navigation on the left with nine sub-tabs. Your last-selected tab is remembered across sessions. Changes across all tabs are saved together with the **Save Configuration** button at the bottom.
+The page has a vertical side navigation on the left, split into two sections:
+
+- **Site** — settings that apply to the whole ground station: API connection, Time & Location, Pipeline, Advanced.
+- **Per-sensor** — one collapsible group per sensor on this host (Hardware, Observation, Processing, Autofocus, Calibration, Robotic). Each sensor's row in the nav has its own trash icon to remove it. The **+ Add Sensor** button at the bottom of the nav lets you register a new telescope, all-sky camera, or staring camera.
+
+Your last-selected tab is remembered across sessions. Changes across every tab are saved together with the **Save Configuration** button fixed at the bottom of the page.
+
+{: .note }
+> Only the tabs that apply to the active sensor's modality are shown. A streaming sensor, for example, only shows its **Hardware** tab — observation, processing, and robotic-session settings don't apply.
 
 ---
 
@@ -34,21 +42,31 @@ When [Dummy API mode](#advanced) is enabled, a warning banner appears on this ta
 
 ## Hardware
 
-![Hardware Configuration tab showing adapter selection, filter config, and mount alignment](img/config-hardware.png)
+![Hardware Configuration tab showing adapter selection, Citra Sensor ID, and adapter settings](img/config-hardware.png)
 
-The Hardware tab selects which adapter controls your telescope equipment and exposes all adapter-specific settings.
+The Hardware tab configures the selected sensor's hardware. It is per-sensor: each sensor in the side nav has its own Hardware tab, and changing the adapter or settings here only affects the active sensor.
 
-### Adapter Selection
+### Citra Sensor ID
 
-Choose your hardware adapter from the dropdown. Options include:
+Every sensor needs a Citra Sensor ID — the UUID of the matching record registered on Citra Space. Observation uploads use this ID to attach results to the correct backend record. The field links to the Citra Space app so you can copy the UUID from your account page.
 
-- **Direct Hardware** — CitraSense controls devices natively (ZWO cameras, Moravian cameras, ZWO EAF focuser, ZWO AM5 mount, USB cameras, Ximea cameras)
+### Adapter Selection (telescope sensors)
+
+Telescope sensors require a hardware adapter. Choose one from the dropdown:
+
+- **Direct Hardware** — CitraSense controls devices natively (ZWO cameras, Moravian cameras, ZWO EAF focuser, ZWO AM5/AM7 mounts, Rainbow Astro RST-135E mounts, USB cameras, Ximea cameras)
 - **N.I.N.A. Advanced API** — Connects to a running N.I.N.A. instance over its HTTP/WebSocket interface
 - **KStars / Ekos** — Connects to KStars via D-Bus
 - **INDI** — Connects to an INDI server directly
 - **Dummy Adapter** — Simulated hardware for testing without real devices
 
-After selecting an adapter, click **Reconnect** to establish the connection. For the Direct adapter, a **Scan Hardware** button appears to detect connected USB devices.
+For the Direct adapter, a **Scan Hardware** button appears to re-enumerate USB devices, serial ports, and cameras.
+
+Streaming sensors (all-sky, staring) do not use the hardware adapter dropdown — they carry all their per-sensor configuration in their adapter settings card below.
+
+### Live Bus Pills (staring sensors)
+
+For staring sensors, a row of **Live** pills at the top of the Hardware tab shows the bus state and the linked `target_acquired` daemon's state. Green means the bus is connected and the daemon is running; yellow means stale or awaiting catalog; red means offline or in error.
 
 ### Adapter Settings
 
@@ -76,6 +94,10 @@ This card appears when the adapter supports alignment or manual sync operations.
 ### Hardware Safety Monitor
 
 When the adapter supports an external safety device (weather station, roof sensor, etc.), a toggle appears to enable or disable the hardware safety monitor. When enabled, CitraSense polls the safety device and halts all operations if unsafe conditions are reported.
+
+### Operating Window (staring sensors)
+
+Staring camera sensors have an **Operating Window** card on their Hardware tab. The **Darkness Threshold** dropdown lets you pause the capture loop while the sun is above a chosen altitude (Civil, Nautical, or Astronomical twilight), or **Always (testing)** to bypass the gate for daytime smoke tests. The window uses the same per-sensor setting as the telescope robotic session.
 
 ---
 
@@ -139,6 +161,13 @@ For convenience, the tab offers batch capture buttons:
 
 You can configure how many frames to capture per type with the **Bias/Dark frame count** and **Flat frame count** fields.
 
+### Automated Flats (N.I.N.A.)
+
+When the active adapter is N.I.N.A. and the connected profile has a trained Flat Wizard, an **Automated Flats** section appears. Exposures and panel brightness come from the trained N.I.N.A. profile — CitraSense triggers the wizard per-filter, downloads the frames, and stacks them into masters.
+
+- **Run Flat Wizard** runs the wizard immediately for every enabled filter.
+- The **Automatically capture flats during flat windows** switch turns on hands-off flat capture. Pair it with a **Capture every** interval (every flat window, daily, or a longer cadence) to refresh masters on a schedule without operator action.
+
 ---
 
 ## Observation
@@ -168,17 +197,16 @@ When Adaptive Exposure is enabled, three additional settings appear:
 
 ![Processing tab showing pipeline toggles and available processors](img/config-processing.png)
 
-The Processing tab controls the image processing pipeline that runs after each capture.
+The Processing tab is per-sensor. It controls the image processing pipeline that runs after each capture for this telescope.
 
 ### Pipeline Control
 
 | Setting | Description |
 |---------|-------------|
 | **Enable image processing pipeline** | Master switch for the entire pipeline. When off, captured images are uploaded raw. |
-| **Keep processing output** | Retain intermediate files (source catalogs, plate solve artifacts) on disk for inspection and debugging. |
 | **Skip upload after processing** | Run the full pipeline locally but do not upload results to the API. Useful for offline testing. |
-| **Use local APASS catalog** | Use a locally downloaded copy of the APASS photometric catalog (~6.4 GB compressed, ~16 GB on disk) instead of querying the AAVSO HTTP API. Faster and works offline. |
-| **Data directory** | Where images and processing output are stored. Leave blank for the platform default. |
+
+Site-wide pipeline storage settings (retention, local APASS catalog, data directory) live on the site-level [Pipeline](#pipeline) tab.
 
 ### Available Processors
 
@@ -214,6 +242,23 @@ These settings control how SExtractor detects stars and satellites in each image
 |---------|-------------|
 | **Solve timeout (seconds)** | Maximum CPU time allowed per solve attempt (10–300 seconds). |
 | **Index files directory** | Path to astrometry.net index files. Leave blank to use the system default. |
+
+---
+
+## Pipeline
+
+![Pipeline tab showing processing-output retention, APASS catalog toggle, and data directory](img/config-pipeline.png)
+
+The Pipeline tab is a site-level tab that controls where processing output lives and how long it sticks around.
+
+| Setting | Description |
+|---------|-------------|
+| **Processing output retention** | How long to keep intermediate pipeline files (source catalogs, plate-solve artifacts) on disk. Options: **Delete immediately** (default), **6 hours**, **24 hours**, **3 days**, **7 days**, or **Keep forever**. Analysis metrics are always kept regardless of this setting. |
+| **Use local APASS catalog** | Use a locally downloaded copy of the APASS photometric catalog (~6.4 GB compressed, ~16 GB on disk) instead of querying the AAVSO HTTP API. Faster and works offline. |
+| **Data directory** | Where images and processing output are stored. Leave blank for the platform default. |
+
+{: .note }
+> Retention controls how long bundles stay available for [Analysis tab reprocessing](Analysis.html#reprocess-panel). **Delete immediately** disables reprocessing — once a task finishes, its bundle is gone.
 
 ---
 
@@ -259,13 +304,11 @@ When both GPS and a server-provided position are available, the tab shows both a
 
 ---
 
-## Robotic Operations
+## Robotic
 
-![Robotic Operations tab showing session settings and self-tasking controls](img/config-robotic.png)
+![Robotic tab showing session settings](img/config-robotic.png)
 
-The Robotic Operations tab configures automated nightly sessions and self-tasking behavior.
-
-### Robotic Session
+The Robotic tab configures the automated nightly session for a telescope sensor. It is per-sensor: each telescope can run its own robotic schedule.
 
 These settings control what happens automatically at the start and end of each observing night.
 
@@ -277,16 +320,8 @@ These settings control what happens automatically at the start and end of each o
 | **Alignment at start of night** | (Coming soon) |
 | **Unpark at dusk / Park at dawn** | Automatically unpark the mount when the session begins and park it when the session ends. |
 
-### Self-Tasking
-
-When the Citra API has no assigned tasks, CitraSense can generate its own observation targets. These settings control what it looks for.
-
-| Setting | Description |
-|---------|-------------|
-| **Exclude Object Types** | Toggle which object categories to exclude from self-generated tasks: **Payload**, **Rocket Body**, **Debris**, **Unknown**. Selected types (highlighted) are excluded. |
-| **Include Orbit Regimes** | Toggle which orbital regimes to include: **LEO**, **MEO**, **GEO**, **HEO**. Selected regimes (highlighted) are included. Leave all deselected for no filtering. |
-| **Satellite Group IDs** | Comma-separated group UUIDs to restrict self-tasking to specific satellite groups. Leave empty for automatic target discovery. |
-| **Collection Type** | **Track** captures in a single filter. **Characterization** cycles through multiple enabled filters per target for multi-band photometry. |
+{: .note }
+> Observation tasks are assigned by the Citra Space scheduler. To control what your telescope is asked to observe, configure your tasking preferences on the Citra Space web app.
 
 ---
 

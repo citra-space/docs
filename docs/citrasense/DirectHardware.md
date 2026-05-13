@@ -37,6 +37,7 @@ This is the recommended adapter for Linux, macOS, and Raspberry Pi deployments.
 | Device | Install Extra | Notes |
 |--------|--------------|-------|
 | **ZWO AM3 / AM5 / AM7** | `uv tool install citrasense --with citrasense[zwo-mount]` | USB serial or WiFi TCP connection |
+| **Rainbow Astro RST-135 / 135E / 150H / 300** | *(none)* | USB serial. Set the mount handset to **Rainbow** (native) protocol — the LX200 emulation does not expose most commands CitraSense uses. Satellite work uses plate-solve-and-retarget; custom per-axis tracking rates are not supported. |
 
 {: .note }
 > You can run CitraSense without a mount for static camera setups. Leave the mount type empty in configuration.

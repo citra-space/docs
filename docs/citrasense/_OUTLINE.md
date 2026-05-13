@@ -16,6 +16,7 @@
 - [x] `Configuration.md` — Configuration tab walkthrough (API, hardware, autofocus, calibration, observation, processing, time & location, robotic operations, advanced)
 - [x] `Analysis.md` — Analysis tab walkthrough (summary cards, processor timing, filters, task list, Auto-Tune, reprocessing)
 - [x] `Adapters.md` — Hardware Adapters parent page (overview, capability comparison table)
+- [x] `TelescopeSensor.md` — Telescope sensor detail page (mount controls, optics card, autofocus, pointing model, robotic session, active/scheduled tasks)
 - [x] `Operating.md` — Full-session walkthrough (prep → align → focus → run a task → review)
 - [x] `DirectHardware.md` — Direct Hardware adapter guide
 - [x] `NINA.md` — N.I.N.A. adapter guide
@@ -71,6 +72,22 @@
 
 - [ ] Review `KStars.md` for completeness against current features
 - [ ] Review `INDI.md` for completeness against current features
+
+### 6. Multi-sensor & non-telescope sensors — NEW
+
+CitraSense supports multiple sensors per ground station. The operator-visible
+surface area for non-telescope sensors is not yet documented.
+
+- [ ] **Sensors overview page** (`Sensors.md`, nav_order: 6, `has_children: true`) — what a "sensor" is, the modalities CitraSense ships (telescope, all-sky, staring camera), how to add / remove one, and how each gets its own task queue.
+- [ ] **All-sky camera** (`Allsky.md`, child of Sensors) — purpose, hardware (RPi HQ, USB), streaming controls, frame storage.
+- [ ] **Staring camera** (`StaringCamera.md`, child of Sensors) — link to the `target_acquired` daemon, ping log, operating window, what gets uploaded.
+
+### 7. Ground-station switching — NEW
+
+- [ ] How to register a new ground station from current GPS
+- [ ] What happens when you switch sites (hardware disconnect/reconnect, in-flight task drop)
+- [ ] When to use it (rover deployments, swapping hosts between sites)
+- [ ] Could fit as a section in `Sensors.md` or a short top-level `GroundStation.md` page.
 
 ---
 

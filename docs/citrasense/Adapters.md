@@ -8,13 +8,15 @@ has_children: true
 # Hardware Adapters
 {: .no_toc }
 
-CitraSense uses hardware adapters to communicate with your telescope equipment. You choose an adapter based on your hardware and platform.
+CitraSense uses hardware adapters to talk to optical telescopes. Each telescope sensor in your CitraSense config picks one adapter — you can mix adapters across sensors on the same host (e.g., one telescope on N.I.N.A. and another on Direct).
+
+Non-telescope sensors (all-sky cameras, staring cameras) don't use the hardware-adapter system — they configure their transport and per-sensor settings on their own Hardware tab instead.
 
 ## Choosing an Adapter
 
 Most operators will use one of the two primary adapters:
 
-- **Direct Hardware** — CitraSense controls your devices end-to-end with no intermediary software. This is the recommended path for Linux, macOS, and Raspberry Pi deployments. Supports ZWO ASI cameras, Moravian cameras, ZWO AM3/AM5/AM7 mounts, ZWO EAF focusers, and more.
+- **Direct Hardware** — CitraSense controls your devices end-to-end with no intermediary software. This is the recommended path for Linux, macOS, and Raspberry Pi deployments. Supports ZWO ASI cameras, Moravian cameras, ZWO AM3/AM5/AM7 and Rainbow Astro RST-135E mounts, ZWO EAF focusers, and more.
 - **N.I.N.A.** — For Windows setups running N.I.N.A. with Planewave mounts. CitraSense communicates with N.I.N.A.'s Advanced API to control your entire equipment chain.
 
 Additional adapters are available for specific environments:
