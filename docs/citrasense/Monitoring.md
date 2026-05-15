@@ -68,10 +68,11 @@ When any site-level safety check enters a non-safe state, an alert banner appear
 
 | Alert | What it means |
 |-------|--------------|
-| **Operator Stop** | You (or another operator) activated an emergency stop. All motion is blocked. A **Clear Stop** button appears to resume. |
-| **Disk Space** | Available disk space is low. At warning level, imaging continues but you should free space soon. At stop level, imaging is paused. Shows remaining free space. |
-| **Time Health** | System clock drift is critical. Observations may be inaccurate because timestamps cannot be trusted. |
+| **Operator Stop** | You (or another operator) activated an emergency stop. All motion is blocked. A **Clear Stop** button appears to resume. Always active — cannot be disabled. |
+| **Disk Space** | Available disk space is low. At warning level, imaging continues but you should free space soon. At stop level, imaging is paused. Shows remaining free space. Thresholds and the check itself are configured on the [Safety](Configuration.html#safety) tab. |
+| **Time Health** | System clock drift exceeds the [Pause Threshold](Configuration.html#time-synchronization). Observations may be inaccurate because timestamps cannot be trusted. Can be disabled on the [Safety](Configuration.html#safety) tab for rigs without reliable NTP. |
 | **Hardware Safety** | An external safety monitor (e.g., a cloud sensor or weather station connected through N.I.N.A.) reports unsafe conditions. Telescope operations are suspended until conditions improve. |
+| **Cable Wrap** | Cumulative azimuth rotation on a telescope's mount crossed its soft or hard limit. Appears as a pill on the offending sensor's hero card. Limits and the check itself are configured on the per-sensor [Safety](Configuration.html#safety-per-sensor) tab. |
 
 ---
 

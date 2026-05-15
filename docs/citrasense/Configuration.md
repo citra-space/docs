@@ -11,8 +11,8 @@ The Configuration tab is where you connect CitraSense to the Citra Space platfor
 
 The page has a vertical side navigation on the left, split into two sections:
 
-- **Site** — settings that apply to the whole ground station: API connection, Time & Location, Pipeline, Advanced.
-- **Per-sensor** — one collapsible group per sensor on this host (Hardware, Observation, Processing, Autofocus, Calibration, Robotic). Each sensor's row in the nav has its own trash icon to remove it. The **+ Add Sensor** button at the bottom of the nav lets you register a new telescope, all-sky camera, or staring camera.
+- **Site** — settings that apply to the whole ground station: API connection, Time & Location, Pipeline, Safety, Advanced.
+- **Per-sensor** — one collapsible group per sensor on this host (Hardware, Observation, Processing, Autofocus, Calibration, Robotic, Safety). Each sensor's row in the nav has its own trash icon to remove it. The **+ Add Sensor** button at the bottom of the nav lets you register a new telescope, all-sky camera, or staring camera.
 
 Your last-selected tab is remembered across sessions. Changes across every tab are saved together with the **Save Configuration** button fixed at the bottom of the page.
 
@@ -262,6 +262,30 @@ The Pipeline tab is a site-level tab that controls where processing output lives
 
 ---
 
+## Safety
+
+![Safety tab showing disk-space thresholds and time-health toggle](img/config-safety.png)
+
+The Safety tab is a site-level tab that controls which automated checks halt operations and at what thresholds. The operator emergency stop is always active and cannot be disabled here.
+
+When a check trips, CitraSense pauses imaging across every sensor and surfaces a banner under the [status bar](Monitoring.html#safety-alerts). The status bar's [Safety badge](Monitoring.html#site-health-badges) summarizes the aggregate state.
+
+### Disk space
+
+| Setting | Description |
+|---------|-------------|
+| **Monitor free disk space** | Master toggle for the disk-space check. When off, the check is not registered and disk-space alerts will never fire. |
+| **Warn at (MB)** | Free space (in megabytes) on the images volume below which the Safety badge goes yellow. Imaging continues. |
+| **Critical at (MB)** | Free space below which imaging is paused. Must be lower than the Warn threshold. |
+
+The form shows the current free space below the toggle, colored by the live check state. While the daemon is still computing the first reading, a "Waiting for first reading…" hint appears in its place.
+
+### Time health
+
+When **Block work when system time is unsynced** is on, CitraSense pauses imaging if measured clock drift exceeds the threshold on the [Time & Location](#time--location) tab. Disable on rigs without reliable NTP — without this check, slews and captures will proceed even if the clock is drifting.
+
+---
+
 ## Time & Location
 
 ![Time & Location tab showing time sync, GPS, and operating location](img/config-timelocation.png)
@@ -322,6 +346,26 @@ These settings control what happens automatically at the start and end of each o
 
 {: .note }
 > Observation tasks are assigned by the Citra Space scheduler. To control what your telescope is asked to observe, configure your tasking preferences on the Citra Space web app.
+
+---
+
+## Safety (per-sensor)
+
+![Per-sensor Safety tab showing cable-wrap toggle and limits](img/config-safety-sensor.png)
+
+The per-sensor Safety tab holds checks that only make sense for one sensor at a time. Today this is the cable wrap monitor for telescope sensors that drive the mount directly (Direct Hardware and Dummy adapters). It does not appear for N.I.N.A., KStars/Ekos, or INDI adapters because cable management is handled by the host application in those configurations.
+
+### Cable wrap
+
+| Setting | Description |
+|---------|-------------|
+| **Enable cable wrap protection** | Master toggle. When off, CitraSense will not block slews or trigger unwinds based on azimuth rotation. |
+| **Soft limit (deg)** | Cumulative azimuth rotation (in degrees) above which new slews are blocked. The Monitoring tab shows a yellow cable-wrap pill on the sensor's hero card. |
+| **Hard limit (deg)** | Rotation at which CitraSense aborts the current motion and triggers an unwind. Must exceed the soft limit. |
+
+Cable wrap only meaningfully applies to alt-az mounts. Telescope sensors whose mounts don't expose an azimuth axis (e.g. equatorial fork mounts) silently disable the check regardless of this toggle.
+
+To manually clear an active wrap warning, use the **Reset cable wrap** control on the [Telescope sensor detail page](TelescopeSensor.html).
 
 ---
 
