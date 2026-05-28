@@ -126,6 +126,9 @@ Controls:
 Additional mount controls appear at the bottom of the Telescope card for adapters that support direct control:
 
 - **Jog pad** — 3×3 grid of N/S/E/W buttons for manual mount movement. Press and hold to move; release to stop. Center button stops all axes immediately. Works with both mouse and touch.
+- **Point at satellite** — Search the satellite catalog by name (start typing — for example "ISS" or "DIRECTV 14" — and matches appear in a dropdown). Pick a result to load its live state. A chip shows its current altitude and azimuth, colored green when above the configured horizon limit, yellow when below it, and red when below the horizon. The action button reads **Track** on mounts that support custom tracking rates (slew and follow the satellite) and **Point** on mounts that do not (slew once — press again to re-point). A "View on Citra" link opens the satellite's page on citra.space when the app URL is configured. Click **clear** to drop the selection.
+
+  ![Telescope card with DIRECTV 14 selected as the satellite target, showing the live alt/az chip and View on Citra link](img/sensor-telescope-satellite-track.png)
 - **Go To** — Enter target RA (0–360°) and Dec (−90–90°), press **Go** to slew. The button is disabled while the mount is slewing or busy.
 - **Align Now** — Triggers a plate-solve alignment to sync the mount model. The button changes to **Cancel Alignment** while running and shows progress text and a spinner; below it the last alignment timestamp is displayed when idle.
 - **Sidereal Tracking** — Toggle the mount's sidereal tracking on or off.
@@ -164,9 +167,15 @@ The preview area shows the most recent image captured by this telescope's camera
 | **Snap** | Take a single preview exposure. |
 | **Loop** | Start continuous preview exposures (button turns red; click again to stop). |
 | **Save** | Capture a full FITS image at the current exposure. |
+| **Analyze now** | Capture one frame at the current exposure, run it through the processing pipeline (plate-solve, source extraction, satellite matching), and upload any matches. Useful for one-off "what's in the field?" checks without scheduling a task. Disabled while another capture, autofocus, or imaging task is in flight. When the job finishes, an inline result panel shows whether the frame plate-solved, the field center and pixel scale, source count, and a list of satellite matches with their magnitudes. Click the × on the panel to dismiss it. See screenshot below. |
 | **Flip** | Horizontally flip the preview — useful when a diagonal mirror inverts the image. |
 
 A **Sensor busy** indicator appears in place of these controls when an imaging task is in progress.
+
+{: .note }
+> **Analyze now** is only available on adapters that support ad-hoc captures. Currently that's the Direct Hardware adapter; N.I.N.A. and KStars don't yet expose a free-form capture endpoint, so the button will return "this sensor's adapter doesn't support ad-hoc captures."
+
+![Optics card after an Analyze now run, with the result panel showing plate-solve status, source count, and matched satellites](img/sensor-optics-analyze-now.png)
 
 ### Filter Wheel
 

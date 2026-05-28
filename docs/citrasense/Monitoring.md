@@ -118,7 +118,7 @@ Shows the all-sky stream status, the latest preview frame, and a Start/Stop stre
 
 ### Staring Camera Card
 
-Shows the `target_acquired` daemon link status as a colored pill: green when status messages are flowing, gray while waiting for the first per-batch status, yellow when the link has gone stale. The hero panel surfaces the most recent batch summary and ping latency.
+Shows the active detection backend and capture state. When **target_acquired** is the selected backend, the card surfaces the `target_acquired` daemon link status as a colored pill — green when status messages are flowing, gray while waiting for the first per-batch status, yellow when the link has gone stale — and the most recent batch summary and ping latency. When the **on-device optical pipeline** backend is selected, the daemon link pill and per-batch status are hidden; the card instead reflects the local processing pipeline's state (the same Imaging → Processing → Submission stages used by telescope sensors).
 
 ---
 

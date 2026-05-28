@@ -80,7 +80,7 @@ surface area for non-telescope sensors is not yet documented.
 
 - [ ] **Sensors overview page** (`Sensors.md`, nav_order: 6, `has_children: true`) — what a "sensor" is, the modalities CitraSense ships (telescope, all-sky, staring camera), how to add / remove one, and how each gets its own task queue.
 - [ ] **All-sky camera** (`Allsky.md`, child of Sensors) — purpose, hardware (RPi HQ, USB), streaming controls, frame storage.
-- [ ] **Staring camera** (`StaringCamera.md`, child of Sensors) — link to the `target_acquired` daemon, ping log, operating window, what gets uploaded.
+- [ ] **Staring camera** (`StaringCamera.md`, child of Sensors) — link to the `target_acquired` daemon, ping log, operating window, what gets uploaded. (Detection-backend choice — on-device optical pipeline vs `target_acquired` — is partially covered in Configuration.md until this page exists.)
 
 ### 7. Ground-station switching — NEW
 

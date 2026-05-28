@@ -64,9 +64,20 @@ For the Direct adapter, a **Scan Hardware** button appears to re-enumerate USB d
 
 Streaming sensors (all-sky, staring) do not use the hardware adapter dropdown — they carry all their per-sensor configuration in their adapter settings card below.
 
-### Live Bus Pills (staring sensors)
+### Detection Backend (staring sensors)
 
-For staring sensors, a row of **Live** pills at the top of the Hardware tab shows the bus state and the linked `target_acquired` daemon's state. Green means the bus is connected and the daemon is running; yellow means stale or awaiting catalog; red means offline or in error.
+Staring sensors choose how captured FITS frames are turned into satellite observations. The **Detection backend** dropdown on the Hardware tab has two options:
+
+| Option | What it does |
+|--------|-------------|
+| **On-device optical pipeline** (default) | CitraSense runs plate-solve → source extraction → satellite matching locally on the host, the same way the telescope sensor does, and uploads matches itself. No external service required. Good fit for Raspberry Pi deployments where you want the staring camera to be self-contained. |
+| **target_acquired (external matched-filter via NATS)** | Hands the captured FITS files to an external `target_acquired` subscriber running a matched-filter detector. Better for very dim sources at known positions, but requires the `target_acquired` service to be reachable over NATS. |
+
+When **On-device optical pipeline** is selected, the NATS connection fields (URL, catalog seeding, refresh interval) are hidden — the on-device pipeline doesn't need them. The Ping and Reseed catalog controls on the staring sensor detail page also disappear, since they only apply to the `target_acquired` link.
+
+### Live Bus Pills (staring sensors, target_acquired backend)
+
+When the **target_acquired** backend is selected, a row of **Live** pills at the top of the Hardware tab shows the bus state and the linked `target_acquired` daemon's state. Green means the bus is connected and the daemon is running; yellow means stale or awaiting catalog; red means offline or in error.
 
 ### Adapter Settings
 
