@@ -256,20 +256,42 @@ These settings control how SExtractor detects stars and satellites in each image
 
 ---
 
-## Pipeline
+## Storage & Data
 
-![Pipeline tab showing processing-output retention, APASS catalog toggle, and data directory](img/config-pipeline.png)
+![Storage & Data tab showing retention windows, data locations, APASS catalog, and live disk-usage breakdown](img/config-pipeline.png)
 
-The Pipeline tab is a site-level tab that controls where processing output lives and how long it sticks around.
+The Storage & Data tab is a site-level tab that controls how long CitraSense keeps things, where it writes them, and how much disk each is using. It consolidates retention windows, data and log locations, the APASS catalog, and a live storage-usage breakdown in one place.
+
+### Retention
 
 | Setting | Description |
 |---------|-------------|
-| **Processing output retention** | How long to keep intermediate pipeline files (source catalogs, plate-solve artifacts) on disk. Options: **Delete immediately** (default), **6 hours**, **24 hours**, **3 days**, **7 days**, or **Keep forever**. Analysis metrics are always kept regardless of this setting. |
-| **Use local APASS catalog** | Use a locally downloaded copy of the APASS photometric catalog (~6.4 GB compressed, ~16 GB on disk) instead of querying the AAVSO HTTP API. Faster and works offline. |
-| **Data directory** | Where images and processing output are stored. Leave blank for the platform default. |
+| **Processing output retention** | How long to keep per-task debug bundles (source catalogs, plate-solve artifacts) and staring source frames on disk. Options: **Delete immediately** (default), **6 hours**, **24 hours**, **3 days**, **7 days**, or **Keep forever**. Analysis metrics are always kept regardless of this setting. |
+| **Observation history retention** | How long the browsable record of past observations stays available. Analysis preview images and task-index rows age out together. Options: **7 days**, **30 days** (default), **90 days**, **1 year**, or **Keep forever**. |
+| **Log retention** | How long daily log files are kept before they are removed. Options: **7 days**, **30 days** (default), **90 days**, or **Keep forever**. |
+| **Keep captured images** | Retain raw FITS files after upload. By default, images are deleted after successful upload to save disk space. Enable this for post-processing or archival. |
 
 {: .note }
-> Retention controls how long bundles stay available for [Analysis tab reprocessing](Analysis.html#reprocess-panel). **Delete immediately** disables reprocessing — once a task finishes, its bundle is gone.
+> Processing-output retention controls how long bundles stay available for [Analysis tab reprocessing](Analysis.html#reprocess-panel). **Delete immediately** disables reprocessing — once a task finishes, its bundle is gone.
+
+### Locations & catalog
+
+| Setting | Description |
+|---------|-------------|
+| **Data directory** | Where images and processing output are stored. Leave blank for the platform default. |
+| **Log directory** | Where daily log files are written. Leave blank for the platform default (`~/Library/Logs/citrasense/` on macOS). |
+| **Use local APASS catalog** | Use a locally downloaded copy of the APASS photometric catalog (~6.4 GB compressed, ~16 GB on disk) instead of querying the AAVSO HTTP API. Faster and works offline. |
+
+### Storage usage
+
+A live breakdown at the bottom of the tab shows where CitraSense is reading and writing:
+
+- **Config file** and **Log file** paths, each with a copy-path button (and a download button for the log).
+- **Disk usage** — a bar showing free space on the data volume. It turns red when free space drops below the safety check's 1 GB threshold.
+- A per-directory size breakdown, largest first, so you can see at a glance what is consuming space.
+- **Astrometry indexes** — the directory holding astrometry.net index files, when configured.
+
+These rows are read-only and exist for reference and troubleshooting.
 
 ---
 
@@ -350,9 +372,9 @@ These settings control what happens automatically at the start and end of each o
 | Setting | Description |
 |---------|-------------|
 | **Darkness Threshold** | The sun altitude that defines "dark enough to observe." Choose **Civil Twilight** (−6°), **Nautical Twilight** (−12°), or **Astronomical Twilight** (−18°). The observing session begins when the sun drops below this altitude and ends when it rises above it. |
-| **Calibrate pointing model at start of night** | Plate-solve a known star to calibrate the mount's pointing model before the first task. |
+| **Calibrate pointing model at start of night** | Plate-solve a multi-point sky model to calibrate the mount's pointing before the first task. |
+| **Quick align at start of night** | A single plate-solve and sync — a fast alternative to the full pointing-model calibration above. Use this when you want the mount roughly synced without running the longer multi-point routine. |
 | **Autofocus at start of night** | Run autofocus before the first observation of the session. |
-| **Alignment at start of night** | (Coming soon) |
 | **Unpark at dusk / Park at dawn** | Automatically unpark the mount when the session begins and park it when the session ends. |
 
 {: .note }
@@ -382,9 +404,9 @@ To manually clear an active wrap warning, use the **Reset cable wrap** control o
 
 ## Advanced
 
-![Advanced Settings tab showing logging, image storage, and development options](img/config-advanced.png)
+![Advanced Settings tab showing logging, notifications, and development options](img/config-advanced.png)
 
-The Advanced tab holds logging, storage, and development settings.
+The Advanced tab holds logging, outbound notifications, and development settings.
 
 ### Logging
 
@@ -392,13 +414,9 @@ The Advanced tab holds logging, storage, and development settings.
 |---------|-------------|
 | **Log Level** | Verbosity of log output: **DEBUG**, **INFO**, **WARNING**, or **ERROR**. INFO is recommended for normal operations; DEBUG is useful for troubleshooting. |
 | **Enable file logging** | Write log output to files on disk in addition to the WebSocket stream. |
-| **Log directory** | Where log files are stored. Leave blank for the platform default (`~/Library/Logs/citrasense/` on macOS). |
 
-### Image Storage
-
-| Setting | Description |
-|---------|-------------|
-| **Keep captured images** | Retain raw FITS files after upload. By default, images are deleted after successful upload to save disk space. Enable this for post-processing or archival. |
+{: .note }
+> The log file location and log retention live under [Storage & Data](#storage--data), alongside the other data directories and the disk-usage breakdown.
 
 ### Development
 
@@ -406,20 +424,23 @@ The Advanced tab holds logging, storage, and development settings.
 |---------|-------------|
 | **Use Dummy API (Local Testing)** | Replace the live Citra API connection with a local mock server. Useful for testing CitraSense without an internet connection or API account. When enabled, the [API tab](#api) shows a warning and its settings are ignored. |
 
-### Paths & Files
+### Notifications
 
-A read-only table at the bottom of the Advanced tab shows the file system paths CitraSense is using for this session. Each path has a clipboard button to copy it.
+CitraSense can forward operational alerts to a Slack channel so an operator who has stepped away still sees what happened. It pushes non-transient events — autofocus failures, calibration failures, emergency stops, and similar — and is rate-limited so transient issues don't spam the channel.
 
-| Path | What it points to |
-|------|--------------------|
-| **Config file** | The `config.json` file where all settings are persisted |
-| **Log file** | The current day's log file (shown only when file logging is enabled). A download button lets you save the log directly from the browser. |
-| **Images directory** | Where captured FITS files are stored |
-| **Processing directory** | Where intermediate pipeline files are written |
-| **Astrometry indexes** | The directory containing astrometry.net index files (shown only when configured) |
+| Setting | Description |
+|---------|-------------|
+| **Push operational alerts to Slack** | Master toggle. When on, the webhook and filter settings below appear. |
+| **Slack incoming webhook URL** | Create one at `api.slack.com/messaging/webhooks`. Stored locally only and redacted from the config API once saved — leave the field blank on a later save to keep the existing webhook. Use **Send test** to confirm it works. |
+| **Min severity** | The lowest severity that gets forwarded: **info**, **warning** (default), or **danger**. |
+| **Quiet window (s)** | The rate-limit window, in seconds. Repeat alerts with the same identity inside this window are suppressed (default 300). |
+
+### Device name
 
 {: .note }
-> These paths are read-only and are shown for reference and troubleshooting. To change the log or data directories, use the Logging and Image Storage settings above.
+> This section appears only on hardware where CitraSense can set the network name — currently the [Raspberry Pi image](RaspberryPi.html).
+
+Sets this box's local network name. After applying it, the device is reachable at `citrasense-<name>.local`. This names the box, not the ground station where it's deployed — the operating location is set separately on the [Time & Location](#time--location) tab.
 
 ---
 

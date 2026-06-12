@@ -101,6 +101,9 @@ The telescope card shows the operational switches for that scope, a live preview
 | **Processing** | When enabled, the daemon executes queued tasks (imaging, processing, uploading) for this telescope. Turn off to pause execution while keeping the API connection alive. |
 | **Robotic** | Enables the robotic observing session lifecycle (park/unpark at dusk/dawn, start-of-night autofocus). |
 
+{: .note }
+> A newly added sensor starts with **Processing** off so it won't act on tasks before you've finished configuring it. Turn the switch on when the sensor is ready to image.
+
 A **Cable Wrap** pill appears next to the switches when this telescope's mount has hit its cable-wrap warning or emergency limit.
 
 **Hero panel**:

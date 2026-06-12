@@ -56,7 +56,7 @@ The Robotic Session card appears when the **Robotic** switch is on. It tracks th
 | State | Badge | What's happening |
 |-------|-------|------------------|
 | **Daytime** | Gray | Telescope is parked. Countdown shows time to the next dark window. |
-| **Starting Up** | Blue | Sun dropped below the twilight threshold. CitraSense is unparking, running pointing calibration / autofocus, and otherwise preparing. |
+| **Starting Up** | Blue | Sun dropped below the twilight threshold. CitraSense is unparking, running alignment / pointing calibration / autofocus, and otherwise preparing. |
 | **Observing** | Green | Tasks are being executed. Countdown shows time remaining in the dark window. |
 | **Shutting Down** | Yellow | Dawn approaches. CitraSense finishes the current task, parks the mount, and shuts down for the day. |
 
@@ -126,7 +126,7 @@ Controls:
 Additional mount controls appear at the bottom of the Telescope card for adapters that support direct control:
 
 - **Jog pad** — 3×3 grid of N/S/E/W buttons for manual mount movement. Press and hold to move; release to stop. Center button stops all axes immediately. Works with both mouse and touch.
-- **Point at satellite** — Search the satellite catalog by name (start typing — for example "ISS" or "DIRECTV 14" — and matches appear in a dropdown). Pick a result to load its live state. A chip shows its current altitude and azimuth, colored green when above the configured horizon limit, yellow when below it, and red when below the horizon. The action button reads **Track** on mounts that support custom tracking rates (slew and follow the satellite) and **Point** on mounts that do not (slew once — press again to re-point). A "View on Citra" link opens the satellite's page on citra.space when the app URL is configured. Click **clear** to drop the selection.
+- **Point at satellite** — Search the satellite catalog by name (start typing — for example "ISS" or "DIRECTV 14" — and matches appear in a dropdown). Flip the **Only visible now** switch to limit results to satellites currently above your horizon; matches then show their altitude (for example `· 42°`) next to the name. Pick a result to load its live state. A chip shows its current altitude and azimuth, colored green when above the configured horizon limit, yellow when below it, and red when below the horizon. The action button reads **Track** on mounts that support custom tracking rates (slew and follow the satellite) and **Point** on mounts that do not (slew once — press again to re-point). A "View on Citra" link opens the satellite's page on citra.space when the app URL is configured. Click **clear** to drop the selection.
 
   ![Telescope card with DIRECTV 14 selected as the satellite target, showing the live alt/az chip and View on Citra link](img/sensor-telescope-satellite-track.png)
 - **Go To** — Enter target RA (0–360°) and Dec (−90–90°), press **Go** to slew. The button is disabled while the mount is slewing or busy.

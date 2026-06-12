@@ -33,7 +33,10 @@ On first boot, the Pi picks a random name from famous space missions:
 
 > voyager, hubble, galileo, juno, kepler, pioneer, viking, luna, apollo, gemini, mercury, atlas, titan, orion, phoenix, spirit, curiosity
 
-This name is permanent. It becomes the WiFi hotspot SSID, the network hostname, and how you find the device on your network. If yours draws `voyager`, everything is `citrasense-voyager` from here on out.
+This name becomes the WiFi hotspot SSID, the network hostname, and how you find the device on your network. If yours draws `voyager`, everything is `citrasense-voyager` from here on out.
+
+{: .note }
+> You can rename the box later from the **Advanced** config tab (**Device name**). Set a new suffix and the device becomes reachable at `citrasense-<name>.local`. This names the box, not the ground station where it's deployed — the operating location is set separately on the Time & Location tab.
 
 ### Connect to WiFi
 

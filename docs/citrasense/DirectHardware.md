@@ -47,6 +47,7 @@ This is the recommended adapter for Linux, macOS, and Raspberry Pi deployments.
 | Device | Install Extra | Notes |
 |--------|--------------|-------|
 | **ZWO EAF** (Electronic Automatic Focuser) | *(none)* | Enables autofocus when paired with a camera |
+| **PrimaLuce Labs SestoSenso 3** (3 / 3 LS / 3 SC) | *(none)* | USB serial. Enables autofocus when paired with a camera |
 
 ### Filter Wheels
 

@@ -209,8 +209,8 @@ For tonight, staying hands-on is the right call. You'll learn what every number 
 
 - **Dark, flat, bias masters** — refresh monthly or when conditions change. On Direct Hardware, capture through the telescope's Configuration → Calibration tab (see [Capture calibration frames](#calibration-frames) in Part 1 — flats need dusk or dawn). On N.I.N.A. the Flat Wizard automation can handle flats hands-off. On KStars and INDI, use your adapter's native calibration tools — CitraSense applies whatever masters it finds at processing time.
 - **Pointing model** (Direct Hardware) — rebuild after re-leveling the mount, a teardown, or a large temperature shift. Other adapters rely on the mount's own alignment scheme instead.
-- **Disk space** — raw FITS and processing artifacts add up fast. Site-level **Pipeline → Processing output retention** controls how long bundles stick around; per-sensor **Advanced → Keep captured images** controls raw FITS retention.
-- **Log files** — CitraSense rotates daily logs at `~/Library/Logs/citrasense/` (macOS). Paths and copy buttons are on Configuration → **Advanced** → **Paths & Files**.
+- **Disk space** — raw FITS and processing artifacts add up fast. The **Storage & Data** tab holds the retention windows (processing output, observation history, logs), the **Keep captured images** toggle for raw FITS, and a live disk-usage breakdown.
+- **Log files** — CitraSense rotates daily logs at `~/Library/Logs/citrasense/` (macOS). Paths, copy buttons, and the disk-usage breakdown are on Configuration → **Storage & Data**.
 
 ---
 
