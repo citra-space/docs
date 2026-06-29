@@ -95,6 +95,31 @@ citrasense-pi-v0.4-cs1.3.0.img.xz
 
 The build always installs the latest CitraSense release available at build time.
 
+## Build info and on-demand updates
+
+The version string in the top-left of the dashboard header is clickable — it opens a **Build Info** panel that tells you exactly what is running:
+
+![Build Info panel showing version, commit, and install type](img/monitoring-build-info.png)
+
+| Field | What it shows |
+|-------|---------------|
+| **Version** | The CitraSense release version. |
+| **Commit** | The git commit hash the build was cut from, with its branch. |
+| **Built** | When the image was built (baked images only). |
+| **Install** | How CitraSense is installed: `baked` (a sealed Pi image), `pypi`, `editable`, or `source`. |
+
+A small **dirty** badge appears next to the header version when a baked image was built from a working tree with uncommitted changes — a sign the build wasn't from a clean release.
+
+### Check for updates now
+
+On a baked Pi image, the Build Info panel has a **Check for updates now** button. Pi images update over the air with [Mender](https://mender.io/), which normally polls for new releases on a schedule. This button asks it to check immediately instead of waiting for the next poll:
+
+1. Open Build Info (click the header version).
+2. Press **Check for updates now**.
+3. If a newer release is published, Mender downloads and installs it in the background; the box reboots into the new image when it's ready.
+
+The result line confirms the check was triggered, or warns if the update service isn't reachable. The button only appears on baked images — it has nothing to check on a development install.
+
 ## Troubleshooting
 
 **Can't reach `citrasense-{name}.local`:**

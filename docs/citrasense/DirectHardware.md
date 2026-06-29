@@ -27,7 +27,7 @@ This is the recommended adapter for Linux, macOS, and Raspberry Pi deployments.
 
 | Device | Install Extra | Notes |
 |--------|--------------|-------|
-| **Moravian Instruments** (Gx/Cx series) | *(none)* | Includes integrated filter wheel support |
+| **Moravian Instruments** (Gx / Cx / C3 series, e.g. C3-61000) | *(none)* | Includes integrated filter wheel support. Front-window anti-dew heating is operator-set (see **Window Heating** below). |
 | **USB Camera** (via OpenCV) | `uv tool install citrasense --with citrasense[usb-camera]` | Guide cameras, planetary cameras, webcams |
 | **Raspberry Pi HQ Camera** (IMX477) | `uv tool install citrasense --with citrasense[rpi]` | For Pi-based deployments |
 | **Ximea Hyperspectral** (MQ series) | Install `ximea-api` from the [Ximea SDK](https://www.ximea.com/support/wiki/apis/Python) | Specialized hyperspectral imaging |
@@ -37,6 +37,7 @@ This is the recommended adapter for Linux, macOS, and Raspberry Pi deployments.
 | Device | Install Extra | Notes |
 |--------|--------------|-------|
 | **ZWO AM3 / AM5 / AM7** | `uv tool install citrasense --with citrasense[zwo-mount]` | USB serial or WiFi TCP connection |
+| **Pegasus Astro NYX-101** | *(none)* | USB serial. Supports go-to, tracking, and homing. Switching the mount between EQ and alt-az mode takes effect only after a power cycle — re-home and use **Reset Zero** on the [Mount card](TelescopeSensor.html#mount-card) afterward. |
 | **Rainbow Astro RST-135 / 135E / 150H / 300** | *(none)* | USB serial. Set the mount handset to **Rainbow** (native) protocol — the LX200 emulation does not expose most commands CitraSense uses. Satellite work uses plate-solve-and-retarget; custom per-axis tracking rates are not supported. |
 
 {: .note }
@@ -56,6 +57,12 @@ This is the recommended adapter for Linux, macOS, and Raspberry Pi deployments.
 | **Moravian Instruments** (External) | *(none)* | Standalone external filter wheel |
 | **Integrated camera wheel** | *(none)* | Automatically detected from Moravian cameras — leave filter wheel type empty |
 
+### Power & Dew Control
+
+| Device | Install Extra | Notes |
+|--------|--------------|-------|
+| **Pegasus Pocket Powerbox Advance (PPBA) Gen2** | *(none)* | USB serial. Adds the [Power Box card](TelescopeSensor.html#power-box) for power telemetry, dew-heater control, the 4×12V master output, and a USB-hub reset. |
+
 ## Configuration
 
 ### In CitraSense Web Interface
@@ -72,8 +79,9 @@ The settings form updates dynamically based on your device selections:
 | **Mount Type** | No | Select your mount, or leave empty for a static (no-mount) setup. |
 | **Filter Wheel Type** | No | Select a standalone filter wheel, or leave empty to auto-detect an integrated wheel from the camera. |
 | **Focuser Type** | No | Select your focuser, or leave empty if you don't have one. |
+| **Power Box** | No | Select a supported power box (e.g., Pegasus PPBA) to enable the Power Box card, or leave empty. |
 
-After selecting a device type, additional device-specific settings appear (e.g., serial port, connection parameters, gain defaults). These vary by device.
+After selecting a device type, additional device-specific settings appear (e.g., serial port, connection parameters, gain defaults). These vary by device. For Moravian cameras, **Window Heating** sets the front-window anti-dew heater intensity (0 = off; clamped to the camera's maximum); leave it at 0 unless you see dew forming on the optical window.
 
 4. Click **Save Configuration**. CitraSense will connect to each selected device and report status in the dashboard.
 
@@ -103,6 +111,7 @@ The Direct Hardware adapter provides the most complete feature set of any adapte
 - ✅ **Camera preview** — live JPEG preview in the monitoring tab
 - ✅ **Mount limits** — altitude limits and cable wrap tracking with auto-unwind
 - ✅ **Custom tracking rates** — for satellite tracking (when mount supports it)
+- ✅ **Power & dew control** — power telemetry, dew heaters, 12V output, and USB-hub reset (with a supported power box)
 
 {: .important }
 > Autofocus, filter wheel, and focuser features require the corresponding device to be connected. If you only have a camera and mount, those features simply won't appear in the UI.

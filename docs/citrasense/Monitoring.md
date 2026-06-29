@@ -23,6 +23,9 @@ The status bar runs across the top of every page. It shows site-wide health: the
 
 ![Status bar with ground-station switcher, safety badge, daemon, time, GPS, TLE pills, and Abort](img/monitoring-status-bar.png)
 
+{: .note }
+> The version string in the page header (top-left) is clickable — it opens a **Build Info** panel showing the running version, commit, build time, and install type, plus a **Check for updates now** button on Raspberry Pi images. See [Build info and on-demand updates](RaspberryPi.html#build-info-and-on-demand-updates).
+
 ### Ground Station Switcher
 
 The leftmost element is the **active ground station** name. Click it to open a dropdown listing every other ground station registered to your Citra Space account.

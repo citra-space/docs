@@ -13,10 +13,11 @@ The page is laid out top-to-bottom:
 
 1. [Header](#header) — sensor name, hardware pills, operational switches, init status, Reconnect.
 2. [Robotic Session](#robotic-session) — nightly dusk-to-dawn lifecycle (only when Robotic is on).
-3. [Telescope card](#telescope-card) — adapter, pointing readouts, cable wrap, pointing model, mount controls.
+3. [Mount card](#mount-card) — adapter, pointing readouts, cable wrap, pointing model, mount controls.
 4. [Optics card](#optics-card) — config health, preview, camera controls, filters, focus, autofocus, HFR health.
-5. [Active Tasks](#active-tasks) — Imaging → Processing → Submission pipeline.
-6. [Scheduled Tasks](#scheduled-tasks) — assigned tasks for this telescope.
+5. [Power Box](#power-box) — Pegasus power box status and dew/power controls (when attached).
+6. [Active Tasks](#active-tasks) — Imaging → Processing → Submission pipeline.
+7. [Scheduled Tasks](#scheduled-tasks) — assigned tasks for this telescope.
 
 ---
 
@@ -47,6 +48,8 @@ When the sensor is fully connected, the init badge is hidden. While the daemon i
 
 The **Reconnect** button bounces the adapter — it disconnects and re-establishes hardware. Use it when a connection looks healthy from the outside but has flaked. Disabled while a connect is already in flight.
 
+CitraSense self-heals transient startup failures: if an adapter fails to connect for a reason that looks temporary (a device still warming up, a busy serial port), the daemon retries on its own and the badge clears once it succeeds. A failure that needs you to change something — a wrong device type or a missing dependency — is treated as a configuration error and won't be retried until you fix the config and reconnect.
+
 ---
 
 ## Robotic Session
@@ -64,11 +67,11 @@ The card surfaces the **Sun** altitude, the **Threshold** (Civil / Nautical / As
 
 ---
 
-## Telescope Card
+## Mount Card
 
-The Telescope card shows the mount's current state and exposes direct mount controls for adapters that support them.
+The Mount card shows the mount's current state and exposes direct mount controls for adapters that support them. (Older builds labelled this card "Telescope".)
 
-![Telescope card with pointing, cable wrap, pointing model, and mount controls](img/sensor-telescope-card.png)
+![Mount card with pointing, cable wrap, pointing model, and mount controls](img/sensor-telescope-card.png)
 
 ### Status fields
 
@@ -76,7 +79,7 @@ The Telescope card shows the mount's current state and exposes direct mount cont
 |-------|-------------|
 | **Adapter** | The active hardware adapter for this sensor (Direct, N.I.N.A., KStars, INDI). |
 | **RA / Dec** | Current telescope pointing in degrees. |
-| **Alt / Az** | Current altitude and azimuth in degrees, with a polar diagram. The dot shows where the telescope is pointing — center is zenith, edge is horizon, North at top. A **Home** button (house icon) on this row sends the mount to its home position. |
+| **Alt / Az** | Current altitude and azimuth in degrees, with a polar diagram. The dot shows where the telescope is pointing — center is zenith, edge is horizon, North at top. Two buttons sit on this row: **Home** (house icon) sends the mount to its stored home position, and **Reset Zero** (house-with-gear icon) stores the current position as the mount's home/zero. Use Reset Zero after physically re-homing a mount or converting it between EQ and alt-az mode (for example, a Pegasus NYX-101 or ZWO AM5), so the mount's idea of "home" matches where it is actually parked. |
 
 ### Cable Wrap
 
@@ -125,7 +128,7 @@ Controls:
 
 Additional mount controls appear at the bottom of the Telescope card for adapters that support direct control:
 
-- **Jog pad** — 3×3 grid of N/S/E/W buttons for manual mount movement. Press and hold to move; release to stop. Center button stops all axes immediately. Works with both mouse and touch.
+- **Jog pad** — 3×3 grid of N/S/E/W buttons for manual mount movement. Press and hold to move; release to stop. Center button stops all axes immediately. Works with both mouse and touch. A safety deadman backs this up: if the browser tab loses focus, the page is closed, or the connection drops mid-jog, the daemon stops the axis on its own so a held button can't leave the mount running away.
 - **Point at satellite** — Search the satellite catalog by name (start typing — for example "ISS" or "DIRECTV 14" — and matches appear in a dropdown). Flip the **Only visible now** switch to limit results to satellites currently above your horizon; matches then show their altitude (for example `· 42°`) next to the name. Pick a result to load its live state. A chip shows its current altitude and azimuth, colored green when above the configured horizon limit, yellow when below it, and red when below the horizon. The action button reads **Track** on mounts that support custom tracking rates (slew and follow the satellite) and **Point** on mounts that do not (slew once — press again to re-point). A "View on Citra" link opens the satellite's page on citra.space when the app URL is configured. Click **clear** to drop the selection.
 
   ![Telescope card with DIRECTV 14 selected as the satellite target, showing the live alt/az chip and View on Citra link](img/sensor-telescope-satellite-track.png)
@@ -200,6 +203,7 @@ A "Moving…" indicator with a spinner shows while the focuser is in transit.
 When the adapter supports autofocus, the Autofocus section exposes:
 
 - **Autofocus button** — Triggers a manual run. Changes to **Cancel AF** while running.
+- **Filter selector** — A dropdown next to the button. Leave it on **All filters** to focus every enabled filter in turn, or pick a single filter to focus just that one — handy for a quick touch-up on the filter you're currently imaging without re-running the whole set. The dropdown is locked while a run is in progress.
 - **Last autofocus** — Timestamp of the last successful run.
 - **Per-filter results** — After a multi-filter run, each filter's best position and HFR are listed in the filter's color.
 - **V-curve chart** — Plots HFR (Half-Flux Radius) vs. focuser position for each filter, showing the characteristic V-shape autofocus uses to find best focus. Each filter is a separate colored polyline.
@@ -220,6 +224,37 @@ The Focus HFR readout tracks focus quality over time:
 | **Refocus threshold** | When auto-refocus is enabled, shows the percentage increase that will trigger an automatic refocus. |
 
 If neither a baseline nor a recent reading is available, the panel prompts "Run autofocus to calibrate".
+
+---
+
+## Power Box
+
+When a Pegasus power box is attached to the sensor (Direct Hardware adapter, **Power Box** device set in [config](Configuration.html#hardware)), a **Power Box** card appears below the main cards. It reports the box's environment and power telemetry and exposes dew-heater, output, and USB controls. The card is collapsed by default — the header is a one-row glance showing input voltage, 12V current draw, and whether the 4×12V output is on. Click the header to expand.
+
+![Power Box card expanded, showing status, dew, and power columns](img/sensor-powerbox.png)
+
+### Status
+
+A read-only telemetry column: input voltage, 12V current draw, temperature, humidity, dew point, and the adjustable rail voltage. The adjustable rail powers the Raspberry Pi and daemon and is marked read-only (lock icon) — it is never switched from the UI.
+
+### Dew
+
+| Control | Action |
+|---------|--------|
+| **A / B sliders** | Set each dew-heater channel's duty cycle (0–100%). Drag the slider, then press **Set** to apply. |
+| **Auto** | Toggle automatic dew control. When on, the box drives the heaters based on the gap between ambient temperature and dew point. The number field sets **aggressiveness** (1–254 — higher pushes more power as humidity rises). Press **On** to enable with the chosen aggressiveness, **Off** to disable. |
+
+### Power
+
+| Control | Action |
+|---------|--------|
+| **4×12V Output** | Master toggle for the four 12V outputs (camera, mount, and accessories). Switching it **off** pops a confirmation because it cuts power to the camera, mount, and all 12V accessories at once. The Raspberry Pi and daemon stay up on the adjustable rail. |
+| **Reset USB Hub** | Power-cycles the box's built-in USB hub. Attached USB devices briefly disconnect, so it also confirms first. Use it to recover a device that has stopped responding without rebooting the Pi. |
+
+A red **Alert** badge appears in the header when the box reports a power fault (for example, an over-current condition).
+
+{: .note }
+> The power box is only available on the Direct Hardware adapter. Dummy mode simulates one so you can see the card without real hardware.
 
 ---
 

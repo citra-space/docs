@@ -120,7 +120,11 @@ The Autofocus tab configures automatic focus management. It only appears when th
 
 ### Focus Target
 
-Choose where the telescope slews before running autofocus. Presets include bright stars chosen for different seasons (e.g., Mirach for fall/winter, Arcturus for spring). Select **Custom RA/Dec** to enter your own coordinates in degrees.
+Choose where the telescope slews before running autofocus:
+
+- **Auto (best visible star)** — CitraSense picks the highest bright star currently above the horizon at run time. This is the simplest choice and works year-round without you tracking which preset is up.
+- **Named-star presets** — Bright stars chosen for different seasons (e.g., Mirach for fall/winter, Arcturus for spring). Each preset shows its current altitude at your site, and presets that are below the horizon right now are greyed out, so you can pick one that's actually up.
+- **Custom RA/Dec** — Enter your own coordinates in degrees.
 
 ### Scheduled Autofocus
 

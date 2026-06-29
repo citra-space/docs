@@ -16,7 +16,7 @@ Non-telescope sensors (all-sky cameras, staring cameras) don't use the hardware-
 
 Most operators will use one of the two primary adapters:
 
-- **Direct Hardware** — CitraSense controls your devices end-to-end with no intermediary software. This is the recommended path for Linux, macOS, and Raspberry Pi deployments. Supports ZWO ASI cameras, Moravian cameras, ZWO AM3/AM5/AM7 and Rainbow Astro RST-135E mounts, ZWO EAF focusers, and more.
+- **Direct Hardware** — CitraSense controls your devices end-to-end with no intermediary software. This is the recommended path for Linux, macOS, and Raspberry Pi deployments. Supports ZWO ASI cameras, Moravian cameras, ZWO AM3/AM5/AM7, Pegasus NYX-101, and Rainbow Astro RST-135E mounts, ZWO EAF focusers, the Pegasus Pocket Powerbox, and more.
 - **N.I.N.A.** — For Windows setups running N.I.N.A. with Planewave mounts. CitraSense communicates with N.I.N.A.'s Advanced API to control your entire equipment chain.
 
 Additional adapters are available for specific environments:
@@ -43,6 +43,7 @@ Not every adapter supports every feature. This table shows what each adapter can
 | **Camera preview / live view** | ✅ | ✅ | — | — |
 | **Safety monitor** | — | ✅ | — | — |
 | **Calibration frame capture** | ✅ | ✅ | — | — |
+| **Power box / dew control** | ✅ | — | — | — |
 | **Platform** | Linux, macOS, Pi | Windows | Linux, macOS | Linux |
 
 {: .note }
