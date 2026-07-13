@@ -11,7 +11,7 @@ The Configuration tab is where you connect CitraSense to the Citra Space platfor
 
 The page has a vertical side navigation on the left, split into two sections:
 
-- **Site** — settings that apply to the whole ground station: API connection, Time & Location, Pipeline, Safety, Advanced.
+- **Site** — settings that apply to the whole ground station: API connection, Time & Location, Storage & Data, Safety, Edge NATS, Advanced.
 - **Per-sensor** — one collapsible group per sensor on this host (Hardware, Observation, Processing, Autofocus, Calibration, Robotic, Safety). Each sensor's row in the nav has its own trash icon to remove it. The **+ Add Sensor** button at the bottom of the nav lets you register a new telescope, all-sky camera, or staring camera.
 
 Your last-selected tab is remembered across sessions. Changes across every tab are saved together with the **Save Configuration** button fixed at the bottom of the page.
@@ -403,6 +403,42 @@ The per-sensor Safety tab holds checks that only make sense for one sensor at a 
 Cable wrap only meaningfully applies to alt-az mounts. Telescope sensors whose mounts don't expose an azimuth axis (e.g. equatorial fork mounts) silently disable the check regardless of this toggle.
 
 To manually clear an active wrap warning, use the **Reset cable wrap** control on the [Telescope sensor detail page](TelescopeSensor.html).
+
+---
+
+## Edge NATS
+
+![Edge NATS tab showing broker status, enrollment state, and the enrollment token form](img/config-edge.png)
+
+The Edge NATS tab is a site-level tab that connects this ground station to the Citra Space edge broker over NATS. Once enrolled, the box streams its health up to Citra Space automatically — no polling, no inbound firewall rules.
+
+Enrollment is a two-step handshake between an admin and the operator:
+
+1. An admin mints a one-use enrollment token in the Citra Space app.
+2. You paste that token into the **Enrollment token** field here and click **Enroll**. CitraSense enrolls this box's local NATS leaf and starts reporting health.
+
+Re-enroll at any time to rotate the box's identity — paste a fresh token and click Enroll again.
+
+### Settings
+
+| Setting | Description |
+|---------|-------------|
+| **Connect to the edge broker** | Master switch for the broker link. Leave it on where the broker is reachable. Turn it off on stations where no NATS broker is running yet, so CitraSense stops retrying a connection it can never complete. Takes effect after Save & reload. |
+| **NATS broker URL** | The local NATS leaf CitraSense publishes to. Defaults to the on-box loopback leaf (`nats://127.0.0.1:4222`); override only if the broker runs elsewhere on your LAN. A bad or unreachable URL simply shows the broker status as **Down**. Takes effect after Save & reload. |
+
+### Status readout
+
+A row of live badges at the top of the tab reflects the link state:
+
+| Badge | What it shows |
+|-------|---------------|
+| **NATS broker** | **Up** (green) when the broker URL is reachable, **Down** (red) when it is not. Hover for the URL being checked. |
+| **Enrollment** | **Enrolled** (green) once a token has been accepted, or **Not enrolled** (gray). |
+| **Last heartbeat** | Timestamp of the most recent health report sent to Citra Space (shown when enrolled). |
+| **Cert expires** | The expiry date of the box's edge certificate. CitraSense renews it automatically before it lapses. |
+| **Renewal** | Hidden while renewal is healthy. Shows **Renewal failing** (yellow) if a renewal attempt did not complete, or **Renewal blocked — re-enroll** (red) if the identity was revoked and you need to enroll again. |
+
+When enrolled, the tab also shows the assigned **Device** identifier below the badges.
 
 ---
 

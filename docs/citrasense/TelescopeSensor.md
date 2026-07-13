@@ -131,8 +131,11 @@ Additional mount controls appear at the bottom of the Telescope card for adapter
 - **Jog pad** — 3×3 grid of N/S/E/W buttons for manual mount movement. Press and hold to move; release to stop. Center button stops all axes immediately. Works with both mouse and touch. A safety deadman backs this up: if the browser tab loses focus, the page is closed, or the connection drops mid-jog, the daemon stops the axis on its own so a held button can't leave the mount running away.
 - **Point at satellite** — Search the satellite catalog by name (start typing — for example "ISS" or "DIRECTV 14" — and matches appear in a dropdown). Flip the **Only visible now** switch to limit results to satellites currently above your horizon; matches then show their altitude (for example `· 42°`) next to the name. Pick a result to load its live state. A chip shows its current altitude and azimuth, colored green when above the configured horizon limit, yellow when below it, and red when below the horizon. The action button reads **Track** on mounts that support custom tracking rates (slew and follow the satellite) and **Point** on mounts that do not (slew once — press again to re-point). A "View on Citra" link opens the satellite's page on citra.space when the app URL is configured. Click **clear** to drop the selection.
 
+  Manual tracking and automated task processing are mutually exclusive — you can't hand-follow a satellite while the daemon is working the task queue. The Track/Point button stays disabled until you turn the sensor's **Processing** switch off. Turning Processing back on ends any manual track that's still running, so the scope can return to its scheduled tasks.
+
   ![Telescope card with DIRECTV 14 selected as the satellite target, showing the live alt/az chip and View on Citra link](img/sensor-telescope-satellite-track.png)
 - **Go To** — Enter target RA (0–360°) and Dec (−90–90°), press **Go** to slew. The button is disabled while the mount is slewing or busy.
+- **Orient at New Site** — One button to get a freshly relocated scope ready to observe. It runs a fixed sequence back to back — home the mount, rebuild the pointing model from scratch, autofocus, and verify with a plate solve — then toasts you when it's good to go. While running, the button shows the current step and count (e.g., "Autofocus (3/4)") and a spinner; press it again to cancel. It appears only on adapters where CitraSense owns the pointing model (Direct Hardware and Dummy), and is disabled while an imaging task is active. Steps the mount can't do (homing on a mount with no home) are skipped automatically. Use it when you've physically moved the telescope to a new location, where the old pointing model and focus no longer apply.
 - **Align Now** — Triggers a plate-solve alignment to sync the mount model. The button changes to **Cancel Alignment** while running and shows progress text and a spinner; below it the last alignment timestamp is displayed when idle.
 - **Sidereal Tracking** — Toggle the mount's sidereal tracking on or off.
 - **Slewing** pill — Animated badge that appears whenever the mount is in motion.
@@ -210,7 +213,7 @@ When the adapter supports autofocus, the Autofocus section exposes:
 - **Target** — The target the autofocus routine will slew to (configured in the [Autofocus config tab](Configuration.html#autofocus) as a preset star or custom coordinates).
 - **Next in** — Countdown to the next scheduled autofocus, when autofocus scheduling is enabled.
 
-When a run completes or fails, a toast notification appears with the result (succeeded with best position, or failed with the reason).
+When a run completes or fails, a toast notification appears with the result (succeeded with best position, or failed with the reason). In a multi-filter run, each filter is focused independently: if a filter's autofocus fails, CitraSense keeps that filter's previous focus position rather than storing a bad result, and the toast names the filters that failed so you know which ones still need a good focus.
 
 ### Focus HFR Health
 

@@ -69,6 +69,8 @@ Use this if something goes wrong and you need to halt motion everywhere at once.
 
 When any site-level safety check enters a non-safe state, an alert banner appears below the status bar. Per-sensor cable-wrap warnings appear as a pill inside the offending sensor's card.
 
+A safety hold blocks **every** motion path, not just scheduled imaging — manual slews, Go-To, autofocus, alignment, calibration, and camera captures are all refused while conditions are unsafe. Autofocus is the exception that waits rather than fails: when a run is triggered during a hold it is deferred (with a warning toast) and starts on its own once conditions clear (an info toast confirms it resumed).
+
 | Alert | What it means |
 |-------|--------------|
 | **Operator Stop** | You (or another operator) activated an emergency stop. All motion is blocked. A **Clear Stop** button appears to resume. Always active — cannot be disabled. |

@@ -13,10 +13,10 @@
 - [x] `GettingStarted.md` — Quick start, Python install, uv, pip, extras, next steps
 - [x] `RaspberryPi.md` — Standalone Pi image page (flash, first boot, WiFi, GPS, troubleshooting)
 - [x] `Monitoring.md` — Monitoring tab walkthrough (status bar, telescope, optics, tasks, log panel, safety alerts, operational controls). Peer of Configuration/Analysis; the former `Dashboard.md` parent page was flattened away.
-- [x] `Configuration.md` — Configuration tab walkthrough (API, hardware, autofocus, calibration, observation, processing, time & location, robotic operations, advanced)
+- [x] `Configuration.md` — Configuration tab walkthrough (API, hardware, autofocus, calibration, observation, processing, time & location, robotic operations, edge NATS, advanced)
 - [x] `Analysis.md` — Analysis tab walkthrough (summary cards, processor timing, filters, task list, Auto-Tune, reprocessing)
 - [x] `Adapters.md` — Hardware Adapters parent page (overview, capability comparison table)
-- [x] `TelescopeSensor.md` — Telescope sensor detail page (mount controls, optics card, autofocus, pointing model, robotic session, active/scheduled tasks)
+- [x] `TelescopeSensor.md` — Telescope sensor detail page (mount controls, one-button field setup, optics card, autofocus, pointing model, robotic session, active/scheduled tasks)
 - [x] `Operating.md` — Full-session walkthrough (prep → align → focus → run a task → review)
 - [x] `DirectHardware.md` — Direct Hardware adapter guide
 - [x] `NINA.md` — N.I.N.A. adapter guide
