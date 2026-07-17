@@ -92,8 +92,22 @@ Once you save with an adapter selected, the filter configuration card appears. I
 | Column | Description |
 |--------|-------------|
 | **Enabled** | Whether this filter is available for observations. Disabled filters are skipped during characterization sequences. |
-| **Name** | The filter's name. Choose from standard presets (Johnson-Cousins UBVRI, Sloan ugriz, Clear, Luminance) or enter a custom name. A colored dot shows the filter's display color. |
+| **Name** | The filter's name. Choose from standard presets (Johnson-Cousins UBVRI, Sloan ugriz, Clear, Luminance) or enter a custom name. A colored dot shows the filter's display color. Choosing a name from the **Spectroscopy** group (SA-100, SA-200, Grating) marks the position as a transmission grating and reveals the Grating column. |
 | **Focus Position** | The focuser step position for this filter. When switching filters, CitraSense moves the focuser to this position to compensate for filter-specific focus offsets. |
+| **Exposure (s)** | Optional per-filter exposure override. Leave blank to inherit the sensor's default [Exposure Duration](#observation); the placeholder shows what that default is. Set a value to run this filter at its own exposure. Useful when one filter needs a much longer integration than the rest (gratings in particular). |
+| **Grating** | Only shown for a filter whose name is in the Spectroscopy group. Configures the disperser for slitless spectroscopy (see below). |
+
+#### Slitless spectroscopy gratings
+
+When a filter position holds a transmission grating (for example a Star Analyser SA-100 or SA-200), name it from the Spectroscopy group. The Grating column then exposes the optics CitraSense needs to reduce the dispersed frame:
+
+| Field | Description |
+|-------|-------------|
+| **lines/mm** | Groove density of the grating. Pre-filled for recognised products (SA-100 → 100, SA-200 → 200); supply it yourself for a generic "Grating". |
+| **dist (mm)** | Distance from the grating to the sensor. You always set this — it sets the dispersion scale. |
+| **auto°** | Locked dispersion angle in degrees. Leave blank to let CitraSense auto-detect the angle while imaging and lock it in once frames agree. Enter a value to pin the axis manually; press **×** to clear it back to auto-detect. |
+
+Gratings need a long integration, so pair the position with a per-filter **Exposure (s)** override. To collect a wavelength reference, point the mount at a spectroscopic standard star — the pointing search box on the [Telescope card](TelescopeSensor.html#mount-controls-direct-hardware-adapters) tags these with a **std** badge.
 
 ### Mount Alignment
 
@@ -194,7 +208,7 @@ The Observation tab controls how CitraSense images satellites.
 | Setting | Description |
 |---------|-------------|
 | **Satellite Observation Strategy** | How the telescope tracks during capture. **Auto** lets CitraSense decide per-task based on the satellite's apparent motion. **Tracking** matches the mount's motion to the satellite for point-source images. **Sidereal** holds the mount on the sky background, producing a satellite streak. |
-| **Exposure Duration (seconds)** | How long each frame is exposed (0.01–300 seconds). Shorter exposures (1–3s) work well for sidereal/streak mode. Longer exposures (10–20s) work better for tracking mode. |
+| **Exposure Duration (seconds)** | How long each frame is exposed (0.01–300 seconds). Shorter exposures (1–3s) work well for sidereal/streak mode. Longer exposures (10–20s) work better for tracking mode. A filter can override this with its own value — see [Filter Configuration](#filter-configuration). |
 | **Exposures Per Task** | Number of frames captured per observation task (1–50). Multiple frames improve satellite detection reliability. |
 | **Adaptive Exposure** | When enabled, CitraSense computes the exposure time automatically based on the satellite's angular rate and your telescope's plate scale, instead of using the fixed Exposure Duration above. The goal is to keep the satellite trail within the pixel limit you configure. Only applies to sidereal (streak) mode. |
 
@@ -234,6 +248,8 @@ Each processor in the pipeline can be individually enabled or disabled:
 | **Source Extractor** | Detects stars and satellites in the plate-solved image using SExtractor. |
 | **Photometry Calibrator** | Cross-matches extracted sources against the APASS catalog and computes photometric zero-points. |
 | **Satellite Matcher** | Matches detected sources to predicted satellite positions from TLE propagation. |
+| **Slitless Spectroscopy** | Extracts a 1D spectrum per matched satellite when imaging through a transmission grating. Inert on ordinary broadband frames — it only runs when the frame's filter is a [configured grating](#slitless-spectroscopy-gratings). |
+| **Science QC** | Observation self-diagnosis in shadow mode: logs a per-frame health verdict but never blocks an upload. Leave it on to build up quality data on your setup. |
 | **Annotated Image** | Renders an overlay JPEG with satellite annotations for visual review. |
 
 Each processor shows a success/failure progress bar when statistics are available, along with the last failure reason if one occurred.
@@ -274,6 +290,7 @@ The Storage & Data tab is a site-level tab that controls how long CitraSense kee
 | **Observation history retention** | How long the browsable record of past observations stays available. Analysis preview images and task-index rows age out together. Options: **7 days**, **30 days** (default), **90 days**, **1 year**, or **Keep forever**. |
 | **Log retention** | How long daily log files are kept before they are removed. Options: **7 days**, **30 days** (default), **90 days**, or **Keep forever**. |
 | **Keep captured images** | Retain raw FITS files after upload. By default, images are deleted after successful upload to save disk space. Enable this for post-processing or archival. |
+| **Upload frames with no observation** | Off by default. A frame that produces no observation — a plate-solve or photometry failure, or a missing telescope record or location — is normally not uploaded. Enable this to upload the raw FITS as a fallback so the frame still reaches the backend. This is a separate axis from **Keep captured images**, which only controls local retention. |
 
 {: .note }
 > Processing-output retention controls how long bundles stay available for [Analysis tab reprocessing](Analysis.html#reprocess-panel). **Delete immediately** disables reprocessing — once a task finishes, its bundle is gone.
