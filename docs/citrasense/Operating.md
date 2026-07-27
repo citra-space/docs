@@ -22,7 +22,7 @@ Make sure the following are already in place:
 - **CitraSense is installed and running** at [http://localhost:24872](http://localhost:24872) (or `http://citrasense-{name}.local` on a Pi). See [Getting Started](GettingStarted.html) if not.
 - **Your telescope is registered** in the [Citra Space app](https://app.citra.space). See [Add and Manage Telescopes](../guides-and-tutorials/add-and-manage-telescopes) to walk through it.
 - **The API is connected**. On **Configuration → API**, your endpoint, token, and telescope ID are set. The **TLEs** badge in the status bar is green (25,000+ elsets loaded).
-- **Hardware is connected**. On the telescope's **Configuration → Hardware** tab, you've picked an adapter ([Direct Hardware](DirectHardware.html), [N.I.N.A.](NINA.html), [KStars](KStars.html), or [INDI](INDI.html) — the [Adapters](Adapters.html) page has a comparison table). The telescope's hero card on **Monitoring** shows green mount / camera / focuser pills.
+- **Hardware is connected**. On the telescope's **Configuration → Hardware** tab, you've picked an adapter ([Direct Hardware](DirectHardware.html) or [N.I.N.A.](NINA.html) — the [Adapters](Adapters.html) page has a comparison table). The telescope's hero card on **Monitoring** shows green mount / camera / focuser pills.
 - **A dark sky** — or at least nautical twilight. You can do most of this guide against a bright sky, but plate solving needs stars.
 
 Open the dashboard on the **Monitoring** tab and click your telescope's **Open** button to jump to its [sensor detail page](TelescopeSensor.html) — that's your console for the rest of this session.
@@ -34,7 +34,7 @@ Open the dashboard on the **Monitoring** tab and click your telescope's **Open**
 Before CitraSense can start pulling satellite passes, the scope has to be genuinely ready: aligned, focused, and with calibration masters on disk. *How* you get there depends on your hardware adapter.
 
 {: .note }
-> **If you're on [N.I.N.A.](NINA), [KStars](KStars), or [INDI](INDI), skip the rest of Part 1.** In those configurations CitraSense is driving your existing control app — alignment, focus, calibration frames, and general scope readiness stay your responsibility in that app's native workflow. Do your usual startup routine (park → polar align / pointing align → focus → flats), then jump straight to [Part 2 — Run the session](#part-2--run-the-session) once the mount is tracking and the stars are sharp.
+> **If you're on [N.I.N.A.](NINA), skip the rest of Part 1.** In that configuration CitraSense is driving your existing control app — alignment, focus, calibration frames, and general scope readiness stay your responsibility in N.I.N.A.'s native workflow. Do your usual startup routine (park → polar align / pointing align → focus → flats), then jump straight to [Part 2 — Run the session](#part-2--run-the-session) once the mount is tracking and the stars are sharp.
 >
 > The rest of Part 1 is a hands-on walkthrough for operators on the **[Direct Hardware](DirectHardware)** adapter, where CitraSense owns the full prep flow end to end.
 
@@ -207,7 +207,7 @@ For tonight, staying hands-on is the right call. You'll learn what every number 
 
 ## Things to check between sessions
 
-- **Dark, flat, bias masters** — refresh monthly or when conditions change. On Direct Hardware, capture through the telescope's Configuration → Calibration tab (see [Capture calibration frames](#calibration-frames) in Part 1 — flats need dusk or dawn). On N.I.N.A. the Flat Wizard automation can handle flats hands-off. On KStars and INDI, use your adapter's native calibration tools — CitraSense applies whatever masters it finds at processing time.
+- **Dark, flat, bias masters** — refresh monthly or when conditions change. On Direct Hardware, capture through the telescope's Configuration → Calibration tab (see [Capture calibration frames](#calibration-frames) in Part 1 — flats need dusk or dawn). On N.I.N.A. the Flat Wizard automation can handle flats hands-off — CitraSense applies whatever masters it finds at processing time.
 - **Pointing model** (Direct Hardware) — rebuild after re-leveling the mount, a teardown, or a large temperature shift. Other adapters rely on the mount's own alignment scheme instead.
 - **Disk space** — raw FITS and processing artifacts add up fast. The **Storage & Data** tab holds the retention windows (processing output, observation history, logs), the **Keep captured images** toggle for raw FITS, and a live disk-usage breakdown.
 - **Log files** — CitraSense rotates daily logs at `~/Library/Logs/citrasense/` (macOS). Paths, copy buttons, and the disk-usage breakdown are on Configuration → **Storage & Data**.

@@ -77,9 +77,20 @@ The Mount card shows the mount's current state and exposes direct mount controls
 
 | Field | Description |
 |-------|-------------|
-| **Adapter** | The active hardware adapter for this sensor (Direct, N.I.N.A., KStars, INDI). |
+| **Adapter** | The active hardware adapter for this sensor (Direct, N.I.N.A., or Dummy). |
 | **RA / Dec** | Current telescope pointing in degrees. |
-| **Alt / Az** | Current altitude and azimuth in degrees, with a polar diagram. The dot shows where the telescope is pointing — center is zenith, edge is horizon, North at top. Two buttons sit on this row: **Home** (house icon) sends the mount to its stored home position, and **Reset Zero** (house-with-gear icon) stores the current position as the mount's home/zero. Use Reset Zero after physically re-homing a mount or converting it between EQ and alt-az mode (for example, a Pegasus NYX-101 or ZWO AM5), so the mount's idea of "home" matches where it is actually parked. |
+| **Alt / Az** | Current altitude and azimuth in degrees, with a polar diagram. The dot shows where the telescope is pointing — center is zenith, edge is horizon, North at top. |
+
+### Mount buttons
+
+A row of buttons sits in the Mount card header (hidden while the mount is homing, which shows a **Homing…** badge instead). Which buttons appear depends on what your mount supports; all are disabled while an imaging task is active.
+
+| Button | Icon | What it does |
+|--------|------|--------------|
+| **Home** | house | Sends the mount to its stored home position. |
+| **Set Home** | house-with-gear | Stores the current position as the mount's home/zero. Use it after physically re-homing a mount or converting it between EQ and alt-az mode (for example a Pegasus NYX-101). Only shown on mounts that support setting home. |
+| **Park** | P-in-a-square | Slews to the park position and holds it. Pause task processing first — parking while tasks are running is blocked. |
+| **Save Position as Park** | bookmark-plus | Stores the mount's current pose as its park position, so future parks return here. Only shown on mounts that support saving a park position (for example ZWO AM5). |
 
 ### Cable Wrap
 
@@ -181,7 +192,7 @@ The preview area shows the most recent image captured by this telescope's camera
 A **Sensor busy** indicator appears in place of these controls when an imaging task is in progress.
 
 {: .note }
-> **Analyze now** is only available on adapters that support ad-hoc captures. Currently that's the Direct Hardware adapter; N.I.N.A. and KStars don't yet expose a free-form capture endpoint, so the button will return "this sensor's adapter doesn't support ad-hoc captures."
+> **Analyze now** is only available on adapters that support ad-hoc captures. Currently that's the Direct Hardware adapter; N.I.N.A. doesn't yet expose a free-form capture endpoint, so the button will return "this sensor's adapter doesn't support ad-hoc captures."
 
 ![Optics card after an Analyze now run, with the result panel showing plate-solve status, source count, and matched satellites](img/sensor-optics-analyze-now.png)
 

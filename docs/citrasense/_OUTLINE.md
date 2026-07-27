@@ -20,8 +20,11 @@
 - [x] `Operating.md` — Full-session walkthrough (prep → align → focus → run a task → review)
 - [x] `DirectHardware.md` — Direct Hardware adapter guide
 - [x] `NINA.md` — N.I.N.A. adapter guide
-- [x] `KStars.md` — KStars / Ekos adapter guide
-- [x] `INDI.md` — Direct INDI adapter guide
+
+> The KStars/Ekos and INDI adapters were removed from CitraSense (#518, 2026-07-20).
+> Their doc pages (`KStars.md`, `INDI.md`) were deleted and all cross-references
+> scrubbed. CitraSense now ships two real-hardware adapters (Direct, N.I.N.A.) plus
+> the Dummy test adapter.
 
 ---
 
@@ -68,10 +71,9 @@
 - [ ] Satellite Matcher: TLE propagation, source-to-prediction matching, elset cache
 - [ ] Annotated Image: overlay JPEG generation
 
-### 5. KStars / INDI review — minor
+### 5. ~~KStars / INDI review~~ REMOVED
 
-- [ ] Review `KStars.md` for completeness against current features
-- [ ] Review `INDI.md` for completeness against current features
+Both adapters were removed from CitraSense (#518). Pages deleted; nothing to review.
 
 ### 6. Multi-sensor & non-telescope sensors — NEW
 

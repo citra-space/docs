@@ -101,7 +101,7 @@ The NINA adapter supports the following capabilities:
 
 ### Known Limitations
 
-- **Windows Only** - NINA is Windows-specific; Linux/Mac users should use INDI or KStars
+- **Windows Only** - NINA is Windows-specific; Linux/Mac users should use the [Direct Hardware](DirectHardware.html) adapter
 - **API Dependency** - Requires the Advanced API plugin to be installed and running
 - **Network Access** - Both NINA and CitraSense must be network accessible to each other
 - **Focuser move events** - NINA does not emit a WebSocket event when a focuser move completes; CitraSense polls the focuser position until the move finishes

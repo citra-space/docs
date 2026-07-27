@@ -10,7 +10,7 @@ grand_parent: CitraSense
 
 ## What is Direct Hardware
 
-The Direct Hardware adapter lets CitraSense control your telescope devices end-to-end — no intermediary software like N.I.N.A. or KStars is needed. CitraSense communicates directly with your cameras, mounts, focusers, and filter wheels over USB or serial.
+The Direct Hardware adapter lets CitraSense control your telescope devices end-to-end — no intermediary software like N.I.N.A. is needed. CitraSense communicates directly with your cameras, mounts, focusers, and filter wheels over USB or serial.
 
 This is the recommended adapter for Linux, macOS, and Raspberry Pi deployments.
 
@@ -116,10 +116,10 @@ The Direct Hardware adapter provides the most complete feature set of any adapte
 {: .important }
 > Autofocus, filter wheel, and focuser features require the corresponding device to be connected. If you only have a camera and mount, those features simply won't appear in the UI.
 
-## When to Choose Direct vs an Intermediary Adapter
+## When to Choose Direct vs N.I.N.A.
 
 **Choose Direct Hardware when:**
-- You're building a new setup and don't already use N.I.N.A. or KStars
+- You're building a new setup and don't already use N.I.N.A.
 - You want the simplest possible deployment (especially on a Pi)
 - You need pointing model calibration or V-curve autofocus
 - Your devices are in the supported list above
@@ -127,10 +127,7 @@ The Direct Hardware adapter provides the most complete feature set of any adapte
 **Choose N.I.N.A. instead when:**
 - You run Windows with a Planewave mount
 - You already have a working N.I.N.A. equipment profile
-- You need park/unpark or safety monitor integration
-
-**Choose KStars or INDI when:**
-- You already have a working KStars/Ekos or INDI setup with devices not supported by Direct Hardware
+- You need safety monitor integration
 
 ## Troubleshooting
 

@@ -17,7 +17,7 @@ citrasense-pi is a turnkey SD card image that transforms a Raspberry Pi into a d
 |-----------|---------|
 | **OS** | Raspberry Pi OS Lite ARM64 (Debian Trixie) |
 | **CitraSense** | Auto-starts on boot, dashboard on port 80 |
-| **INDI** | Pre-installed drivers — CitraSense starts them as needed |
+| **Hardware control** | Direct Hardware adapter — talks to cameras, mounts, focusers, and filter wheels over USB and serial, no intermediary software |
 | **GPS timing** | Automatic detection; UART + PPS for Stratum 1 accuracy, USB GPS for position |
 | **WiFi** | Captive portal for network setup, automatic hotspot fallback |
 | **SSH** | Enabled on port 22 |

@@ -56,8 +56,6 @@ Telescope sensors require a hardware adapter. Choose one from the dropdown:
 
 - **Direct Hardware** — CitraSense controls devices natively (ZWO cameras, Moravian cameras, ZWO EAF focuser, ZWO AM5/AM7 mounts, Rainbow Astro RST-135E mounts, USB cameras, Ximea cameras)
 - **N.I.N.A. Advanced API** — Connects to a running N.I.N.A. instance over its HTTP/WebSocket interface
-- **KStars / Ekos** — Connects to KStars via D-Bus
-- **INDI** — Connects to an INDI server directly
 - **Dummy Adapter** — Simulated hardware for testing without real devices
 
 For the Direct adapter, a **Scan Hardware** button appears to re-enumerate USB devices, serial ports, and cameras.
@@ -83,7 +81,7 @@ When the **target_acquired** backend is selected, a row of **Live** pills at the
 
 Each adapter exposes its own settings grouped into cards. These are generated dynamically based on the selected adapter. For example, the N.I.N.A. adapter shows connection host and port fields, while the Direct adapter shows device selection dropdowns for each hardware component.
 
-If any system dependencies are missing for the selected adapter (like INDI or D-Bus libraries), a warning alert lists them with install commands.
+If any system dependencies are missing for the selected adapter, a warning alert lists them with install commands.
 
 ### Filter Configuration
 
@@ -94,7 +92,7 @@ Once you save with an adapter selected, the filter configuration card appears. I
 | **Enabled** | Whether this filter is available for observations. Disabled filters are skipped during characterization sequences. |
 | **Name** | The filter's name. Choose from standard presets (Johnson-Cousins UBVRI, Sloan ugriz, Clear, Luminance) or enter a custom name. A colored dot shows the filter's display color. Choosing a name from the **Spectroscopy** group (SA-100, SA-200, Grating) marks the position as a transmission grating and reveals the Grating column. |
 | **Focus Position** | The focuser step position for this filter. When switching filters, CitraSense moves the focuser to this position to compensate for filter-specific focus offsets. |
-| **Exposure (s)** | Optional per-filter exposure override. Leave blank to inherit the sensor's default [Exposure Duration](#observation); the placeholder shows what that default is. Set a value to run this filter at its own exposure. Useful when one filter needs a much longer integration than the rest (gratings in particular). |
+| **Exposure (s)** | Optional per-filter exposure override. Leave blank to inherit the sensor's default [Exposure Duration](#observation); the placeholder shows what that default is. Set a value to run this filter at its own exposure. Useful when one filter needs a longer integration than the rest. (Grating filters are handled differently — they [auto-stack short sub-exposures](#slitless-spectroscopy-gratings) rather than taking one long exposure.) |
 | **Grating** | Only shown for a filter whose name is in the Spectroscopy group. Configures the disperser for slitless spectroscopy (see below). |
 
 #### Slitless spectroscopy gratings
@@ -107,7 +105,9 @@ When a filter position holds a transmission grating (for example a Star Analyser
 | **dist (mm)** | Distance from the grating to the sensor. You always set this — it sets the dispersion scale. |
 | **auto°** | Locked dispersion angle in degrees. Leave blank to let CitraSense auto-detect the angle while imaging and lock it in once frames agree. Enter a value to pin the axis manually; press **×** to clear it back to auto-detect. |
 
-Gratings need a long integration, so pair the position with a per-filter **Exposure (s)** override. To collect a wavelength reference, point the mount at a spectroscopic standard star — the pointing search box on the [Telescope card](TelescopeSensor.html#mount-controls-direct-hardware-adapters) tags these with a **std** badge.
+Gratings need a long integration to build up a usable spectrum. CitraSense handles that automatically: when a task is assigned a grating filter, the sensor captures a burst of short sub-exposures and coadds them into one deep frame, rather than taking a single long exposure. This keeps individual subs short enough to avoid trailing the target while still reaching the total on-sky integration the scheduler asks for. You don't need to set a long per-filter **Exposure (s)** override for gratings — the automatic stacking replaces it.
+
+To collect a wavelength reference, point the mount at a spectroscopic standard star — the pointing search box on the [Telescope card](TelescopeSensor.html#mount-controls-direct-hardware-adapters) tags these with a **std** badge.
 
 ### Mount Alignment
 
@@ -397,6 +397,7 @@ These settings control what happens automatically at the start and end of each o
 | **Quick align at start of night** | A single plate-solve and sync — a fast alternative to the full pointing-model calibration above. Use this when you want the mount roughly synced without running the longer multi-point routine. |
 | **Autofocus at start of night** | Run autofocus before the first observation of the session. |
 | **Unpark at dusk / Park at dawn** | Automatically unpark the mount when the session begins and park it when the session ends. |
+| **Power off 12V rail during the day** | After a verified park at dawn, cut the powerbox's switched 12V rail to save power through the day, then restore it at dusk before unparking. Only available when **Park at dawn** is on and the adapter has a powerbox on the switched rail — otherwise it stays inactive. |
 
 {: .note }
 > Observation tasks are assigned by the Citra Space scheduler. To control what your telescope is asked to observe, configure your tasking preferences on the Citra Space web app.
@@ -407,7 +408,7 @@ These settings control what happens automatically at the start and end of each o
 
 ![Per-sensor Safety tab showing cable-wrap toggle and limits](img/config-safety-sensor.png)
 
-The per-sensor Safety tab holds checks that only make sense for one sensor at a time. Today this is the cable wrap monitor for telescope sensors that drive the mount directly (Direct Hardware and Dummy adapters). It does not appear for N.I.N.A., KStars/Ekos, or INDI adapters because cable management is handled by the host application in those configurations.
+The per-sensor Safety tab holds checks that only make sense for one sensor at a time. Today this is the cable wrap monitor for telescope sensors that drive the mount directly (Direct Hardware and Dummy adapters). It does not appear for the N.I.N.A. adapter because cable management is handled by N.I.N.A. in that configuration.
 
 ### Cable wrap
 
@@ -425,22 +426,24 @@ To manually clear an active wrap warning, use the **Reset cable wrap** control o
 
 ## Edge NATS
 
-![Edge NATS tab showing broker status, enrollment state, and the enrollment token form](img/config-edge.png)
+![Edge NATS tab showing broker status and the guided enrollment wizard](img/config-edge.png)
 
 The Edge NATS tab is a site-level tab that connects this ground station to the Citra Space edge broker over NATS. Once enrolled, the box streams its health up to Citra Space automatically — no polling, no inbound firewall rules.
 
-Enrollment is a two-step handshake between an admin and the operator:
+Enrollment is a guided four-step wizard — **Enrollment token → Review → Enroll → Connected**:
 
 1. An admin mints a one-use enrollment token in the Citra Space app.
-2. You paste that token into the **Enrollment token** field here and click **Enroll**. CitraSense enrolls this box's local NATS leaf and starts reporting health.
+2. You paste that token into the **Enrollment token** field. Optionally flip **Enable NATS task/upload transport after enrollment** to opt this box into NATS task delivery right away — leave it off to enroll heartbeat and remote control first and turn transport on later.
+3. Click **Continue** to review the token, then **Enroll**. CitraSense enrolls this box's local NATS leaf and starts reporting health.
 
-Re-enroll at any time to rotate the box's identity — paste a fresh token and click Enroll again.
+Re-enroll at any time to rotate the box's identity — run the wizard again with a fresh token.
 
 ### Settings
 
 | Setting | Description |
 |---------|-------------|
 | **Connect to the edge broker** | Master switch for the broker link. Leave it on where the broker is reachable. Turn it off on stations where no NATS broker is running yet, so CitraSense stops retrying a connection it can never complete. Takes effect after Save & reload. |
+| **Deliver tasks and observations over NATS** | Off by default. When on, task assignments and observation uploads travel over NATS using the on-box JetStream buffer instead of HTTP polling. If the link drops, work queues in the local buffer and drains when it returns, so nothing is lost. Turn it off and Save & reload to route new work back over HTTP — messages already accepted into the buffer keep draining, so switching back never discards observations. Leave it off until the box is enrolled and the broker shows **Up**. Takes effect after Save & reload. |
 | **NATS broker URL** | The local NATS leaf CitraSense publishes to. Defaults to the on-box loopback leaf (`nats://127.0.0.1:4222`); override only if the broker runs elsewhere on your LAN. A bad or unreachable URL simply shows the broker status as **Down**. Takes effect after Save & reload. |
 
 ### Status readout
@@ -455,7 +458,7 @@ A row of live badges at the top of the tab reflects the link state:
 | **Cert expires** | The expiry date of the box's edge certificate. CitraSense renews it automatically before it lapses. |
 | **Renewal** | Hidden while renewal is healthy. Shows **Renewal failing** (yellow) if a renewal attempt did not complete, or **Renewal blocked — re-enroll** (red) if the identity was revoked and you need to enroll again. |
 
-When enrolled, the tab also shows the assigned **Device** identifier below the badges.
+When enrolled, the tab shows the assigned **Device** identifier along with a **Task/upload path** line — **NATS ready** once the transport is up (**NATS connecting** while it comes up), or **HTTP rollback path** when the NATS transport is off. The Review step shows the same line before you commit, so you can confirm which path the box will use.
 
 ---
 
